@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="android.example.barberbooking">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BarberBooking">
+        <activity android:name=".vendor.homefacility.AddServicesActivity"></activity>
+        <activity android:name=".vendor.homefacility.GovtIdActivity" />
+        <activity android:name=".vendor.homefacility.BankingDetailActivityHm" />
+        <activity android:name=".vendor.homefacility.HmVendorDetail" />
+        <activity android:name=".AccountActivity" />
+        <activity android:name=".vendor.SubmitFormActivity" />
+        <activity android:name=".vendor.AddImagesActivity" />
+        <activity android:name=".vendor.FacilitiesSelectActivity" />
+        <activity android:name=".vendor.VendorDetail" />
+        <activity android:name=".vendor.VendorAgreement" />
+        <activity android:name=".SaloonActivity" />
+        <activity android:name=".CalenderActivity" />
+        <activity android:name=".TestActivity" />
+        <activity
+            android:name=".SearchActivity"
+            android:windowSoftInputMode="stateVisible" />
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".LauncherActivity"
+            android:theme="@style/DemoTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vendor.FacilitiesSelectActivity">
+    <ImageView
+        android:id="@+id/backBtn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:src="@drawable/ic_arrow_back_black_24dp" />
+
+    <TextView
+        android:id="@+id/facTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:text="Service Available"
+        android:textSize="26dp"
+        android:textStyle="bold" />
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/genderSpinFacility"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/facTxt"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="38dp" />
+
+    <LinearLayout
+        android:id="@+id/mensFaclLyt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/genderSpinFacility"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/hcutBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hair Cut " />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/cuttingpriceSpin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/shaveBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Shaving " />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/shavingPriceSpin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/facialBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Facial     " />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/facialPriceSpin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/spawBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Spaw     " />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/spawPriceSpin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/wommensFaclLyt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mensFaclLyt"
+
+
+        android:layout_marginLeft="6dp"
+        android:orientation="vertical">
+
+
+        <CheckBox
+            android:id="@+id/beautyParlourBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beauty Parlour" />
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/beautyParlourPriceSpin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/beautyParlourBox"
+          />
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/addDataBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="200dp"
+        android:text="Add " />
+
+</RelativeLayout>

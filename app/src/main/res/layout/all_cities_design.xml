@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/all_city_design_relative_layout"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/city_name"
+        android:layout_marginStart="22dp"
+        android:text="Sirsa"
+        android:textSize="20sp"
+        android:layout_marginTop="15dp"
+        />
+    <ImageView
+        android:id="@+id/city_detail_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_forward_ios_black"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="22dp"
+        android:layout_marginTop="15dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Divider"
+        android:layout_marginTop="6dp"
+        android:layout_below="@+id/city_name"
+        />
+</RelativeLayout>

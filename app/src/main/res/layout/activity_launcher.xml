@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111527"
+    tools:context=".LauncherActivity">
+
+
+    <com.smarteist.autoimageslider.SliderView
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/phoneLayout"
+        app:sliderAnimationDuration="600"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="28dp"
+        app:sliderAutoCycleDirection="back_and_forth"
+        app:sliderIndicatorAnimationDuration="600"
+        app:sliderIndicatorEnabled="true"
+        app:sliderIndicatorGravity="center_horizontal|bottom"
+        app:sliderIndicatorMargin="15dp"
+        app:sliderIndicatorOrientation="horizontal"
+        app:sliderIndicatorPadding="3dp"
+        app:sliderIndicatorRadius="2dp"
+        app:sliderIndicatorSelectedColor="#5A5A5A"
+        app:sliderIndicatorUnselectedColor="#FFF"
+        app:sliderScrollTimeInSec="1" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:text="BYC"
+
+        android:textColor="@color/white"
+        android:textSize="38dp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/phoneLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@+id/signupLaterTxt"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="65dp"
+        android:background="@color/white">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:onClick="onCountryPickerClick" />
+
+        <EditText
+            android:id="@+id/phoneNoEdit"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="2dp"
+            android:layout_toRightOf="@+id/ccp"
+            android:background="@null"
+            android:hint="Enter mobile number "
+            android:inputType="phone"
+            android:maxLength="10"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/verifyPhoneBtn"
+            android:layout_width="58dp"
+            android:layout_height="38dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="1dp"
+            android:layout_toRightOf="@+id/phoneNoEdit"
+            android:background="@drawable/verifyphonebutton"
+            android:src="@drawable/ic_baseline_arrow_forward_24"
+
+            />
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/signupLaterTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I'll signup later"
+        android:textColor="#857373"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="46dp"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>
+
+
+
+
+
+
+

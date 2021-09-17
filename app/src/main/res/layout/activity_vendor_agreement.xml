@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vendor.VendorAgreement">
+
+    <ImageView
+        android:id="@+id/backBtn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:src="@drawable/ic_arrow_back_black_24dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home Service"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:id="@+id/homeServBtn"
+        android:layout_below="@+id/saloonDetailsTxt"
+        />
+    <TextView
+        android:id="@+id/saloonDetailsTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saloon Details"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:textSize="24dp"
+        />
+    <TextView
+        android:id="@+id/readTxt"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        android:background="#F4E5E5"
+        android:text="@string/welcome_n_become_our_partner_and_boost_up_your_n_business"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginLeft="45dp"
+        android:layout_above="@+id/agreeCheckBox"
+
+
+        />
+
+    <CheckBox
+        android:id="@+id/agreeCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:textSize="10sp"
+        android:layout_marginLeft="51dp"
+        android:layout_marginTop="20dp"
+        android:layout_above="@+id/nextBtn"
+        android:text="I agreee to the terms and conditions of this app" />
+
+<Button
+    android:id="@+id/nextBtn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Become a member in 15 minutes"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:textSize="8sp"
+
+    android:layout_marginBottom="39dp"/>
+
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+      android:layout_width="wrap_content"
+      android:id="@+id/chatBtn"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_alignParentBottom="true"
+      android:layout_marginBottom="18dp"
+
+      android:layout_marginRight="14dp"
+      android:src="@drawable/ic_baseline_chat_bubble_24"
+      />
+
+</RelativeLayout>

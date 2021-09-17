@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vendor.AddImagesActivity">
+
+    <TextView
+        android:id="@+id/priceTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="Add Photos"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/priceTxtView"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/ic_baseline_add_photo_alternate_24" />
+
+
+    <ImageView
+        android:id="@+id/img2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img1"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/ic_baseline_add_photo_alternate_24" />
+
+
+    <ImageView
+        android:id="@+id/img3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/priceTxtView"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="28dp"
+        android:layout_toRightOf="@+id/img1"
+        android:src="@drawable/ic_baseline_add_photo_alternate_24" />
+
+
+    <ImageView
+        android:id="@+id/img4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img3"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="28dp"
+        android:layout_toRightOf="@+id/img2"
+        android:src="@drawable/ic_baseline_add_photo_alternate_24" />
+
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Save"
+    android:id="@+id/saveImageBtn"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="87dp"/>
+</RelativeLayout>

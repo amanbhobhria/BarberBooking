@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".SearchActivity">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <com.arlib.floatingsearchview.FloatingSearchView
+        android:id="@+id/floating_search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        app:floatingSearch_close_search_on_keyboard_dismiss="true"
+        app:floatingSearch_searchBarMarginLeft="@dimen/search_view_inset"
+        app:floatingSearch_searchBarMarginRight="@dimen/search_view_inset"
+        app:floatingSearch_searchHint="@string/try_saloon_spaw_facial"
+        app:floatingSearch_showSearchKey="false"
+        android:iconifiedByDefault="true"
+        app:floatingSearch_suggestionsListAnimDuration="250" />
+
+    <RelativeLayout
+        android:id="@+id/date_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/floating_search_view"
+        >
+        <TextView
+            android:id="@+id/select_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="42dp"
+            android:text="Today"
+            android:textColor="@color/colorPrimary"
+            />
+        <ImageView
+            android:id="@+id/openCalenderIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:tooltipText="Select Date"
+            android:src="@drawable/ic_baseline_date_range_24"
+            android:layout_toRightOf="@+id/select_date"
+            android:layout_marginLeft="33dp"
+            />
+
+    </RelativeLayout>
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Divider"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="8dp"
+        android:layout_below="@+id/date_layout"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All Cities"
+        android:id="@+id/allCitiesTxt"
+        android:textStyle="bold"
+        android:layout_marginLeft="22dp"
+        android:layout_below="@+id/divider"
+        />
+<androidx.recyclerview.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/recyclerViewOfAllCities"
+    android:layout_below="@+id/allCitiesTxt"
+    />
+</RelativeLayout>
+</ScrollView>

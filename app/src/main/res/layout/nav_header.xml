@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="110dp"
+android:padding="16dp"
+android:gravity="bottom"
+android:background="#AC100D">
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/profileimageshape"
+    android:src="@drawable/ic_baseline_person_24"
+    android:id="@+id/nav_imag"
+    />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="17dp"
+    android:text="Hi Guest"
+    android:layout_toRightOf="@+id/nav_imag"
+    android:textColor="@color/white"
+    android:textStyle="bold"
+    android:layout_marginLeft="22dp"
+    android:id="@+id/nav_name"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nav_phone"
+        android:text="7029289398"
+        android:textColor="@color/white"
+        android:layout_below="@+id/nav_name"
+        android:layout_toRightOf="@+id/nav_imag"
+        android:layout_marginLeft="22dp"
+        />
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+    android:layout_alignParentEnd="true"
+    android:layout_marginTop="22dp"
+    android:layout_marginRight="10dp"
+    />
+
+
+
+</RelativeLayout>
