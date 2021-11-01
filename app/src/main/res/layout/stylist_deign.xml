@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="160dp"
+android:id="@+id/stylist_design"
+    android:layout_height="220dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/workimgStylist"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:scaleType="centerCrop"
+         />
+
+    <TextView
+        android:id="@+id/idStylist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="1dp"
+        android:text="Stylist 1001"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/nameStylist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:text="Sneha" />
+
+    <TextView
+        android:id="@+id/addressStylist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:text="Sirsa Haryana" />
+
+    <TextView
+        android:id="@+id/priceStylist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:text="₹399" />
+
+
+</LinearLayout>

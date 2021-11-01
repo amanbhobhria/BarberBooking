@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="search_view_inset" />
+    <dimen name="_60sdp" />
+    <dimen name="_1sdp" />
+    <dimen name="_40dp" />
+    <dimen name="_40sdp" />
 </resources>

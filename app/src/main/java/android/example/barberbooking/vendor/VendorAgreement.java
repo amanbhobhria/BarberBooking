@@ -1,9 +1,11 @@
 package android.example.barberbooking.vendor;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.example.barberbooking.R;
+import android.example.barberbooking.common.Common;
 import android.example.barberbooking.vendor.homefacility.HmVendorDetail;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,21 +21,36 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class VendorAgreement extends AppCompatActivity {
     FloatingActionButton chatBtn;
     CheckBox agreeCheck;
-    TextView readDetailTxt;
-    Button nextBtn,homeServbtn;
+  //  TextView readDetailTxt;
+    Button nextBtn,homeServbtn,statusBtn;
     ImageView backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendor_agreement);
-        initialize();
-        addPartner();
-        chat();
-        back();
-        homeServ();
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+            initialize();
+            //addPartner();
+            chat();
+            back();
+            homeServ();
+            viewStatus();
+        }
 
 
+
+
+
+    private void viewStatus() {
+        statusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VendorAgreement.this, StatusActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void homeServ() {
@@ -60,29 +77,31 @@ public class VendorAgreement extends AppCompatActivity {
 
     private void initialize() {
         chatBtn = findViewById(R.id.chatBtn);
-        agreeCheck = findViewById(R.id.agreeCheckBox);
-        readDetailTxt = findViewById(R.id.readTxt);
-        nextBtn = findViewById(R.id.nextBtn);
+//        agreeCheck = findViewById(R.id.agreeCheckBox);
+//        readDetailTxt = findViewById(R.id.readTxt);
+       // nextBtn = findViewById(R.id.nextBtn);
         homeServbtn = findViewById(R.id.homeServBtn);
-
-    }
-
-    private void addPartner() {
-        nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!agreeCheck.isChecked()) {
-                    agreeCheck.requestFocus();
-                    Toast.makeText(getApplicationContext(), "Please tick the checkbox first", Toast.LENGTH_SHORT).show();
-                } else {
-                    Intent intent = new Intent(VendorAgreement.this, VendorDetail.class);
-                    startActivity(intent);
-                }
-            }
-        });
+        statusBtn = findViewById(R.id.statusbtn);
 
 
     }
+
+//    private void addPartner() {
+//        nextBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (!agreeCheck.isChecked()) {
+//                    agreeCheck.requestFocus();
+//                    Toast.makeText(getApplicationContext(), "Please tick the checkbox first", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Intent intent = new Intent(VendorAgreement.this, VendorDetail.class);
+//                    startActivity(intent);
+//                }
+//            }
+//        });
+//
+//
+//    }
 private  void chat(){
     //Intent intent = new Intent(VendorAgreement.this, ChatA=.class);
     //startActivity(intent);

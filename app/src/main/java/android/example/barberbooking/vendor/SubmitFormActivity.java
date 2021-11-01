@@ -2,27 +2,16 @@ package android.example.barberbooking.vendor;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.example.barberbooking.MainActivity;
 import android.example.barberbooking.R;
 import android.example.barberbooking.common.Common;
-import android.example.barberbooking.common.VendorCommon;
 import android.example.barberbooking.model.VendorModel;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.media.Image;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,11 +19,6 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Date;
 
 public class SubmitFormActivity extends AppCompatActivity {

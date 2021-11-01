@@ -34,19 +34,56 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="55dp"
-        android:text="BYC"
+        android:text="@string/byc"
 
         android:textColor="@color/white"
-        android:textSize="38dp"
+        android:textSize="38sp"
         android:textStyle="bold" />
 
+
+
+
+
+
+    <EditText
+        android:id="@+id/idEdtOtp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/signUpLaterTxt"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"
+        android:layout_marginStart="64dp"
+       android:layout_toStartOf="@+id/verifyOtpBtn"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/black"
+        android:visibility="gone"
+
+        android:gravity="center"
+        android:windowSoftInputMode="stateHidden|adjustResize"
+        android:layout_marginBottom="71dp"
+        android:hint="@string/enter_otp"
+        android:textSize="22sp"
+        android:importantForAutofill="no"
+        android:inputType="phone" />
+    <Button
+        android:id="@+id/verifyOtpBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_alignParentEnd="true"
+        android:visibility="gone"
+        android:layout_marginEnd="8dp"
+        android:text="@string/verify"
+        android:layout_above="@id/signUpLaterTxt"
+        android:layout_marginBottom="65dp"
+        />
     <RelativeLayout
         android:id="@+id/phoneLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_above="@+id/signupLaterTxt"
+        android:layout_above="@+id/signUpLaterTxt"
         android:layout_marginLeft="14dp"
         android:layout_marginRight="14dp"
+        android:visibility="visible"
         android:layout_marginBottom="65dp"
         android:background="@color/white">
 
@@ -55,41 +92,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-
-            android:onClick="onCountryPickerClick" />
+            />
 
         <EditText
             android:id="@+id/phoneNoEdit"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginRight="2dp"
-            android:layout_toRightOf="@+id/ccp"
+            android:layout_marginEnd="2dp"
+            android:layout_toEndOf="@+id/ccp"
             android:background="@null"
-            android:hint="Enter mobile number "
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:hint="@string/enter_mobile_number"
             android:inputType="phone"
-            android:maxLength="10"
+            android:layout_marginBottom="100dp"
+            android:maxLength="12"
             android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/verifyPhoneBtn"
             android:layout_width="58dp"
             android:layout_height="38dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_margin="1dp"
-            android:layout_toRightOf="@+id/phoneNoEdit"
-            android:background="@drawable/verifyphonebutton"
+            android:layout_toEndOf="@+id/phoneNoEdit"
+            android:background="@drawable/verify_phone_button_design"
             android:src="@drawable/ic_baseline_arrow_forward_24"
 
-            />
+            android:contentDescription="@string/send" />
 
     </RelativeLayout>
+
     <TextView
-        android:id="@+id/signupLaterTxt"
+        android:id="@+id/signUpLaterTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I'll signup later"
+        android:text="@string/signUpLater"
         android:textColor="#857373"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="46dp"

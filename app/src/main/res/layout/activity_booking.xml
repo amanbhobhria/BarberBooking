@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".stylist.BookingActivity">
+
+    <LinearLayout
+        android:id="@+id/topBookingLyt"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@drawable/mkpbg"
+        android:scaleType="centerCrop">
+
+        <TextView
+            android:id="@+id/nameOnimg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8sp"
+            android:layout_marginTop="70dp"
+            android:maxLines="1"
+            android:text="Hi Aman"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:autoSizeTextType="uniform" />
+
+    </LinearLayout>
+
+    <View
+
+        style="@style/Divider"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="8dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="10dp"
+            android:text="User Details"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/uName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aman xyzlkm"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/uRoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="74,Home no ksdjsljdsnkj.dcfdkm"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/uCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Sirsa District"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/uPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="701282897389"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/changeAddressBTn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginBottom="12dp"
+            android:background="#0F7CCD"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/changetxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:text="Change or Add Address"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+
+        style="@style/Divider"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginBottom="10dp"
+            android:text="Price Details"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!--                Makeup Price Layout -->
+        <RelativeLayout
+            android:id="@+id/basePriceLyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginEnd="20dp">
+
+            <TextView
+                android:id="@+id/itemListTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+
+                />
+
+            <TextView
+                android:id="@+id/pricetoPayTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/itemListTxt"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="12dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+
+                />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="22dp"
+            android:textSize="12sp"
+            android:text="*No refund policy" />
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/idTVTranscationDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Transcation Details"
+        android:textAlignment="center"
+        android:textColor="@color/purple_700"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/makePaymentBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22sp"
+        android:layout_marginTop="36dp"
+        android:layout_marginRight="22sp"
+        android:text="Make Payment" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:textSize="12sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/aadhar_required" />
+    
+    <LinearLayout
+        android:id="@+id/exploreMoreLyt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+
+
+        android:background="#EAE2E2"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        >
+        <View
+
+            style="@style/Divider"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="8dp" />
+        
+        <TextView
+            android:id="@+id/exploreMoreTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Explore More"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="14sp"
+            android:layout_marginBottom="14dp"
+            />
+        <View
+
+            style="@style/Divider"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="8dp" />
+        
+    </LinearLayout>
+        
+
+
+</LinearLayout>

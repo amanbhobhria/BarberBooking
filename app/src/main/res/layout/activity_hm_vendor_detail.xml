@@ -34,6 +34,18 @@
             android:text="Personal Details"
             android:layout_below="@+id/detailTxt"
             android:textSize="20dp" />
+        <TextView
+            android:id="@+id/phoneHmTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="8sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:text="987897098"
+            android:layout_below="@+id/detailTxt"
+            android:textSize="16dp" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -41,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/personalDetailTxt"
-            android:layout_marginTop="34dp"
+            android:layout_marginTop="28dp"
 
             >
 
@@ -52,6 +64,7 @@
                 android:layout_marginTop="10dp"
                 android:capitalize="sentences"
                 android:hint="Owner Name ('Required')"
+                android:textAllCaps="true"
                 android:inputType="textPersonName" />
 
 
@@ -73,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:capitalize="sentences"
-                android:hint="Phone Number ('Required')"
+                android:hint="Phone Number ('Optional')"
                 android:nextFocusDown="@id/cityListSpin"
                 android:inputType="phone"
                 android:maxLength="10" />
@@ -98,23 +111,15 @@
                 android:layout_marginTop="10dp"
                 android:capitalize="sentences"
                 android:hint="Email Address"
-                android:nextFocusDown="@id/cityListSpin"
-               android:inputType="textEmailAddress"
-                android:maxLength="10" />
+                android:inputType="textEmailAddress"
+                android:maxLength="30" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
 
-        <com.jaredrummler.materialspinner.MaterialSpinner
-            android:id="@+id/hmcityListSpin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/layt3"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="14dp" />
+
 
 
 
@@ -124,7 +129,7 @@
             android:id="@+id/layt6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/hmcityListSpin"
+            android:layout_below="@+id/layt3"
             android:layout_marginBottom="22dp"
             android:layout_marginTop="14dp"
 
@@ -143,12 +148,21 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/hmcityListSpin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layt6"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="14dp" />
+
         <Button
             android:id="@+id/savePersonalDetailBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/layt6"
+            android:layout_below="@+id/hmcityListSpin"
             android:layout_marginRight="30dp"
             android:layout_marginTop="35dp"
             android:text="Save and Next"

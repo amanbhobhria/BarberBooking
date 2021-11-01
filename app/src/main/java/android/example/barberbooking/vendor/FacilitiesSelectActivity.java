@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.content.Intent;
 import android.example.barberbooking.R;
 import android.example.barberbooking.common.Common;
-import android.example.barberbooking.common.VendorCommon;
 import android.example.barberbooking.model.VendorModel;
 import android.os.Bundle;
 import android.view.View;
@@ -102,7 +101,8 @@ public class FacilitiesSelectActivity extends AppCompatActivity {
         cPrice.setItems(50, 70, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700);
         sPrice.setItems(50, 70, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700);
         spawPrice.setItems(50, 70, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700);
-        facPrice.setItems(50, 70, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700);
+       facPrice.setItems(50, 70, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700);
+
 
 
     }

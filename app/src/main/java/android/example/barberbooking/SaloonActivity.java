@@ -1,6 +1,7 @@
 package android.example.barberbooking;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.example.barberbooking.adapter.SliderAdapter;
 import android.example.barberbooking.model.SliderData;
@@ -15,6 +16,7 @@ public class SaloonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_saloon);
         setImages();
     }

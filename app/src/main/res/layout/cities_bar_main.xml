@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/nearbyBtn"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="46dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/nearbydesign"
+                android:gravity="center"
+                android:src="@drawable/ic_baseline_near_me_24"
+
+
+                />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="Nearby" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/sirsaBtn"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+
+                android:layout_width="48dp"
+                android:layout_height="46dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/cities_circle_shape"
+                android:src="@drawable/sirsaimg"
+                android:scaleType="centerCrop"
+
+                />
+
+            <TextView
+
+                android:layout_width="52dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="Sirsa" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/kehrwalaBtn"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="48dp"
+                android:layout_height="46dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/cities_circle_shape"
+                android:gravity="center"
+                android:text="K"
+                android:textColor="#FFF7F7"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="Kehrwala"
+
+
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/chakkanBtn"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="48dp"
+                android:layout_height="46dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/cities_circle_shape"
+                android:gravity="center"
+                android:text="C"
+                android:textColor="#FFF7F7"
+                android:textSize="20dp"
+
+
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="10dp"
+
+                android:gravity="center"
+                android:text="Chakkan"
+
+
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bhunnaBtn"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="50dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/cities_circle_shape"
+                android:gravity="center"
+                android:text="B"
+                android:textColor="#FFF7F7"
+                android:textSize="20dp"
+
+
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="10dp"
+
+                android:gravity="center"
+                android:text="Bhunna"
+
+
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ellenabadBtn"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+
+                android:layout_width="50dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/cities_circle_shape"
+                android:src="@drawable/ellenabadimg"
+                android:scaleType="centerCrop"
+
+
+/>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="Ellenabad"
+
+
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/kharianBtn"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+
+                android:layout_width="50dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/cities_circle_shape"
+                android:gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/kharianimg"
+              />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="10dp"
+
+                android:gravity="center"
+                android:text="Kharian"
+
+
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rasaliaBtn"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="50dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/cities_circle_shape"
+                android:gravity="center"
+                android:text="R"
+                android:textColor="#FFF7F7"
+                android:textSize="20dp"
+
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="10dp"
+
+                android:gravity="center"
+                android:text="Rasalia"
+
+
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mammadBtn"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="50dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+
+                android:layout_marginTop="10dp"
+                android:background="@drawable/cities_circle_shape"
+                android:gravity="center"
+                android:text="M"
+                android:textColor="#FFF7F7"
+                android:textSize="20sp"
+
+
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="10dp"
+
+                android:gravity="center"
+                android:text="Mammad"
+
+
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</HorizontalScrollView>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
     tools:context=".AccountActivity">
 
     <ImageView
@@ -23,9 +24,37 @@
 
         android:textColor="@color/black"
         android:textSize="18dp" />
-
+    <TextView
+        android:id="@+id/editAccBTn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+     android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:text="@string/edit"
+        android:textSize="17sp" />
+    <LinearLayout
+        android:id="@+id/saveBtnAccLyt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:background="@drawable/savebtngreendesign"
+        android:layout_marginEnd="16dp">
+    <TextView
+        android:id="@+id/saveAccBTn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:textColor="@color/black"
+        android:layout_margin="4sp"
+        android:textSize="14sp" />
+    </LinearLayout>
 
     <View
+        android:id="@+id/tline1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
 
@@ -34,23 +63,31 @@
         android:background="@android:color/darker_gray" />
 
 
+    <RelativeLayout
+        android:id="@+id/guestLyt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tline1"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        >
+
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/sicon"
-        android:layout_centerInParent="true"
         android:layout_above="@+id/signInText"
-        />
+        android:layout_centerInParent="true"
+        android:src="@drawable/sicon" />
 
     <TextView
         android:id="@+id/signInText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Sign in to acess your profile"
+        android:text="@string/sign_in_to_acess_your_profile"
         android:textColor="@color/black"
-        android:textSize="14dp" />
+        android:textSize="14sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,18 +95,19 @@
 
         android:layout_below="@+id/signInText"
         android:layout_centerInParent="true"
-        android:text="All your preference are saved to your account"
-        android:textSize="12dp" />
+        android:text="@string/all_your_preference_are_saved_to_your_account"
+        android:textSize="12sp" />
 
     <View
         android:id="@+id/phline1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_above="@+id/phoneLayout"
-        android:layout_marginTop="15dp"
         android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="25dp"
         android:background="@android:color/darker_gray" />
+
     <View
         android:id="@+id/phline2"
         android:layout_width="1dp"
@@ -78,14 +116,15 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="10dp"
         android:background="@android:color/darker_gray" />
+
     <View
         android:id="@+id/phline3"
         android:layout_width="1dp"
         android:layout_height="230dp"
         android:layout_below="@+id/phline1"
+        android:layout_alignParentRight="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="25dp"
-        android:layout_alignParentRight="true"
         android:background="@android:color/darker_gray" />
 
     <RelativeLayout
@@ -94,22 +133,21 @@
         android:layout_height="48dp"
         android:layout_above="@+id/orTxt"
         android:layout_marginLeft="16dp"
-        android:layout_toRightOf="@+id/phline2"
-        android:layout_marginRight="16dp"
-        android:background="#F1E8E8"
         android:layout_marginTop="25dp"
-        android:layout_toLeftOf="@+id/phline3"
-        >
+        android:layout_marginRight="16dp"
+        android:layout_toStartOf="@+id/phline3"
+        android:layout_toEndOf="@+id/phline2"
+        android:background="#F1E8E8">
 
         <TextView
             android:id="@+id/phoneSuffix"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             android:background="@null"
-            android:inputType="phone"
-            android:text=" +91"
+
+            android:text="@string/_91"
             android:textSize="14sp" />
 
         <EditText
@@ -117,10 +155,10 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginRight="2dp"
-            android:layout_toRightOf="@+id/phoneSuffix"
+            android:layout_marginEnd="2dp"
+            android:layout_toEndOf="@+id/phoneSuffix"
             android:background="@null"
-            android:hint="Enter mobile number "
+            android:hint="@string/enter_mobile_number"
             android:inputType="phone"
             android:maxLength="10"
             android:textSize="14sp" />
@@ -129,81 +167,239 @@
             android:id="@+id/verifyPhoneBtn"
             android:layout_width="58dp"
             android:layout_height="47dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_margin="1dp"
 
-            android:background="@drawable/verifyphonebutton"
+            android:background="@drawable/verify_phone_button_design"
             android:src="@drawable/ic_baseline_arrow_forward_24"
 
             />
 
     </RelativeLayout>
+
     <View
         android:id="@+id/phline4"
-        android:layout_width="44dp"
+        android:layout_width="48dp"
         android:layout_height="1dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="25dp"
         android:layout_above="@+id/truecallerBtn"
         android:layout_centerHorizontal="true"
-        android:layout_toLeftOf="@+id/orTxt"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginBottom="10dp"
+        android:layout_toStartOf="@+id/orTxt"
         android:background="@android:color/darker_gray" />
+
     <TextView
         android:id="@+id/orTxt"
+        android:textSize="14sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="or"
         android:layout_above="@+id/truecallerBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
+        android:text="@string/or"
 
-       />
+        />
+
     <View
         android:id="@+id/phline5"
-        android:layout_width="44dp"
+        android:layout_width="48dp"
         android:layout_height="1dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-       android:layout_above="@+id/truecallerBtn"
+        android:layout_above="@+id/truecallerBtn"
         android:layout_centerHorizontal="true"
-        android:layout_toRightOf="@+id/orTxt"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginRight="25dp"
         android:layout_marginBottom="10dp"
+        android:layout_toEndOf="@+id/orTxt"
         android:background="@android:color/darker_gray" />
+
     <RelativeLayout
+        android:id="@+id/truecallerBtn"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#1F54DC"
-        android:layout_marginLeft="49dp"
+        android:layout_height="46dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginLeft="49dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="49dp"
         android:layout_marginBottom="45dp"
-        android:layout_marginTop="16dp"
-        android:id="@+id/truecallerBtn"
-        >
+        android:background="@drawable/truecallerbuttonshape">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_call_24"
-            android:background="@color/white"
             android:layout_centerHorizontal="true"
-            android:layout_toLeftOf="@+id/tcText"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
-            />
+            android:layout_toStartOf="@+id/tcText"
+            android:background="@drawable/callbtncircledesign"
+            android:src="@drawable/ic_baseline_call_24" />
+
         <TextView
             android:id="@+id/tcText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="One tap login with Truecaller"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:text="@string/one_tap_login_with_truecaller"
             android:textColor="@color/white"
-            android:textStyle="bold"
+            android:textSize="12sp"
+
             />
 
     </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/phoneloginAccLyt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:layout_below="@+id/tline1"
+        >
+
+        <LinearLayout
+            android:id="@+id/mobileNoAccLyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="42dp"
+            android:layout_marginBottom="10dp"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_contact_phone_24"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                />
+            <TextView
+                android:id="@+id/phoneAccTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/mobile_number"
+               android:textSize="18sp"
+                android:layout_marginEnd="16sp"
+                android:background="@null"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/nameAccLyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mobileNoAccLyt"
+            android:orientation="horizontal"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="10dp"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_person_outline_24"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                />
+            <TextView
+                android:id="@+id/nameAccTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/your_full_name"
+                android:textSize="18sp"
+                android:layout_marginEnd="16sp"
+                android:background="@null"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addressAccLyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameAccLyt"
+            android:orientation="horizontal"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="10dp"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_edit_location_alt_24"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                />
+            <TextView
+                android:id="@+id/addressAccTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Address or Road name"
+                android:textSize="18sp"
+                android:layout_marginEnd="16sp"
+                android:background="@null"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/cityAccLyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addressAccLyt"
+            android:orientation="horizontal"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="10dp"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_location_city_24"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                />
+            <TextView
+                android:id="@+id/cityAccTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/your_city_of_residence"
+                android:textSize="18sp"
+                android:layout_marginEnd="16sp"
+                android:background="@null"/>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/logoutAccLyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/roundrectangle"
+            android:layout_marginBottom="30dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/logout"
+               android:layout_centerHorizontal="true"
+                android:textColor="@color/black"
+                />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+
+
 </RelativeLayout>

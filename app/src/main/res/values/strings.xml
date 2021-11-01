@@ -4,4 +4,38 @@
     <string name="search_for_saloon_city_or_location">Search for Saloon ,City or Location</string>
     <string name="try_saloon_spaw_facial">Try \"Saloon ,Facial , Beauty Parlour  in your area ....\"</string>
     <string name="welcome_n_become_our_partner_and_boost_up_your_n_business">Welcome ! \n Become our partner and Boost up your \n business</string>
+    <string name="partnerKey">appKey</string>
+    <string name="wait_txt">Please Wait for Some time the BYC Service to acceppt your Request . Contact you soon</string>
+    <string name="approve_txt">\n Your Request to join BYC as partenr is approved \nDownload Our BYC Partner App and manage your Account \nFor any Query Contact 95181 56020</string>
+    <string name="description_stylist">The Stylist would visit your destination and payment mode would be online only.\nThe item selected here would be done only.\nFor more details contact BYC helpine number</string>
+    <string name="slot2">11:00AM - 12:00 AM</string>
+    <string name="slot1">09:00 AM - 11:00AM</string>
+    <string name="slot3">01:00 PM - 03:00 PM</string>
+    <string name="slot4">03:00 PM - 05:00 PM</string>
+    <string name="slot5">05:00 PM - 07:00 PM</string>
+    <string name="slot6">07:00 PM - 09:00 PM</string>
+    <string name="edit">EDIT</string>
+    <string name="save">SAVE</string>
+    <string name="sign_in_to_acess_your_profile">Sign in to acess your profile</string>
+    <string name="all_your_preference_are_saved_to_your_account">All your preference are saved to your account</string>
+    <string name="_91">+91</string>
+    <string name="enter_mobile_number">Enter mobile number</string>
+    <string name="or">or</string>
+    <string name="one_tap_login_with_truecaller">One tap login with Truecaller</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="your_full_name">Your Full Name</string>
+    <string name="your_city_of_residence">Your City of Residence</string>
+    <string name="logout">Logout</string>
+    <string name="added">Added</string>
+    <string name="add">Add</string>
+    <string name="add_Adress">Add Address</string>
+    <string name="aadhar_required">*Please ensure that you have your AADHAR card or voter card at the time of taking service. It is mandatory.</string>
+
+    <string name="enter_otp">Enter OTP</string>
+    <string name="signUpLater">I\'ll signup later</string>
+    <string name="send">Send</string>
+    <string name="verify">Verify</string>
+    <string name="saloon_details">Saloon Details</string>
+    <string name="status">Status</string>
+
 </resources>

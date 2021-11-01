@@ -31,25 +31,38 @@
             android:layout_marginTop="12dp"
             android:layout_marginRight="18dp"
             android:background="#EFE6E6">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
+                android:id="@+id/imageShow"
+                android:visibility="gone"
+                android:src="@color/colorPrimary"
+                />
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:id="@+id/addLyt"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:orientation="vertical">
 
+
+
+
                 <ImageView
-                    android:id="@+id/addAdharIMgIcn"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="2dp"
+
                     android:src="@drawable/ic_baseline_add_24"
 
 
                     />
 
                 <TextView
-                    android:id="@+id/uploadTxt"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -63,11 +76,34 @@
 
 
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click Photo"
+            android:id="@+id/clickPhotBtn"
+            android:textSize="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_below="@+id/bankPhotoLyt"
+            android:layout_marginRight="38dp"
+            />
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Upload Photo"
+    android:id="@+id/uploadPhotBtn"
+    android:textSize="10dp"
+ android:layout_toRightOf="@+id/clickPhotBtn"
+    android:layout_below="@+id/bankPhotoLyt"
+
+
+    />
+
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/bnameLayt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bankPhotoLyt"
+            android:layout_below="@+id/uploadPhotBtn"
             android:layout_marginTop="34dp"
 
             >
@@ -77,8 +113,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:capitalize="sentences"
                 android:hint="Bank Name "
+                android:textAllCaps="true"
                 android:inputType="textPersonName" />
 
 
@@ -99,7 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:capitalize="sentences"
+              android:textAllCaps="true"
                 android:hint="Bank Address "
                 android:inputType="textPersonName" />
 
@@ -123,7 +159,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:capitalize="sentences"
+                android:textAllCaps="true"
                 android:hint="Beneficiary Name "
                 android:inputType="textPersonName" />
 
@@ -131,35 +167,22 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.jaredrummler.materialspinner.MaterialSpinner
-            android:id="@+id/accountTypeSpin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_below="@+id/benficryLayt"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="220dp"
-            android:layout_marginTop="38dp" />
-
-
-
-
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/bankAccNoLyt"
+            android:id="@+id/accNoLayt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/accountTypeSpin"
+            android:layout_below="@+id/benficryLayt"
             android:layout_marginTop="18dp"
 
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/bankAccTxt"
+                android:id="@+id/accNoTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:capitalize="sentences"
-                android:hint="Account Number('Required')"
+                android:hint="Account Number "
                 android:inputType="number" />
 
 
@@ -167,11 +190,13 @@
 
 
 
+
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ifscLyt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/accountTypeSpin"
+            android:layout_below="@+id/accNoLayt"
             android:layout_marginTop="18dp"
 
             >
@@ -180,29 +205,47 @@
                 android:id="@+id/ifscNoTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:capitalize="sentences"
+                android:textAllCaps="true"
                 android:hint="IFSC Code"
+                android:inputType="text"
                 android:maxLength="11"
                 />
 
 
         </com.google.android.material.textfield.TextInputLayout>
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/accountTypeSpin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
+            android:layout_below="@+id/ifscLyt"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="140dp"
+            android:layout_marginTop="38dp" />
 
         <Button
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save and Next"
             android:id="@+id/saveBank"
-            android:layout_below="@+id/ifscLyt"
+            android:layout_below="@+id/accountTypeSpin"
             android:layout_alignParentRight="true"
             android:layout_marginRight="22dp"
             android:layout_marginTop="33dp"
             android:layout_marginBottom="22dp"
             />
-
-
+<ProgressBar
+    android:id="@+id/bnkProgress"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/accountTypeSpin"
+    android:layout_alignParentRight="true"
+    android:layout_marginRight="22dp"
+    android:layout_marginTop="33dp"
+    android:visibility="gone"
+    android:layout_marginBottom="22dp"
+/>
 
 
 

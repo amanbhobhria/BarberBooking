@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.content.Intent;
 import android.example.barberbooking.R;
 import android.example.barberbooking.common.Common;
-import android.example.barberbooking.common.VendorCommon;
 import android.example.barberbooking.model.VendorModel;
 import android.graphics.Color;
 import android.os.Bundle;

@@ -26,7 +26,7 @@
 
             android:layout_below="@+id/govtDetailTxt"
             android:layout_marginLeft="18dp"
-            android:layout_marginRight="200dp"
+            android:layout_marginRight="140dp"
             android:layout_marginTop="20dp" />
 
 
@@ -48,7 +48,7 @@
                 android:layout_marginTop="10dp"
                 android:capitalize="sentences"
                 android:hint="ID Number"
-                android:inputType="text" />
+                android:inputType="number" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -62,14 +62,24 @@
             android:layout_marginTop="32dp"
             android:layout_marginRight="18dp"
             android:background="#EFE6E6">
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
+                android:id="@+id/imageFrontShow"
+                android:visibility="gone"
+                android:src="@color/colorPrimary"
+                />
             <LinearLayout
+                android:id="@+id/addFrontImgLyt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:orientation="vertical">
 
+
                 <ImageView
-                    android:id="@+id/addAdharIMgIcn"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -80,7 +90,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/uploadTxt"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -90,33 +100,70 @@
                     android:textColor="#448AFF" />
             </LinearLayout>
         </RelativeLayout>
+
+
         <TextView
+            android:id="@+id/ftext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/govtDocImgLyt"
             android:text="Front Side"
+            android:layout_marginTop="20sp"
             android:layout_centerHorizontal="true"
             />
+        <Button
+            android:id="@+id/cameraBtn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/govtDocImgLyt"
+            android:text="Camera"
+            android:textSize="10dp"
+           android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+           android:layout_toLeftOf="@+id/ftext"
+            />
 
+        <Button
+            android:id="@+id/chooseImage1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/govtDocImgLyt"
+            android:text="Select Image"
+            android:textSize="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20sp"
+            android:layout_toEndOf="@+id/ftext"
+            />
 
 
         <RelativeLayout
             android:id="@+id/govtDocbackImgLyt"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:layout_below="@+id/govtDocImgLyt"
+            android:layout_below="@+id/cameraBtn1"
             android:layout_marginLeft="18dp"
             android:layout_marginTop="38dp"
             android:layout_marginRight="18dp"
             android:background="#EFE6E6">
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
+                android:id="@+id/imageBackShow"
+                android:visibility="gone"
+                android:src="@color/colorPrimary"
+                />
             <LinearLayout
+                android:id="@+id/addBackImgLyt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:orientation="vertical">
 
+
+
                 <ImageView
-                    android:id="@+id/govtDocbackImg"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -127,7 +174,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/uploadBackSideTxt"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -138,11 +185,36 @@
             </LinearLayout>
         </RelativeLayout>
         <TextView
+            android:id="@+id/btext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/govtDocbackImgLyt"
             android:text="Back Side"
+            android:layout_marginTop="20sp"
             android:layout_centerHorizontal="true"
+            />
+        <Button
+            android:id="@+id/cameraBtn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/govtDocbackImgLyt"
+            android:text="Camera"
+            android:textSize="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/btext"
+            />
+
+        <Button
+            android:id="@+id/chooseImage2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/govtDocbackImgLyt"
+            android:text="Select Image"
+            android:textSize="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20sp"
+            android:layout_toEndOf="@+id/btext"
             />
 
 
@@ -153,7 +225,7 @@
             android:id="@+id/submitGovtDetailBtn"
             android:layout_alignParentRight="true"
             android:layout_marginTop="28dp"
-            android:layout_below="@+id/govtDocbackImgLyt"
+            android:layout_below="@+id/chooseImage2"
             android:layout_marginRight="22dp"
             android:layout_marginBottom="30dp"
             android:layout_alignParentBottom="true"

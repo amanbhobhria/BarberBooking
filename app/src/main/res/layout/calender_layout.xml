@@ -2,13 +2,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+<ImageView
+    android:id="@+id/closeCalenderBtn"
+    android:layout_width="28dp"
+    android:layout_height="30dp"
+    android:src="@drawable/ic_baseline_close_24"
+    android:layout_marginTop="18sp"
+    android:layout_marginLeft="16dp"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Booking Date"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18sp"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:textColor="@color/black"/>
 
     <CalendarView
 
         android:id="@+id/calenderView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp" />
+
+        android:layout_marginTop="42dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,15 +37,6 @@
         android:layout_centerHorizontal="true"
         />
 
-    <Button
-        android:id="@+id/applyBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
 
-        android:layout_below="@+id/selDate"
-        android:layout_centerHorizontal="true"
-        android:text="Apply"
-        />
 
 </RelativeLayout>

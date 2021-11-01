@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".stylist.AddressActivity">
+    <ImageView
+        android:id="@+id/exitAddress"
+        android:layout_width="36dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="34dp"
+        android:layout_marginLeft="14dp"
+        android:src="@drawable/ic_clear_black_24dp"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Address"
+        android:gravity="center"
+        android:layout_marginTop="22dp"
+        android:textSize="22sp"
+        />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/personalDetailTxt"
+        android:layout_marginTop="28dp"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/userNamehmTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:capitalize="sentences"
+            android:hint=" Name ('Required')*"
+            android:textAllCaps="true"
+            android:inputType="textPersonName" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/personalDetailTxt"
+        android:layout_marginTop="28dp"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/userAddressTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:capitalize="sentences"
+            android:hint="Road name,Area ,Colony('Required')*"
+            android:textAllCaps="true"
+            android:inputType="textPersonName" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/cityuserListSpin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="14dp" />
+
+
+
+
+<LinearLayout
+    android:id="@+id/submitAddressBtn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:gravity="center"
+    android:layout_marginLeft="14dp"
+    android:layout_marginRight="14dp"
+    android:layout_marginTop="22dp"
+    android:background="#F56400"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Address"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        />
+
+</LinearLayout>
+
+</LinearLayout>

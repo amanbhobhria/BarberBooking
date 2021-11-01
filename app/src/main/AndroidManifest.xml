@@ -3,6 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="android.example.barberbooking">
 
+    <uses-sdk tools:overrideLibrary="com.truecaller.android.sdk" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -17,7 +26,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BarberBooking">
-        <activity android:name=".vendor.homefacility.AddServicesActivity"></activity>
+        <activity android:name=".stylist.SearchResultStylists"
+            >
+        </activity>
+
+
+
+        <activity android:name=".stylist.AddressActivity" />
+        <activity android:name=".stylist.BookingActivity" />
+        <activity android:name=".stylist.StylistActivity" />
+        <activity android:name=".vendor.homefacility.ImageHmActivity" />
+
+        <meta-data
+            android:name="com.truecaller.android.sdk.PartnerKey"
+            android:value="@string/partnerKey" />
+
+
+        <activity android:name=".vendor.StatusActivity" />
+        <activity android:name=".vendor.homefacility.SubmitHmVendorActivity" />
+        <activity android:name=".vendor.homefacility.AddServicesActivity" />
         <activity android:name=".vendor.homefacility.GovtIdActivity" />
         <activity android:name=".vendor.homefacility.BankingDetailActivityHm" />
         <activity android:name=".vendor.homefacility.HmVendorDetail" />
@@ -32,7 +59,13 @@
         <activity android:name=".TestActivity" />
         <activity
             android:name=".SearchActivity"
-            android:windowSoftInputMode="stateVisible" />
+            android:windowSoftInputMode="stateVisible"
+            android:theme="@style/SearchTheme"
+            >
+
+
+
+        </activity>
         <activity android:name=".MainActivity" />
         <activity
             android:name=".LauncherActivity"
