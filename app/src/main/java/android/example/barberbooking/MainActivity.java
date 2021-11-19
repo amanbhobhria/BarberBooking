@@ -1,7 +1,6 @@
 package android.example.barberbooking;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -16,36 +15,33 @@ import android.example.barberbooking.adapter.HmServicesAdapter;
 import android.example.barberbooking.common.Common;
 import android.example.barberbooking.model.HomeVendorModel;
 import android.example.barberbooking.model.UserModel;
-import android.example.barberbooking.model.VendorModel;
-import android.example.barberbooking.stylist.BookingActivity;
+
+
 import android.example.barberbooking.stylist.SearchResultStylists;
-import android.example.barberbooking.stylist.StylistActivity;
+
 import android.example.barberbooking.vendor.VendorAgreement;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
+
 import android.view.View;
-import android.widget.ImageView;
+
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.collection.LLRBNode;
-
 
 
 import java.util.ArrayList;
-import java.util.Calendar;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     LinearLayout searchBar, progressBar;
     //
-    LinearLayout sirsa,kehrwala,chakkan,bhunna,ellenabad,kharia,rasalia,mammad;
+    LinearLayout sirsa, kehrwala, chakkan, bhunna, ellenabad, kharia, rasalia, mammad;
 
 
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -80,10 +76,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         initialize();
+
+
         progressBar.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
-
-
 
 
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -95,17 +91,10 @@ public class MainActivity extends AppCompatActivity {
 
         getData();
 
-        //for test mode only//
-//
-//        Intent intent = new Intent(MainActivity.this, BookingActivity.class);
-//        startActivity(intent);
-
-        /////
-
 
         showStylist();
 
-        setNavigationDrawyer();
+        setNavigationDrawer();
         search();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -117,15 +106,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void cityListener() {
-        callCitySearch(sirsa,"Sirsa");
-        callCitySearch(kehrwala,"Kehrwala");
-        callCitySearch(chakkan,"Chakkan");
-        callCitySearch(bhunna,"Bhunna");
-        callCitySearch(ellenabad,"Ellenabad");
-        callCitySearch(kharia,"Kharian");
-        callCitySearch(rasalia,"Rasalia");
-        callCitySearch(mammad,"Mammad");
-
+        callCitySearch(sirsa, "Sirsa");
+        callCitySearch(kehrwala, "Kehrwala");
+        callCitySearch(chakkan, "Chakkan");
+        callCitySearch(bhunna, "Bhunna");
+        callCitySearch(ellenabad, "Ellenabad");
+        callCitySearch(kharia, "Kharian");
+        callCitySearch(rasalia, "Rasalia");
+        callCitySearch(mammad, "Mammad");
 
 
     }
@@ -137,17 +125,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.stylistRecyclerView);
         progressBar = findViewById(R.id.progressRecommended);
 
-        sirsa =findViewById(R.id.sirsaBtn);
-        kehrwala =findViewById(R.id.kehrwalaBtn);
-        chakkan =findViewById(R.id.chakkanBtn);
-        bhunna =findViewById(R.id.bhunnaBtn);
-        ellenabad =findViewById(R.id.ellenabadBtn);
-        kharia =findViewById(R.id.kharianBtn);
-        rasalia =findViewById(R.id.rasaliaBtn);
-        mammad =findViewById(R.id.mammadBtn);
-
-
-
+        sirsa = findViewById(R.id.sirsaBtn);
+        kehrwala = findViewById(R.id.kehrwalaBtn);
+        chakkan = findViewById(R.id.chakkanBtn);
+        bhunna = findViewById(R.id.bhunnaBtn);
+        ellenabad = findViewById(R.id.ellenabadBtn);
+        kharia = findViewById(R.id.kharianBtn);
+        rasalia = findViewById(R.id.rasaliaBtn);
+        mammad = findViewById(R.id.mammadBtn);
 
 
     }
@@ -164,12 +149,12 @@ public class MainActivity extends AppCompatActivity {
         UserModel userModel = new UserModel();
 
         userModel.setPhone(phone);
-        Common.currentDetails4 = userModel;
+        Common.currentUser = userModel;
 
     }
 
 
-    private void setNavigationDrawyer() {
+    private void setNavigationDrawer() {
         /*Declaration*/
 
         NavigationView navigationView = findViewById(R.id.nav_menu);
@@ -183,48 +168,42 @@ public class MainActivity extends AppCompatActivity {
         uPhone.setText(phone);
 
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.nav_partner) {
+        navigationView.setNavigationItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.nav_partner) {
 
 
-                    if (phone.equals("Guest")) {
-                        Toast.makeText(getApplicationContext(), "Login with your Phone Number to Continue", Toast.LENGTH_SHORT).show();
+                if (phone.equals("Guest")) {
+                    Toast.makeText(getApplicationContext(), "Login with your Phone Number to Continue", Toast.LENGTH_SHORT).show();
 
-                    } else {
-                        Intent intent = new Intent(MainActivity.this, VendorAgreement.class);
-                        startActivity(intent);
-                    }
-                } else if (item.getItemId() == R.id.nav_account) {
-
-
-                    Intent intent = new Intent(MainActivity.this, AccountActivity.class);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, VendorAgreement.class);
                     startActivity(intent);
-                } else if (item.getItemId() == R.id.nav_logout) {
-                    editor.clear();
-                    editor.apply();
-                    Intent intent = new Intent(getApplicationContext(), LauncherActivity.class);
-                    startActivity(intent);
-                    finish();
                 }
+            } else if (item.getItemId() == R.id.nav_account) {
 
 
-                return false;
+                Intent intent = new Intent(MainActivity.this, AccountActivity.class);
+                startActivity(intent);
+            } else if (item.getItemId() == R.id.nav_logout) {
+                editor.clear();
+                editor.apply();
+                Intent intent = new Intent(getApplicationContext(), LauncherActivity.class);
+                startActivity(intent);
+                finish();
             }
+
+
+            return false;
         });
 
     }
 
     private void search() {
         searchBar = findViewById(R.id.searchBar);
-        searchBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(intent);
+        searchBar.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            startActivity(intent);
 
-            }
         });
     }
 
@@ -242,6 +221,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     HomeVendorModel homeVendorModel = sp.getValue(HomeVendorModel.class);
+                    assert homeVendorModel != null;
                     if (homeVendorModel.getStatus().trim().equalsIgnoreCase("Approved".trim())) {
 
                         homeVendorModel.setRegno(sp.getKey());
@@ -271,20 +251,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private  void callCitySearch(LinearLayout button, String cityname)
-    {
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SearchResultStylists.class);
-                intent.putExtra("cityname", cityname);
-                startActivity(intent);
-            }
+    private void callCitySearch(LinearLayout button, String cityname) {
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SearchResultStylists.class);
+            intent.putExtra("cityname", cityname);
+            startActivity(intent);
         });
 
     }
-
-
 
 
 }

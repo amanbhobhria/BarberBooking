@@ -122,7 +122,7 @@ public class FacilitiesSelectActivity extends AppCompatActivity {
                 if (count == 0) {
                     Toast.makeText(getApplicationContext(), "Select minimum one option", Toast.LENGTH_SHORT).show();
                 } else {
-                    VendorModel vendorModel = Common.currentDetails;
+                    VendorModel vendorModel = Common.currentVendor;
                     vendorModel.setServiceList(servicesList);
                     vendorModel.setGender(genderSpin.getText().toString());
                     //Common.currentFacilities = vendorModel;

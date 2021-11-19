@@ -5,18 +5,16 @@ import android.content.Intent;
 import android.example.barberbooking.R;
 import android.example.barberbooking.common.Common;
 import android.example.barberbooking.model.HomeVendorModel;
+import android.example.barberbooking.model.SlotsModel;
 import android.example.barberbooking.model.StylistModel;
 import android.example.barberbooking.stylist.SearchResultStylists;
 import android.example.barberbooking.stylist.StylistActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -55,11 +53,11 @@ public class HmServicesAdapter extends RecyclerView.Adapter<HmServicesAdapter.Hm
 
         if (context.getClass().toString().equals(SearchResultStylists.class.toString())) {
 
-            return new HmServicesAdapter.HmServicesViewHolder(view1);
+            return new HmServicesViewHolder(view1);
 
         } else {
 
-            return new HmServicesAdapter.HmServicesViewHolder(view);
+            return new HmServicesViewHolder(view);
         }
     }
 
@@ -69,33 +67,35 @@ public class HmServicesAdapter extends RecyclerView.Adapter<HmServicesAdapter.Hm
         if (list.get(position).getStatus().trim().equalsIgnoreCase("Approved".trim())) {
 
             holder.name.setText(list.get(position).getOwnerName());
-            holder.id.setText("S.Id "+list.get(position).getBycId());
-            holder.adress.setText(list.get(position).getAddress());
+
+
+            String bycId = "S.Id "+list.get(position).getBycId();
+
+            holder.id.setText(bycId);
+            holder.address.setText(list.get(position).getAddress());
 
 
             Picasso.get()
                     .load(list.get(position).getWorkImg())
                     .into(holder.workImg);
 
-            holder.item.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            holder.item.setOnClickListener(v -> {
 
-                    StylistModel stylistModel = new StylistModel();
-                    stylistModel.setBycId(list.get(position).getBycId());
-                    stylistModel.setWorkImg(list.get(position).getWorkImg());
-                    stylistModel.setPhoneNo(list.get(position).getPhoneNo());
-                    stylistModel.setServiceList(list.get(position).getServiceList());
-                    stylistModel.setOwnername(list.get(position).getOwnerName());
-                    stylistModel.setAddress(list.get(position).getAddress());
-                    stylistModel.setCity(list.get(position).getCity());
+                StylistModel stylistModel = new StylistModel();
+                stylistModel.setBycId(list.get(position).getBycId());
+                stylistModel.setWorkImg(list.get(position).getWorkImg());
+                stylistModel.setPhoneNo(list.get(position).getPhoneNo());
+                stylistModel.setServiceList(list.get(position).getServiceList());
+                stylistModel.setOwnername(list.get(position).getOwnerName());
+                stylistModel.setAddress(list.get(position).getAddress());
+                stylistModel.setCity(list.get(position).getCity());
 
 
-                    Common.currentDetails3 = stylistModel;
 
-                    Intent intent = new Intent(context, StylistActivity.class);
-                    context.startActivity(intent);
-                }
+                Common.currentStylist = stylistModel;
+
+                Intent intent = new Intent(context, StylistActivity.class);
+                context.startActivity(intent);
             });
 
 
@@ -109,10 +109,10 @@ public class HmServicesAdapter extends RecyclerView.Adapter<HmServicesAdapter.Hm
         return list.size();
     }
 
-    public class HmServicesViewHolder extends RecyclerView.ViewHolder {
+    public static class HmServicesViewHolder extends RecyclerView.ViewHolder {
         TextView id;
         TextView name;
-        TextView adress;
+        TextView address;
         ImageView workImg;
         //TextView price;
         LinearLayout item;
@@ -122,10 +122,10 @@ public class HmServicesAdapter extends RecyclerView.Adapter<HmServicesAdapter.Hm
             super(itemView);
             id = itemView.findViewById(R.id.idStylist);
             name = itemView.findViewById(R.id.nameStylist);
-            adress = itemView.findViewById(R.id.addressStylist);
+            address = itemView.findViewById(R.id.addressStylist);
             workImg = itemView.findViewById(R.id.workimgStylist);
             //price =itemView.findViewById(R.id.priceStylist);
-            item = itemView.findViewById(R.id.stylist_design);
+            item = itemView.findViewById(R.id.stylist_design_layout);
         }
     }
 }

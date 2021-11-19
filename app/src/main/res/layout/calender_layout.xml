@@ -8,16 +8,16 @@
     android:layout_height="30dp"
     android:src="@drawable/ic_baseline_close_24"
     android:layout_marginTop="18sp"
-    android:layout_marginLeft="16dp"
-    />
+    android:layout_marginStart="16dp"
+    android:contentDescription="@string/back_btn_icon" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Booking Date"
+        android:text="@string/select_booking_date"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18sp"
         android:textStyle="bold"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textColor="@color/black"/>
 
     <CalendarView
@@ -27,15 +27,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginTop="42dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/selDate"
-        android:layout_marginTop="40dp"
-        android:textSize="33dp"
-        android:layout_below="@+id/calenderView"
-        android:layout_centerHorizontal="true"
-        />
+
 
 
 

@@ -129,7 +129,7 @@ public class BankingDetailActivityHm extends AppCompatActivity {
     }
 
     private void upload() {
-        HomeVendorModel homeVendorModel = Common.currentDetails2;
+        HomeVendorModel homeVendorModel = Common.currentHmVendor;
         homeVendorModel.setBankname(bankName.getText().toString());
         homeVendorModel.setBankadress(bankAdress.getText().toString());
         homeVendorModel.setBenificaryname(benificiaryName.getText().toString());
@@ -240,7 +240,7 @@ public class BankingDetailActivityHm extends AppCompatActivity {
     //Upload Image to Firebase and get Url of Image
     private void uploadImage(Uri filePath) {
         if (filePath != null) {
-            String id = Common.currentDetails2.getPhoneNo();
+            String id = Common.currentHmVendor.getPhoneNo();
             // Code for showing progressDialog while uploading
             ProgressDialog progressDialog
                     = new ProgressDialog(this);
@@ -274,7 +274,7 @@ public class BankingDetailActivityHm extends AppCompatActivity {
                                     taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Uri> task) {
-                                            HomeVendorModel homeVendorModel = Common.currentDetails2;
+                                            HomeVendorModel homeVendorModel = Common.currentHmVendor;
 
                                             String url = task.getResult().toString();
                                             homeVendorModel.setBankPhoto(url);

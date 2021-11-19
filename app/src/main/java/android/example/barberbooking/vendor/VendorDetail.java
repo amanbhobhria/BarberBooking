@@ -43,12 +43,12 @@ public class VendorDetail extends AppCompatActivity {
     private void edit() {
         if(Common.isEdit)
         {
-            name.setText(Common.currentDetails.getOwnerName());
-            saloonName.setText(Common.currentDetails.getSaloonName());
-            roadName.setText(Common.currentDetails.getAddress());
-            citySpin.setText(Common.currentDetails.getCity());
-            phone.setText(Common.currentDetails.getPhoneNo());
-            aadhar.setText(Common.currentDetails.getAddress());
+            name.setText(Common.currentVendor.getOwnerName());
+            saloonName.setText(Common.currentVendor.getSaloonName());
+            roadName.setText(Common.currentVendor.getAddress());
+            citySpin.setText(Common.currentVendor.getCity());
+            phone.setText(Common.currentVendor.getPhoneNo());
+            aadhar.setText(Common.currentVendor.getAddress());
 
 
         }
@@ -136,7 +136,7 @@ public class VendorDetail extends AppCompatActivity {
         vendorModel.setAddress(roadName.getText().toString());
         vendorModel.setCity(citySpin.getText().toString());
 
-        Common.currentDetails = vendorModel;
+        Common.currentVendor = vendorModel;
 
 
     }

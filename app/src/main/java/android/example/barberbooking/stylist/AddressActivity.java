@@ -43,7 +43,7 @@ public class AddressActivity extends AppCompatActivity {
             if (name.isEmpty() || address.isEmpty() || city.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "name or address is empty", Toast.LENGTH_SHORT).show();
             } else {
-                UserModel userModel = Common.currentDetails4;
+                UserModel userModel = Common.currentUser;
                 userModel.setUserName(name);
                 userModel.setCity(city);
                 userModel.setRoadName(address);

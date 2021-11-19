@@ -27,7 +27,6 @@
     <string name="your_city_of_residence">Your City of Residence</string>
     <string name="logout">Logout</string>
     <string name="added">Added</string>
-    <string name="add">Add</string>
     <string name="add_Adress">Add Address</string>
     <string name="aadhar_required">*Please ensure that you have your AADHAR card or voter card at the time of taking service. It is mandatory.</string>
 
@@ -37,5 +36,37 @@
     <string name="verify">Verify</string>
     <string name="saloon_details">Saloon Details</string>
     <string name="status">Status</string>
+    <string name="select_date_amp_time_slot"><![CDATA[Select date & time slot]]></string>
+    <string name="available_time_slot">Available time slot</string>
+    <string name="by_proceeding_you_agree_to_our">By proceeding ,you agree to our</string>
+    <string name="back_btn_icon">back_btn_icon</string>
+    <string name="specialistimg">specialistImg</string>
+    <string name="hair_colour">Hair Colour</string>
+    <string name="any_colour_to_hair">Any colour to hair</string>
+    <string name="_100">₹100</string>
+    <string name="add">Add</string>
+    <string name="manicure">Manicure</string>
+    <string name="nail_manicure">Nail Manicure</string>
+    <string name="_150">₹150</string>
+
+    <string name="body_waxing">Body Waxing</string>
+    <string name="face_hand_legs_only">face,hand,legs only</string>
+    <string name="_500">₹500</string>
+
+    <string name="additional_services">Additional Services</string>
+    <string name="price_details">Price Details</string>
+    <string name="makeup_price">Makeup Price</string>
+
+
+    <string name="stylist_policy">Stylist Policy</string>
+    <string name="book_now">Book now</string>
+    <string name="total_amount">Total amount</string>
+    <string name="total_price_to_pay">Total Price to pay</string>
+    <string name="home_service_charge">Home Service Charge</string>
+    <string name="waxing_price">Waxing Price</string>
+    <string name="description">Description</string>
+    <string name="select_booking_date">Select Booking Date</string>
+    <string name="_299">299</string>
+    <string name="select_time_slot">Select Time  Slot</string>
 
 </resources>

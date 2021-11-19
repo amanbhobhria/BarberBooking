@@ -1,47 +1,24 @@
 package android.example.barberbooking.vendor.homefacility;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.example.barberbooking.MainActivity;
 import android.example.barberbooking.R;
 import android.example.barberbooking.common.Common;
 import android.example.barberbooking.model.HomeVendorModel;
-import android.example.barberbooking.model.VendorModel;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
-import java.io.ByteArrayOutputStream;
-
-import java.net.URISyntaxException;
 import java.util.Date;
-import java.util.UUID;
 
 public class SubmitHmVendorActivity extends AppCompatActivity {
     TextView owner, phone, email, city, address, bankName, bankAddress, beneficiary, accNo, accType, ifsc, idNo, idType, services, editBtn, referenceId, home;
@@ -120,28 +97,28 @@ public class SubmitHmVendorActivity extends AppCompatActivity {
 
     private void getData()  {
 
-        owner.setText(Common.currentDetails2.getOwnerName());
-        phone.setText(Common.currentDetails2.getPhoneNoAdd());
-        email.setText(Common.currentDetails2.getEmail());
-        city.setText(Common.currentDetails2.getCity());
-        address.setText(Common.currentDetails2.getAddress());
+        owner.setText(Common.currentHmVendor.getOwnerName());
+        phone.setText(Common.currentHmVendor.getPhoneNoAdd());
+        email.setText(Common.currentHmVendor.getEmail());
+        city.setText(Common.currentHmVendor.getCity());
+        address.setText(Common.currentHmVendor.getAddress());
 
-        bankName.setText(Common.currentDetails2.getBankname());
-        bankAddress.setText(Common.currentDetails2.getBankadress());
-        beneficiary.setText(Common.currentDetails2.getBenificaryname());
-        accNo.setText(Common.currentDetails2.getAccountNo());
-        accType.setText(Common.currentDetails2.getAccounttype());
-        ifsc.setText(Common.currentDetails2.getIfsccode());
-
-
+        bankName.setText(Common.currentHmVendor.getBankname());
+        bankAddress.setText(Common.currentHmVendor.getBankadress());
+        beneficiary.setText(Common.currentHmVendor.getBenificaryname());
+        accNo.setText(Common.currentHmVendor.getAccountNo());
+        accType.setText(Common.currentHmVendor.getAccounttype());
+        ifsc.setText(Common.currentHmVendor.getIfsccode());
 
 
 
-        idNo.setText(Common.currentDetails2.getGovtidno());
-        idType.setText(Common.currentDetails2.getDocType());
 
 
-        services.setText(Common.currentDetails2.getServiceList());
+        idNo.setText(Common.currentHmVendor.getGovtidno());
+        idType.setText(Common.currentHmVendor.getDocType());
+
+
+        services.setText(Common.currentHmVendor.getServiceList());
 
     }
 
@@ -152,9 +129,9 @@ public class SubmitHmVendorActivity extends AppCompatActivity {
                 if(agreeChkBx.isChecked()) {
 
 
-                    String id = Common.currentDetails2.getPhoneNo();
+                    String id = Common.currentHmVendor.getPhoneNo();
                     String currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
-                    HomeVendorModel homeVendorModel = Common.currentDetails2;
+                    HomeVendorModel homeVendorModel = Common.currentHmVendor;
                     homeVendorModel.setTime(currentDateTimeString);
                     homeVendorModel.setStatus("Pending");
 

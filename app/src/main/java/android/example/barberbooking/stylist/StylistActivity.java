@@ -1,12 +1,18 @@
 package android.example.barberbooking.stylist;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.example.barberbooking.CalenderActivity;
 import android.example.barberbooking.R;
+import android.example.barberbooking.adapter.SlotsAdapter;
 import android.example.barberbooking.common.Common;
+import android.example.barberbooking.model.BookingModel;
+import android.example.barberbooking.model.SlotsModel;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,35 +22,44 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
+
 public class StylistActivity extends AppCompatActivity {
+    ProgressBar slotsProgressbar;
     FloatingActionButton backBtn;
     ImageView stylistImage;
-    TextView bycIdTxt,nameTxt, addressTxt, descriptionTxt, finalPriceTxt, stylistPolicy, dayTxt, timeTxt;
+    TextView bycIdTxt, nameTxt, addressTxt, descriptionTxt, finalPriceTxt, stylistPolicy,
+             dayTxt, timeTxt,makeupPrice, hairColourPrice, serviceCharge, priceTxt;
     Button addHairColorBtn, addManicureBtn, addWaxingBtn;
     LinearLayout bookNowBtn, dayLyt, nineLt, elevenLt, oneLt, threeLt, fiveLt, sevenLt;
     RelativeLayout makeupLyt, manicureLyt, hairColorLyt, waxingLyt, serviceLyt, totalPriceLyt;
-    //Pricing TextViews
-    TextView makeupPrice, hairColourPrice, serviceCharge, priceTxt;
 
-    private String slot1, slot2, slot3, slot4, slot5, slot6;
 
-    private final String makupString = "Makeup                          249\n";
+FirebaseDatabase firebaseDatabase;
+DatabaseReference reference;
+RecyclerView slotsRecyclerView;
+
+    private final String makeupString = "Makeup                          249\n";
 
     private String itemList;
-    private float price = 259;
-    private final int serviceCh = 40;
-
-
-//    @Override
-//    public void onBackPressed() {
-//        finish();
-//    }
+    private float price;
 
 
     @Override
@@ -54,21 +69,47 @@ public class StylistActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setStatusBarTransparent();
 
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
         initialize();
 
-        timeSlots();
+        slotsProgressbar.setVisibility(View.VISIBLE);
+        String phone = Common.currentStylist.getPhoneNo();
+        reference = firebaseDatabase.getReference("hmvendor").child(phone).child("days");
+        slotsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
         back();
 
         additional();
-        setData();
-        pricing();
         dateSelector();
-
+        getSlots();
+        setData();
 
         book();
 
+        getSelectedSlot();
 
+
+    }
+
+    private void getSelectedSlot() {
+
+
+
+
+        if(Common.selectedSlot == null)
+        {
+          timeTxt.setText(R.string.select_time_slot);
+
+        }
+        else
+        {
+
+            timeTxt.setText(Common.selectedSlot);
+            Toast.makeText(StylistActivity.this,Common.selectedSlot,Toast.LENGTH_SHORT).show();
+
+        }
     }
 
 
@@ -122,106 +163,87 @@ public class StylistActivity extends AppCompatActivity {
         fiveLt = findViewById(R.id.five);
         sevenLt = findViewById(R.id.seven);
 
-    }
-
-
-    private void timeSlots() {
-        slot1 = getString(R.string.slot1);
-        slot2 = getString(R.string.slot2);
-        slot3 = getString(R.string.slot3);
-        slot4 = getString(R.string.slot4);
-        slot5 = getString(R.string.slot5);
-        slot6 = getString(R.string.slot6);
+        slotsRecyclerView = findViewById(R.id.slots_recyler_view);
+        slotsProgressbar = findViewById(R.id.slotsProgressBar);
 
 
     }
 
 
     private void pricing() {
-
-        priceTxt.setText("₹" + price);
-        finalPriceTxt.setText("₹" + price);
+        String priceSh = "₹" + price;
+        priceTxt.setText(priceSh);
+        finalPriceTxt.setText(priceSh);
     }
 
+
     private void additional() {
-        addHairColorBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (addHairColorBtn.getText().toString().equals("Add")) {
-                    addHairColorBtn.setText(R.string.added);
-                    price = price + 100;
-                    // itemList = itemList + "Hair colour            100\n";
+        addHairColorBtn.setOnClickListener(v -> {
+            if (addHairColorBtn.getText().toString().equals("Add")) {
+                addHairColorBtn.setText(R.string.added);
+                price = price + 100;
+                // itemList = itemList + "Hair colour            100\n";
 
-                    hairColorLyt.setVisibility(View.VISIBLE);
-                } else {
-                    addHairColorBtn.setText(R.string.add);
-                    price = price - 100;
-                    hairColorLyt.setVisibility(View.GONE);
-                }
-                pricing();
+                hairColorLyt.setVisibility(View.VISIBLE);
+            } else {
+                addHairColorBtn.setText(R.string.add);
+                price = price - 100;
+                hairColorLyt.setVisibility(View.GONE);
             }
+            pricing();
         });
-        addWaxingBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (addWaxingBtn.getText().toString().equals("Add")) {
-                    price = price + 500;
-                    //itemList = itemList + "Waxing                  500\n";
-                    addWaxingBtn.setText(R.string.added);
-                    waxingLyt.setVisibility(View.VISIBLE);
+        addWaxingBtn.setOnClickListener(v -> {
+            if (addWaxingBtn.getText().toString().equals("Add")) {
+                price = price + 500;
+                //itemList = itemList + "Waxing                  500\n";
+                addWaxingBtn.setText(R.string.added);
+                waxingLyt.setVisibility(View.VISIBLE);
 
-                } else {
-                    addWaxingBtn.setText(R.string.add);
-                    price = price - 500;
-                    waxingLyt.setVisibility(View.GONE);
-                }
-
-                pricing();
+            } else {
+                addWaxingBtn.setText(R.string.add);
+                price = price - 500;
+                waxingLyt.setVisibility(View.GONE);
             }
+
+            pricing();
         });
 
-        addManicureBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        addManicureBtn.setOnClickListener(v -> {
 
-                if (addManicureBtn.getText().toString().equals("Add")) {
-                    price = price + 150;
+            if (addManicureBtn.getText().toString().equals("Add")) {
+                price = price + 150;
 
-                    addManicureBtn.setText(R.string.added);
-                    manicureLyt.setVisibility(View.VISIBLE);
+                addManicureBtn.setText(R.string.added);
+                manicureLyt.setVisibility(View.VISIBLE);
 
-                } else {
-                    addManicureBtn.setText(R.string.add);
-                    price = price - 150;
-                    manicureLyt.setVisibility(View.GONE);
+            } else {
+                addManicureBtn.setText(R.string.add);
+                price = price - 150;
+                manicureLyt.setVisibility(View.GONE);
 
-                }
-                pricing();
             }
+            pricing();
         });
     }
 
 
     private void back() {
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        backBtn.setOnClickListener(v -> finish());
     }
 
 
     private void setData() {
         Picasso.get()
-                .load(Common.currentDetails3.getWorkImg())
+                .load(Common.currentStylist.getWorkImg())
                 .into(stylistImage);
 
-        bycIdTxt.setText("BYC"+Common.currentDetails3.getBycId());
-        nameTxt.setText(Common.currentDetails3.getOwnername());
-        addressTxt.setText(Common.currentDetails3.getAddress() + "," + Common.currentDetails3.getCity());
+        String bycId = "BYC" + Common.currentStylist.getBycId();
+        String address = Common.currentStylist.getAddress() + "," + Common.currentStylist.getCity();
+        bycIdTxt.setText(bycId);
+        nameTxt.setText(Common.currentStylist.getOwnername());
+        addressTxt.setText(address);
 
-        descriptionTxt.setText(Common.currentDetails3.getServiceList());
+        descriptionTxt.setText(Common.currentStylist.getServiceList());
 
 
     }
@@ -244,39 +266,72 @@ public class StylistActivity extends AppCompatActivity {
     }
 
 
-    private void timing(LinearLayout button, String timeSlot) {
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                timeTxt.setText(timeSlot);
-
-            }
-        });
-    }
 
 
     public void dateSelector() {
 
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM", Locale.getDefault());
+
+        String getCurrentDate = sdf.format(c.getTime());
+
+
         if (Common.date == null) {
-            dayTxt.setText("Today");
+
+
+            dayTxt.setText(getCurrentDate);
+            Common.date = getCurrentDate;
+
         } else {
             dayTxt.setText(Common.date);
         }
 
-        dayLyt.setOnClickListener(new View.OnClickListener() {
+        dayLyt.setOnClickListener(v -> {
+            Intent intent = new Intent(StylistActivity.this, CalenderActivity.class);
+            startActivity(intent);
+        });
+
+
+
+    }
+
+    private void getSlots() {
+
+        List<SlotsModel> list = new ArrayList<>();
+
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StylistActivity.this, CalenderActivity.class);
-                startActivity(intent);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
+
+                for (DataSnapshot sp : snapshot.getChildren()) {
+
+
+                    SlotsModel slotsModel = sp.getValue(SlotsModel.class);
+
+                    assert slotsModel != null;
+
+
+
+
+                    if (sp.getKey().equals(Common.date)) {
+                        slotsModel.setDateId(sp.getKey());
+                        list.add(slotsModel);
+                    }
+
+                }
+                SlotsAdapter slotsAdapter = new SlotsAdapter(list, StylistActivity.this);
+                slotsRecyclerView.setAdapter(slotsAdapter);
+                slotsProgressbar.setVisibility(View.GONE);
+                slotsRecyclerView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 
-        timing(nineLt, slot1);
-        timing(elevenLt, slot2);
-        timing(oneLt, slot3);
-        timing(threeLt, slot4);
-        timing(fiveLt, slot5);
-        timing(sevenLt, slot6);
 
     }
 
@@ -292,24 +347,26 @@ public class StylistActivity extends AppCompatActivity {
             itemList = itemList + "Hair Colour                    100\n";
         }
         itemList = itemList + "Service Charge               40\n";
-        Common.currentDetails4.setPrice(price);
+//        Common.currentUser.setPrice(price);
 
     }
 
 
     private void book() {
-        bookNowBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                itemList ="";
-                itemList =  makupString;
-                itemAdd();
+        bookNowBtn.setOnClickListener(v -> {
+            itemList = "";
+            itemList = makeupString;
+            itemAdd();
 
-                Common.currentDetails4.setItemList(itemList);
-                Intent intent = new Intent(StylistActivity.this, BookingActivity.class);
-                startActivity(intent);
+            //Common.currentUser.setItemList(itemList);
+            BookingModel bookingModel = new BookingModel();
+            bookingModel.setBookingId(Common.currentStylist.getBycId());
+            bookingModel.setBycPhone(Common.currentStylist.getPhoneNo());
+            bookingModel.setPricePaid(String.valueOf(price));
+            
+            Intent intent = new Intent(StylistActivity.this, BookingActivity.class);
+            startActivity(intent);
 
-            }
         });
     }
 

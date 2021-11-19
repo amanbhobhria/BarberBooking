@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import android.example.barberbooking.R;
 import android.example.barberbooking.common.Common;
-import android.example.barberbooking.model.HomeVendorModel;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -83,7 +82,7 @@ public class StatusActivity extends AppCompatActivity {
                     Log.i("TAG", "onDataChange: " + sp.getKey());
                     String id = sp.getKey();
 
-                    if (id.equals(Common.currentDetails2.getPhoneNo())) {
+                    if (id.equals(Common.currentHmVendor.getPhoneNo())) {
 
                         reqIdTxt.setText(id);    //
                         statusTxt.setText(sp.child("status").getValue().toString());

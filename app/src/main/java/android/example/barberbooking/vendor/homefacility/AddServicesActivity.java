@@ -7,23 +7,13 @@ import android.content.Intent;
 import android.example.barberbooking.R;
 import android.example.barberbooking.common.Common;
 import android.example.barberbooking.model.HomeVendorModel;
-import android.example.barberbooking.model.VendorModel;
-import android.example.barberbooking.vendor.FacilitiesSelectActivity;
-import android.example.barberbooking.vendor.SubmitFormActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jaredrummler.materialspinner.MaterialSpinner;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AddServicesActivity extends AppCompatActivity {
     MaterialSpinner makeupPriceSpin, facialPr, bodyPr, hcutPr, hstylePr, hcolorPr, hmassagePr, fthreadPr, hcairTreatmentPr, pedicurePr, manicurePr, trimPr, hpermPr;
@@ -56,7 +46,7 @@ public class AddServicesActivity extends AppCompatActivity {
        }
        else
        {
-           HomeVendorModel homeVendorModel = Common.currentDetails2;
+           HomeVendorModel homeVendorModel = Common.currentHmVendor;
            homeVendorModel.setServiceList(servicesList);
 
 

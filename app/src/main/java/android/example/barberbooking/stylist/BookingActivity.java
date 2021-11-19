@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -34,7 +33,7 @@ public class BookingActivity extends AppCompatActivity {
     final int UPI_PAYMENT = 0;
     LinearLayout changeAddressBtn, topBookingLyt,exploreMoreLyt;
     TextView name, phone, address, city, changeBtnTxt, nameOnImg, itemListTxt, priceTxt, transactionDetailsTV,exploreMoreTxt;
-    UserModel userModel = Common.currentDetails4;
+    UserModel userModel = Common.currentUser;
     Button makePaymentBtn;
     private String nameS, phoneS, addressS, cityS;
     private  boolean paymentDone = false;

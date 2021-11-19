@@ -62,7 +62,7 @@ public class StylistModel {
         this.bycId = bycId;
     }
 
-    public StylistModel(String bycId, String ownername, String phoneNo, String city, String address, String serviceList, String workImg) {
+    public StylistModel(String bycId, String ownername, String phoneNo, String city, String address, String serviceList, String workImg,String dateS,String slot1,String slot2,String slot3, String slot4,String slot5){
         this.bycId =bycId;
         this.ownername = ownername;
         this.phoneNo = phoneNo;

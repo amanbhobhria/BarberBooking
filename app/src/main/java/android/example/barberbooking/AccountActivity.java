@@ -114,7 +114,7 @@ public class AccountActivity extends AppCompatActivity {
 
     private void getData() {
 
-        UserModel userModel = Common.currentDetails4;
+        UserModel userModel = Common.currentUser;
 
 
         if (userModel.getRoadName() == (null)) {

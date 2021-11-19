@@ -91,15 +91,15 @@ public class SubmitFormActivity extends AppCompatActivity {
 
     private void getData() {
 
-        name.setText(Common.currentDetails.getOwnerName());
-        sName.setText(Common.currentDetails.getSaloonName());
-        address.setText(Common.currentDetails.getAddress());
-        city.setText(Common.currentDetails.getCity());
-        phone.setText(Common.currentDetails.getPhoneNo());
-        aadhar.setText(Common.currentDetails.getAadharNo());
+        name.setText(Common.currentVendor.getOwnerName());
+        sName.setText(Common.currentVendor.getSaloonName());
+        address.setText(Common.currentVendor.getAddress());
+        city.setText(Common.currentVendor.getCity());
+        phone.setText(Common.currentVendor.getPhoneNo());
+        aadhar.setText(Common.currentVendor.getAadharNo());
 
-        gender.setText(Common.currentDetails.getGender());
-        servicesTxt.setText(Common.currentDetails.getServiceList());
+        gender.setText(Common.currentVendor.getGender());
+        servicesTxt.setText(Common.currentVendor.getServiceList());
 
     }
 
@@ -132,7 +132,7 @@ public class SubmitFormActivity extends AppCompatActivity {
     private void uploadToFirebase() {
         String id = String.valueOf(System.currentTimeMillis());
         String currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
-        VendorModel vendorModel = Common.currentDetails;
+        VendorModel vendorModel = Common.currentVendor;
         vendorModel.setTime(currentDateTimeString);
         vendorModel.setStatus("Pending");
         reference.child(id).setValue(vendorModel);

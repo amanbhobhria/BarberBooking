@@ -10,7 +10,7 @@
         android:id="@+id/backFLaoting"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:background="@color/white"
         android:backgroundTint="@color/white"
@@ -19,7 +19,7 @@
         app:borderWidth="0dp"
         app:fabCustomSize="30dp"
 
-        />
+        android:contentDescription="@string/back_btn_icon" />
 
 
     <ScrollView
@@ -42,7 +42,8 @@
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
 
-                android:src="@drawable/firstbooking" />
+                android:src="@drawable/firstbooking"
+                android:contentDescription="@string/specialistimg" />
 
 
             <TextView
@@ -51,7 +52,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="10dp"
-                android:text="Neha"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -62,7 +62,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="10dp"
-                android:text="BYC247894230"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -72,7 +71,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="6dp"
-                android:text="Near Main Bus Stand Sirsa Haryana"
                 android:textSize="16sp" />
 
 
@@ -96,13 +94,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Select date &amp; time slot"
+                    android:text="@string/select_date_amp_time_slot"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
-                    android:id="@+id/dayLayt"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -111,10 +109,17 @@
                     android:background="#7A3C3C3C"
                     android:orientation="horizontal">
 
+                    <LinearLayout
+                        android:id="@+id/dayLayt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16sp"
+                        android:layout_marginStart="16sp"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:src="@drawable/ic_baseline_date_range_24" />
@@ -123,10 +128,8 @@
                         android:id="@+id/dayTxtView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
                         android:layout_gravity="center"
-                        android:text="Today"
-
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
@@ -137,15 +140,15 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="18sp"
                         android:layout_marginEnd="14sp" />
+                    </LinearLayout>
+
 
                     <TextView
                         android:id="@+id/timeTxtView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="14dp"
+                        android:layout_marginStart="14dp"
                       android:layout_gravity="center"
-
-                        android:text="@string/slot2"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
@@ -156,287 +159,30 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="16sp"
-                    android:text="Available time slot"
+                    android:text="@string/available_time_slot"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
-                <HorizontalScrollView
+                <ProgressBar
+                    android:id="@+id/slotsProgressBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp">
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:orientation="horizontal">
-
-
-<!--                        9:00 -11:00Am-->
-                        <LinearLayout
-                            android:id="@+id/nine"
-                            android:layout_width="wrap_content"
-                            android:layout_height="70dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="10sp"
-                            android:background="#E6DFDF"
-                            android:layout_marginEnd="12dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="3dp"
-                                android:layout_marginRight="3dp"
-                                android:gravity="center_vertical"
-                                android:text="@string/slot1"
-                                android:textColor="@color/black"
-                                android:textSize="10sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                               android:id="@+id/daySlot1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="3dp"
-                                android:layout_marginTop="4dp"
-                                android:layout_marginRight="3dp"
-                                android:text="Today"
-                                android:textColor="@color/black"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/slots_recyler_view"
+                    android:visibility="gone"
+                    />
 
 
 
 
-                        <!--                        11:00 -1:00PM-->
-                        <LinearLayout
-                            android:id="@+id/eleven"
-                            android:layout_width="wrap_content"
-                            android:layout_height="70dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="10sp"
-                            android:background="#E6DFDF"
-                            android:layout_marginEnd="12dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="3dp"
-                                android:layout_marginRight="3dp"
-                                android:gravity="center_vertical"
-                                android:text="@string/slot2"
-                                android:textColor="@color/black"
-                                android:textSize="10sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/daySlot2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="3dp"
-                                android:layout_marginTop="4dp"
-                                android:layout_marginRight="3dp"
-                                android:text="Today"
-                                android:textColor="@color/black"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-
-
-
-                        <!--                        1:00 -3:00PM-->
-                        <LinearLayout
-                            android:id="@+id/one"
-                            android:layout_width="wrap_content"
-                            android:layout_height="70dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="10sp"
-                            android:background="#E6DFDF"
-                            android:layout_marginEnd="12dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="3dp"
-                                android:layout_marginRight="3dp"
-                                android:gravity="center_vertical"
-                                android:text="@string/slot3"
-                                android:textColor="@color/black"
-                                android:textSize="10sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/daySlot3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="3dp"
-                                android:layout_marginTop="4dp"
-                                android:layout_marginRight="3dp"
-                                android:text="Today"
-                                android:textColor="@color/black"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-
-
-
-
-
-                        <!--                        03:00 -05:00PM-->
-                        <LinearLayout
-                            android:id="@+id/three"
-                            android:layout_width="wrap_content"
-                            android:layout_height="70dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="10sp"
-                            android:background="#E6DFDF"
-                            android:layout_marginEnd="12dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="3dp"
-                                android:layout_marginRight="3dp"
-                                android:gravity="center_vertical"
-                                android:text="@string/slot4"
-                                android:textColor="@color/black"
-                                android:textSize="10sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/daySlot4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="3dp"
-                                android:layout_marginTop="4dp"
-                                android:layout_marginRight="3dp"
-                                android:text="Today"
-                                android:textColor="@color/black"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-
-
-
-
-
-
-
-
-                        <!--                        05:00 -07:00PM-->
-                        <LinearLayout
-                            android:id="@+id/five"
-                            android:layout_width="wrap_content"
-                            android:layout_height="70dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="10sp"
-                            android:background="#E6DFDF"
-                            android:layout_marginEnd="12dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="3dp"
-                                android:layout_marginRight="3dp"
-                                android:gravity="center_vertical"
-                                android:text="@string/slot5"
-                                android:textColor="@color/black"
-                                android:textSize="10sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/daySlot5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="3dp"
-                                android:layout_marginTop="4dp"
-                                android:layout_marginRight="3dp"
-                                android:text="Today"
-                                android:textColor="@color/black"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-
-
-
-
-
-
-
-
-                        <!--                        07:00 -09:00PM-->
-                        <LinearLayout
-                            android:id="@+id/seven"
-                            android:layout_width="wrap_content"
-                            android:layout_height="70dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="10sp"
-                            android:background="#E6DFDF"
-                            android:layout_marginEnd="12dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="3dp"
-                                android:layout_marginRight="3dp"
-                                android:gravity="center_vertical"
-                                android:text="@string/slot6"
-                                android:textColor="@color/black"
-                                android:textSize="10sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/daySlot6"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="3dp"
-                                android:layout_marginTop="4dp"
-                                android:layout_marginRight="3dp"
-                                android:text="Today"
-                                android:textColor="@color/black"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-                </HorizontalScrollView>
 
             </LinearLayout>
 
@@ -453,7 +199,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14sp"
-                android:text="Additional Services "
+                android:text="@string/additional_services"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -465,14 +211,14 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginStart="14dp"
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginEnd="20dp"
                         android:orientation="vertical">
 
                         <ImageView
@@ -486,7 +232,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
-                            android:text="Hair Colour "
+                            android:text="@string/hair_colour"
                             android:textColor="@color/black"
                             android:textSize="10sp"
 
@@ -496,17 +242,17 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Any colour to hair"
-                            android:textSize="10dp" />
+                            android:text="@string/any_colour_to_hair"
+                            android:textSize="10sp" />
 
                         <TextView
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="₹100"
+                            android:text="@string/_100"
                             android:textColor="@color/black"
-                            android:textSize="14dp" />
+                            android:textSize="14sp" />
 
                         <Button
                             android:id="@+id/addhaircolour"
@@ -514,7 +260,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
-                            android:text="Add" />
+                            android:text="@string/add" />
 
 
                     </LinearLayout>
@@ -522,7 +268,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginEnd="20dp"
                         android:orientation="vertical">
 
                         <ImageView
@@ -537,9 +283,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
-                            android:text="Manicure"
+                            android:text="@string/manicure"
                             android:textColor="@color/black"
-                            android:textSize="10dp"
+                            android:textSize="10sp"
 
                             />
 
@@ -547,14 +293,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Nail Manicure"
-                            android:textSize="10dp" />
+                            android:text="@string/nail_manicure"
+                            android:textSize="10sp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="₹150"
+                            android:text="@string/_150"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
@@ -566,7 +312,7 @@
                             android:layout_marginTop="10dp"
 
 
-                            android:text="Add" />
+                            android:text="@string/add" />
 
 
                     </LinearLayout>
@@ -574,7 +320,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginEnd="20dp"
                         android:orientation="vertical">
 
                         <ImageView
@@ -588,9 +334,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
-                            android:text="Body Waxing "
+                            android:text="@string/body_waxing"
                             android:textColor="@color/black"
-                            android:textSize="10dp"
+                            android:textSize="10sp"
 
                             />
 
@@ -598,14 +344,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text=" face,hand,legs only"
+                            android:text="@string/face_hand_legs_only"
                             android:textSize="10dp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="₹500"
+                            android:text="@string/_500"
                             android:textColor="@color/black"
                             android:textSize="14dp" />
 
@@ -617,7 +363,7 @@
                             android:layout_marginTop="10dp"
 
 
-                            android:text="Add" />
+                            android:text="@string/add" />
 
                     </LinearLayout>
 
@@ -643,8 +389,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="14sp"
-                    android:text="Description"
+                    android:layout_marginStart="14sp"
+                    android:text="@string/description"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -679,9 +425,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="14sp"
+                    android:layout_marginStart="14sp"
                     android:layout_marginBottom="10dp"
-                    android:text="Price Details"
+                    android:text="@string/price_details"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -698,7 +444,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Makeup Price"
+                        android:text="@string/makeup_price"
                         android:textColor="@color/black"
 
 
@@ -709,7 +455,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:text="299"
+                        android:text="@string/_299"
                         android:textColor="@color/black"
 
 
@@ -729,7 +475,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Hair Colour"
+                        android:text="@string/hair_colour"
                         android:textColor="@color/black"
 
 
@@ -740,7 +486,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:text="100"
+                        android:text="@string/_100"
                         android:textColor="@color/black"
 
 
@@ -760,7 +506,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Manicure"
+                        android:text="@string/manicure"
                         android:textColor="@color/black"
 
 
@@ -792,7 +538,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Waxing Price"
+                        android:text="@string/waxing_price"
                         android:textColor="@color/black"
 
 
@@ -811,7 +557,7 @@
 
                 </RelativeLayout>
 
-                <!--Service Charge LAyout-->
+                <!--Service Charge Layout-->
 
                 <RelativeLayout
                     android:id="@+id/serviceChargeLyt"
@@ -824,7 +570,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Home Service Charge"
+                        android:text="@string/home_service_charge"
                         android:textColor="@color/black"
 
                         />
@@ -854,7 +600,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total Price to pay"
+                        android:text="@string/total_price_to_pay"
                         android:textColor="@color/black"
                         android:textStyle="bold"
 
@@ -865,7 +611,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:text="299"
+                        android:text="@string/_299"
                         android:textColor="@color/black"
                         android:textStyle="bold"
 
@@ -902,7 +648,6 @@
             android:layout_below="@+id/divbottom"
             android:layout_marginStart="28dp"
             android:layout_marginTop="4dp"
-            android:text="₹499"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -912,7 +657,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/totalPriceBottom"
             android:layout_marginStart="28dp"
-            android:text="Total amount"
+            android:text="@string/total_amount"
 
             />
 
@@ -922,7 +667,7 @@
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="14dp"
+            android:layout_marginEnd="14dp"
             android:background="#25A52B">
 
             <TextView
@@ -930,7 +675,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Book now"
+                android:text="@string/book_now"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -949,18 +694,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
+                android:layout_marginStart="70dp"
                 android:layout_marginBottom="10dp"
-                android:text="By proceeding ,you agree to our  "
-                android:textSize="10sp" />
+                android:text="@string/by_proceeding_you_agree_to_our"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/stylistPolicyBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Stylist Policy"
+                android:text="@string/stylist_policy"
                 android:textColor="#E44E4E"
-                android:textSize="10sp"
+                android:textSize="12sp"
 
                 />
         </LinearLayout>

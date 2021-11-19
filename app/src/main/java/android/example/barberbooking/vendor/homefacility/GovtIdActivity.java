@@ -25,7 +25,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,10 +37,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
-import org.w3c.dom.Text;
-
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 public class GovtIdActivity extends AppCompatActivity {
     Button submitBtn;
@@ -111,7 +107,7 @@ public class GovtIdActivity extends AppCompatActivity {
     }
 
     private void upload() {
-        HomeVendorModel homeVendorModel = Common.currentDetails2;
+        HomeVendorModel homeVendorModel = Common.currentHmVendor;
         homeVendorModel.setDocType(doctypeSpin.getText().toString());
         homeVendorModel.setGovtidno(idNumber.getText().toString());
         uploadImage(image, "gidfront");
@@ -264,7 +260,7 @@ public class GovtIdActivity extends AppCompatActivity {
     //Upload Image to Firebase and get Url of Image
     private void uploadImage(Uri filePath, String imgid) {
         if (filePath != null) {
-            String id = Common.currentDetails2.getPhoneNo();
+            String id = Common.currentHmVendor.getPhoneNo();
             // Code for showing progressDialog while uploading
             ProgressDialog progressDialog
                     = new ProgressDialog(this);
@@ -298,7 +294,7 @@ public class GovtIdActivity extends AppCompatActivity {
                                     taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Uri> task) {
-                                            HomeVendorModel homeVendorModel = Common.currentDetails2;
+                                            HomeVendorModel homeVendorModel = Common.currentHmVendor;
 
                                             String url = task.getResult().toString();
                                             if (imgid.equals("gidfront")) {
