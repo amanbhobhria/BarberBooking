@@ -123,37 +123,34 @@ public class SubmitHmVendorActivity extends AppCompatActivity {
     }
 
     private void submit() {
-        submitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(agreeChkBx.isChecked()) {
+        submitBtn.setOnClickListener(v -> {
+            if(agreeChkBx.isChecked()) {
 
 
-                    String id = Common.currentHmVendor.getPhoneNo();
-                    String currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
-                    HomeVendorModel homeVendorModel = Common.currentHmVendor;
-                    homeVendorModel.setTime(currentDateTimeString);
-                    homeVendorModel.setStatus("Pending");
+                String id = Common.currentHmVendor.getPhoneNo();
+                String currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
+                HomeVendorModel homeVendorModel = Common.currentHmVendor;
+                homeVendorModel.setTime(currentDateTimeString);
+                homeVendorModel.setStatus("Pending");
 
 
-                    reference.child(id).setValue(homeVendorModel);
+                reference.child(id).setValue(homeVendorModel);
 
-                    Toast.makeText(getApplicationContext(), "Request Sent successfully  ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Request Sent successfully  ", Toast.LENGTH_SHORT).show();
 
 
-                    Common.isUploaded = true;
-                    agreeChkBx.setVisibility(View.GONE);
-                    submitBtn.setVisibility(View.GONE);
-                    editBtn.setVisibility(View.GONE);
-                    home.setVisibility(View.VISIBLE);
-                }
-                else
-                {
-                    agreeChkBx.requestFocus();
-                    Toast.makeText(getApplicationContext(), "Please Tick the checkbox before submitting " , Toast.LENGTH_SHORT).show();
-                }
-
+                Common.isUploaded = true;
+                agreeChkBx.setVisibility(View.GONE);
+                submitBtn.setVisibility(View.GONE);
+                editBtn.setVisibility(View.GONE);
+                home.setVisibility(View.VISIBLE);
             }
+            else
+            {
+                agreeChkBx.requestFocus();
+                Toast.makeText(getApplicationContext(), "Please Tick the checkbox before submitting " , Toast.LENGTH_SHORT).show();
+            }
+
         });
 
 

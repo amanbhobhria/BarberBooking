@@ -33,6 +33,7 @@ public class CalenderActivity extends AppCompatActivity {
 
 
 
+
         close();
         setDates();
 
@@ -42,16 +43,25 @@ public class CalenderActivity extends AppCompatActivity {
     private void initialize() {
         calendarView = findViewById(R.id.calenderView);
         closeBTn = findViewById(R.id.closeCalenderBtn);
+
+      //  Common.currentBooking.setTimeSlot("Select Time Slot");
+        Common.currentUser.setSlotTime( null);
     }
 
 
     private void setDates() {
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
 
+           String dm = String.valueOf(dayOfMonth);
+           if(dm.length()==1)
 
+           {
+               Common.date = "0"+dayOfMonth + "-" + (month + 1);
+           }
 
-            Common.date = dayOfMonth + "-" + (month + 1);
-
+           else {
+               Common.date = dayOfMonth + "-" + (month + 1);
+           }
 
             Intent intent = new Intent(CalenderActivity.this, StylistActivity.class);
             startActivity(intent);

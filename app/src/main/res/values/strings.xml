@@ -37,10 +37,10 @@
     <string name="saloon_details">Saloon Details</string>
     <string name="status">Status</string>
     <string name="select_date_amp_time_slot"><![CDATA[Select date & time slot]]></string>
-    <string name="available_time_slot">Available time slot</string>
-    <string name="by_proceeding_you_agree_to_our">By proceeding ,you agree to our</string>
+    <string name="available_time_slot">Available time slot </string>
+    <string name="by_proceeding_you_agree_to_our">By proceeding ,you agree to our </string>
     <string name="back_btn_icon">back_btn_icon</string>
-    <string name="specialistimg">specialistImg</string>
+    <string name="specialistimage">specialistImg</string>
     <string name="hair_colour">Hair Colour</string>
     <string name="any_colour_to_hair">Any colour to hair</string>
     <string name="_100">₹100</string>
@@ -58,7 +58,7 @@
     <string name="makeup_price">Makeup Price</string>
 
 
-    <string name="stylist_policy">Stylist Policy</string>
+    <string name="stylist_policy"> Stylist Policy</string>
     <string name="book_now">Book now</string>
     <string name="total_amount">Total amount</string>
     <string name="total_price_to_pay">Total Price to pay</string>
@@ -66,7 +66,32 @@
     <string name="waxing_price">Waxing Price</string>
     <string name="description">Description</string>
     <string name="select_booking_date">Select Booking Date</string>
-    <string name="_299">299</string>
+    <string name="_249">249</string>
     <string name="select_time_slot">Select Time  Slot</string>
+    <string name="done">Done</string>
+    <string name="transaction_details">Transaction Details</string>
+    <string name="your_booking_is_successful">Your booking is successful</string>
+    <string name="transaction_id">Transaction ID</string>
+    <string name="amount_paid">Amount Paid</string>
+    <string name="booked_slot">Booked Slot</string>
+    <string name="booking_time">Booking Time</string>
+    <string name="booked_date_slot">Booked Date Slot</string>
+    <string name="make_payment">Make Payment</string>
+    <string name="no_refund_policy">*No refund policy</string>
+    <string name="change_or_add_address">Change or Add Address</string>
+    <string name="user_details">User Details</string>
+    <string name="offers">Offers</string>
+    <string name="only_on_your_pehli_booking">Only on your pehli booking</string>
+    <string name="recommended_best_saloons_for_you">Recommended best saloons for you</string>
+    <string name="try_searching_for_parlour_in">Try Searching for \'Parlour\' in ...</string>
+    <string name="best_offer_for_you">Best Offer for You</string>
+    <string name="explore_all_offers">Explore all Offers</string>
+    <string name="byc_s_help_assistant">BYC\'s Help Assistant</string>
+    <string name="we_re_here_for_your_queries">We\'re here for your queries</string>
+    <string name="proceed">PROCEED</string>
+    <string name="call_us_on_9518156020">Call us on 9518156020</string>
+    <string name="type_your_query_here">Type your query here</string>
+    <string name="mail_your_queries">Mail your queries</string>
+
 
 </resources>

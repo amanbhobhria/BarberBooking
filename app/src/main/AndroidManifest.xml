@@ -5,6 +5,7 @@
 
     <uses-sdk tools:overrideLibrary="com.truecaller.android.sdk" />
 
+
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
@@ -26,12 +27,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BarberBooking">
-        <activity android:name=".stylist.SearchResultStylists"
-            >
-        </activity>
-
-
-
+        <activity android:name=".user.HelpAssistantActivity"></activity>
+        <activity android:name=".user.OffersActivity" />
+        <activity android:name=".user.ShowBookingDetialsActivity" />
+        <activity android:name=".user.ShowBookingsActivity" />
+        <activity android:name=".stylist.TransactionsDetailsActivity" />
+        <activity android:name=".stylist.SearchResultStylists" />
         <activity android:name=".stylist.AddressActivity" />
         <activity android:name=".stylist.BookingActivity" />
         <activity android:name=".stylist.StylistActivity" />
@@ -40,7 +41,6 @@
         <meta-data
             android:name="com.truecaller.android.sdk.PartnerKey"
             android:value="@string/partnerKey" />
-
 
         <activity android:name=".vendor.StatusActivity" />
         <activity android:name=".vendor.homefacility.SubmitHmVendorActivity" />
@@ -59,17 +59,13 @@
         <activity android:name=".TestActivity" />
         <activity
             android:name=".SearchActivity"
-            android:windowSoftInputMode="stateVisible"
             android:theme="@style/SearchTheme"
-            >
-
-
-
-        </activity>
+            android:windowSoftInputMode="stateVisible" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".LauncherActivity"
-            android:theme="@style/DemoTheme">
+            android:theme="@style/DemoTheme"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

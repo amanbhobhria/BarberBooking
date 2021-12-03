@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".user.HelpAssistantActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/byc"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorRed"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="172dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/bychelpicon" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/byc_s_help_assistant"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/we_re_here_for_your_queries"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="14dp"
+        />
+
+
+
+    <Button
+        android:id="@+id/callHelpBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/call_us_on_9518156020"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="28dp"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mail_your_queries"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+
+        />
+    <EditText
+
+        android:id="@+id/queryTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:hint="@string/type_your_query_here"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+
+        />
+
+
+
+    <Button
+        android:id="@+id/proceedBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/proceed"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="130dp"
+        />
+
+
+
+</LinearLayout>

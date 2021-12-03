@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,11 +20,15 @@ import android.example.barberbooking.model.UserModel;
 
 import android.example.barberbooking.stylist.SearchResultStylists;
 
+import android.example.barberbooking.user.HelpAssistantActivity;
+import android.example.barberbooking.user.OffersActivity;
+import android.example.barberbooking.user.ShowBookingsActivity;
 import android.example.barberbooking.vendor.VendorAgreement;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
+import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.LinearLayout;
@@ -32,6 +37,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -47,6 +54,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar_home;
     DrawerLayout drawerLayout;
+    BottomNavigationView bottomNavigationView;
     LinearLayout searchBar, progressBar;
     //
     LinearLayout sirsa, kehrwala, chakkan, bhunna, ellenabad, kharia, rasalia, mammad;
@@ -78,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
         initialize();
 
 
+
+
         progressBar.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
 
@@ -95,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
         showStylist();
 
         setNavigationDrawer();
+
+        setBottomNavigation();
         search();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -102,7 +114,36 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+
         cityListener();
+
+
+    }
+
+    private void setBottomNavigation() {
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+
+            if(item.getItemId()== R.id.home){
+                Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
+            }
+            else if(item.getItemId() == R.id.bookings){
+               Intent intent = new Intent(MainActivity.this, ShowBookingsActivity.class);
+               startActivity(intent);
+            }
+            else if(item.getItemId() == R.id.offers){
+                Intent intent = new Intent(MainActivity.this, OffersActivity.class);
+                startActivity(intent);
+            }
+            else if(item.getItemId() == R.id.invite){
+                Toast.makeText(MainActivity.this, "Invite", Toast.LENGTH_SHORT).show();
+            }
+            else if(item.getItemId() == R.id.help){
+                Intent intent = new Intent(MainActivity.this, HelpAssistantActivity.class);
+                startActivity(intent);
+            }
+
+            return false;
+        });
     }
 
     private void cityListener() {
@@ -134,6 +175,8 @@ public class MainActivity extends AppCompatActivity {
         rasalia = findViewById(R.id.rasaliaBtn);
         mammad = findViewById(R.id.mammadBtn);
 
+        bottomNavigationView = findViewById(R.id.bottom_nav);
+
 
     }
 
@@ -150,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
 
         userModel.setPhone(phone);
         Common.currentUser = userModel;
+        Common.currentUser.setSlotTime(null);
 
     }
 
@@ -170,7 +214,6 @@ public class MainActivity extends AppCompatActivity {
 
         navigationView.setNavigationItemSelectedListener(item -> {
             if (item.getItemId() == R.id.nav_partner) {
-
 
                 if (phone.equals("Guest")) {
                     Toast.makeText(getApplicationContext(), "Login with your Phone Number to Continue", Toast.LENGTH_SHORT).show();
@@ -206,6 +249,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+
 
 
     private void showStylist() {
@@ -259,6 +303,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 
 
 }

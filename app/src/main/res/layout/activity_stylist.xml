@@ -43,7 +43,7 @@
                 android:scaleType="centerCrop"
 
                 android:src="@drawable/firstbooking"
-                android:contentDescription="@string/specialistimg" />
+                android:contentDescription="@string/specialistimage" />
 
 
             <TextView
@@ -143,6 +143,8 @@
                     </LinearLayout>
 
 
+
+
                     <TextView
                         android:id="@+id/timeTxtView"
                         android:layout_width="wrap_content"
@@ -152,16 +154,34 @@
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
+
                 </LinearLayout>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12sp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="16sp"
+                    >
+
+                <TextView
+                    android:id="@+id/availableTxtView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/available_time_slot"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
+                <ImageView
+                    android:id="@+id/below_slots_icon"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:src="@drawable/ic_baseline_keyboard_double_arrow_down_24"
+                    />
+                </LinearLayout>
+
 
                 <ProgressBar
                     android:id="@+id/slotsProgressBar"
@@ -172,11 +192,11 @@
                     android:layout_marginBottom="10dp"
                     />
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="18dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/slots_recyler_view"
+                    android:id="@+id/slots_recycler_view"
                     android:visibility="gone"
                     />
 
@@ -455,7 +475,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:text="@string/_299"
+                        android:text="@string/_249"
                         android:textColor="@color/black"
 
 
@@ -611,7 +631,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:text="@string/_299"
                         android:textColor="@color/black"
                         android:textStyle="bold"
 
@@ -698,6 +717,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/by_proceeding_you_agree_to_our"
                 android:textSize="12sp" />
+
 
             <TextView
                 android:id="@+id/stylistPolicyBtn"

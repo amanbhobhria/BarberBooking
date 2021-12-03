@@ -8,9 +8,34 @@ public class BookingModel {
     private String itemList;
     private String pricePaid;
     private String bycId;
+    private String bycName;
     private String bycPhone;
     private String timeSlot;
     private String dateSlot;
+    private String status;
+    private String trackingList;
+    private String currentSlotNo;
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    private String transactionId;
+
+
+    public String getUserCity() {
+        return userCity;
+    }
+
+    public void setUserCity(String userCity) {
+        this.userCity = userCity;
+    }
+
+    private String userCity;
 
     public String getBookingId() {
         return bookingId;
@@ -92,13 +117,37 @@ public class BookingModel {
         this.dateSlot = dateSlot;
     }
 
+    public String getBycName() {
+        return bycName;
+    }
+
+    public void setBycName(String bycName) {
+        this.bycName = bycName;
+    }
+
     public BookingModel() {
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getTrackingList() {
+        return trackingList;
+    }
+
+    public void setTrackingList(String trackingList) {
+        this.trackingList = trackingList;
+    }
+
     public BookingModel(String bookingId, String userName,
-                        String userAddress, String userPhone,
-                        String itemList, String pricePaid, String bycId,
-                        String bycPhone, String timeSlot, String dateSlot) {
+                        String userAddress, String userCity, String userPhone,
+                        String itemList, String pricePaid, String bycId, String bycName,
+                        String bycPhone, String timeSlot, String dateSlot, String status, String trackingList,String currentSlotNo,String transactionId) {
         this.bookingId = bookingId;
         this.userName = userName;
         this.userAddress = userAddress;
@@ -106,8 +155,14 @@ public class BookingModel {
         this.itemList = itemList;
         this.pricePaid = pricePaid;
         this.bycId = bycId;
+        this.bycName = bycName;
         this.bycPhone = bycPhone;
         this.timeSlot = timeSlot;
         this.dateSlot = dateSlot;
+        this.userCity= userCity;
+        this.status= status;
+        this.trackingList= trackingList;
+        this.currentSlotNo= currentSlotNo;
+        this.transactionId= transactionId;
     }
 }

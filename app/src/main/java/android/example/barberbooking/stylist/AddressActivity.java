@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.example.barberbooking.R;
 import android.example.barberbooking.common.Common;
-import android.example.barberbooking.model.UserModel;
+import android.example.barberbooking.model.BookingModel;
 import android.os.Bundle;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -28,11 +28,30 @@ public class AddressActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
 
-        intialize();
+        initialize();
+        getPreviousData();
         cityList();
 
         submit();
         exit();
+
+
+    }
+
+    private void initialize() {
+        citySpin = findViewById(R.id.cityuserListSpin);
+        nameEdt = findViewById(R.id.userNamehmTxt);
+        addressEdt = findViewById(R.id.userAddressTxt);
+        submitBtn = findViewById(R.id.submitAddressBtn);
+        exitBtn =findViewById(R.id.exitAddress);
+
+
+
+    }
+    private void getPreviousData() {
+
+            nameEdt.setText(Common.currentBooking.getUserName());
+            addressEdt.setText(Common.currentBooking.getUserAddress());
 
 
     }
@@ -43,17 +62,17 @@ public class AddressActivity extends AppCompatActivity {
             if (name.isEmpty() || address.isEmpty() || city.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "name or address is empty", Toast.LENGTH_SHORT).show();
             } else {
-                UserModel userModel = Common.currentUser;
-                userModel.setUserName(name);
-                userModel.setCity(city);
-                userModel.setRoadName(address);
+                BookingModel bookingModel = Common.currentBooking;
+                bookingModel.setUserName(name);
+                bookingModel.setUserAddress(address);
+                bookingModel.setUserCity(city);
 
-
+                Intent intent = new Intent(getApplicationContext(),BookingActivity.class);
+                startActivity(intent);
+             //   finish();
             }
 
-            Intent intent = new Intent(getApplicationContext(),BookingActivity.class);
-            startActivity(intent);
-            finish();
+
         });
 
     }
@@ -67,16 +86,7 @@ public class AddressActivity extends AppCompatActivity {
 
     }
 
-    private void intialize() {
-        citySpin = findViewById(R.id.cityuserListSpin);
-        nameEdt = findViewById(R.id.userNamehmTxt);
-        addressEdt = findViewById(R.id.userAddressTxt);
-        submitBtn = findViewById(R.id.submitAddressBtn);
-        exitBtn =findViewById(R.id.exitAddress);
 
-
-
-    }
     private void exit()
     {
         exitBtn.setOnClickListener(v -> finish());

@@ -48,7 +48,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginStart="6dp"
-                        android:layout_toLeftOf="@+id/bellNotification"
+                        android:layout_toStartOf="@+id/bellNotification"
 
                         android:background="@drawable/searchdesign"
                         android:gravity="center_vertical"
@@ -65,13 +65,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:layout_marginRight="18sp"
+                            android:layout_marginEnd="18sp"
                             android:gravity="center"
                             android:maxLines="1"
                             android:padding="1dp"
-                            android:text="Try Searching for 'Parlour' in ..."
+                            android:text="@string/try_searching_for_parlour_in"
                             android:textColor="#6F000000"
-                            android:textSize="13dp" />
+                            android:textSize="13sp" />
 
 
                     </LinearLayout>
@@ -80,9 +80,9 @@
                         android:id="@+id/bellNotification"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginEnd="10dp"
                         android:src="@drawable/ic_baseline_notifications_none_24" />
 
                 </RelativeLayout>
@@ -135,9 +135,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8sp"
                     android:layout_marginBottom="6dp"
-                    android:text="Only on your pehli booking "
+                    android:text="@string/only_on_your_pehli_booking"
                     android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:textSize="18sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -152,7 +152,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/firstbookinglyt"
-                android:layout_marginLeft="14dp"
+                android:layout_marginStart="14dp"
                 android:layout_marginTop="30dp"
                 android:orientation="vertical"
                 android:visibility="visible">
@@ -162,9 +162,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8sp"
                     android:layout_marginBottom="6dp"
-                    android:text="Recommended best saloons for you"
+                    android:text="@string/recommended_best_saloons_for_you"
                     android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    android:textSize="18sp" />
 
 
                 <LinearLayout
@@ -191,7 +191,7 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/stylistRecyclerView"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="2dp"
                         android:layout_marginTop="10dp"
@@ -208,6 +208,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/recommendedLyt"
+                android:layout_marginBottom="22dp"
                 android:layout_marginTop="12dp" />
 
 

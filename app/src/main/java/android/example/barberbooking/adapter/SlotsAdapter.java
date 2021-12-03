@@ -1,6 +1,7 @@
 package android.example.barberbooking.adapter;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.example.barberbooking.R;
@@ -16,11 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 public class SlotsAdapter extends RecyclerView.Adapter<SlotsAdapter.HmBookingsViewHolder> {
@@ -28,6 +31,9 @@ public class SlotsAdapter extends RecyclerView.Adapter<SlotsAdapter.HmBookingsVi
     Context context;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
+
+
+
 
 
     public SlotsAdapter(List<SlotsModel> list, Context context) {
@@ -67,24 +73,55 @@ public class SlotsAdapter extends RecyclerView.Adapter<SlotsAdapter.HmBookingsVi
             slotsModel.setDateId(list.get(position).getDateId());
             Common.currentSlots = slotsModel;
 
-            selectSlots(holder.nine,holder.daySlot1,"09:00 AM - 11:00AM");
-            selectSlots(holder.eleven,holder.daySlot2,"11:00AM - 12:00 AM");
-            selectSlots(holder.one,holder.daySlot3,"01:00 PM - 03:00 PM");
-            selectSlots(holder.three,holder.daySlot4,"03:00 PM - 05:00 PM");
-            selectSlots(holder.five,holder.daySlot5,"05:00 PM - 07:00 PM");
-            selectSlots(holder.seven,holder.daySlot6,"07:00 PM - 09:00 PM");
 
+
+
+
+            selectSlots(holder.nine,holder.daySlot1,"09:00 AM - 11:00AM","slot1");
+            selectSlots(holder.eleven,holder.daySlot2,"11:00AM - 12:00 AM","slot2");
+            selectSlots(holder.one,holder.daySlot3,"01:00 PM - 03:00 PM","slot3");
+            selectSlots(holder.three,holder.daySlot4,"03:00 PM - 05:00 PM","slot4");
+            selectSlots(holder.five,holder.daySlot5,"05:00 PM - 07:00 PM","slot5");
+            selectSlots(holder.seven,holder.daySlot6,"07:00 PM - 09:00 PM","slot6");
 
 
     }
 
-    private void selectSlots(LinearLayout slot,TextView slotTxt, String slotTime)
+
+
+    private void selectSlots(LinearLayout slot,TextView slotTxt, String slotTime,String slotNo)
     {
+
+
+        if(slotTxt.getText().toString().equalsIgnoreCase("Booked"))
+        {
+
+
+                    slot.setBackgroundDrawable(
+                ContextCompat.getDrawable(
+                        context,
+                        R.color.colorLightPrimary));
+
+        }
+
+        else if (slotTxt.getText().toString().equalsIgnoreCase("UnAvailable"))
+        {
+            slot.setBackgroundDrawable(
+                    ContextCompat.getDrawable(
+                            context,
+                            R.color.colorGrey));
+
+        }
+
+
 
         slot.setOnClickListener(v -> {
 
+
+
             if(slotTxt.getText().toString().equalsIgnoreCase("Booked"))
             {
+
                 Toast.makeText(context,"Not Available",Toast.LENGTH_SHORT).show();
             }
             else if (slotTxt.getText().toString().equalsIgnoreCase("UnAvailable"))
@@ -93,14 +130,16 @@ public class SlotsAdapter extends RecyclerView.Adapter<SlotsAdapter.HmBookingsVi
             }
             else
             {
-                Common.selectedSlot = slotTime;
-                Intent intent = new Intent(context, StylistActivity.class);
-                context.startActivity(intent);
+                Common.currentUser.setSlotTime(slotTime);
+                Common.currentUser.setSlotNo(slotNo);
 
             }
 
 
         });
+
+
+
     }
 
 

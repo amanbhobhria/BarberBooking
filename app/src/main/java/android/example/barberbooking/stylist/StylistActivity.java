@@ -16,9 +16,12 @@ import android.example.barberbooking.model.SlotsModel;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -44,22 +47,27 @@ import java.util.Locale;
 public class StylistActivity extends AppCompatActivity {
     ProgressBar slotsProgressbar;
     FloatingActionButton backBtn;
-    ImageView stylistImage;
+    ImageView stylistImage,belowIcon;
     TextView bycIdTxt, nameTxt, addressTxt, descriptionTxt, finalPriceTxt, stylistPolicy,
-             dayTxt, timeTxt,makeupPrice, hairColourPrice, serviceCharge, priceTxt;
+            dayTxt, timeTxt, makeupPrice, serviceCharge, priceTxt, availableTxtView;
     Button addHairColorBtn, addManicureBtn, addWaxingBtn;
     LinearLayout bookNowBtn, dayLyt, nineLt, elevenLt, oneLt, threeLt, fiveLt, sevenLt;
-    RelativeLayout makeupLyt, manicureLyt, hairColorLyt, waxingLyt, serviceLyt, totalPriceLyt;
+    RelativeLayout makeupLyt, manicureLyt, hairColorLyt, waxingLyt;
 
 
-FirebaseDatabase firebaseDatabase;
-DatabaseReference reference;
-RecyclerView slotsRecyclerView;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference reference;
+    RecyclerView slotsRecyclerView;
 
     private final String makeupString = "Makeup                          249\n";
 
     private String itemList;
-    private float price;
+    private int price = 249;
+
+
+    Handler handler = new Handler();
+    Runnable runnable;
+    int delay = 0;
 
 
     @Override
@@ -73,6 +81,7 @@ RecyclerView slotsRecyclerView;
 
         initialize();
 
+
         slotsProgressbar.setVisibility(View.VISIBLE);
         String phone = Common.currentStylist.getPhoneNo();
         reference = firebaseDatabase.getReference("hmvendor").child(phone).child("days");
@@ -83,33 +92,33 @@ RecyclerView slotsRecyclerView;
 
         additional();
         dateSelector();
+
+        slotsHint();
+
         getSlots();
         setData();
 
         book();
+        pricing();
 
-        getSelectedSlot();
+
 
 
     }
 
-    private void getSelectedSlot() {
+    private void slotsHint() {
+        timeTxt.setOnClickListener(v -> {
 
+            Animation anim = new AlphaAnimation(0.0f, 1.0f);
+            anim.setDuration(50); //You can manage the blinking time with this parameter
+            anim.setStartOffset(20);
+            anim.setRepeatMode(Animation.REVERSE);
+            anim.setRepeatCount(33);
+            availableTxtView.startAnimation(anim);
+            availableTxtView.setTextColor(Color.RED);
+            belowIcon.setVisibility(View.VISIBLE);
 
-
-
-        if(Common.selectedSlot == null)
-        {
-          timeTxt.setText(R.string.select_time_slot);
-
-        }
-        else
-        {
-
-            timeTxt.setText(Common.selectedSlot);
-            Toast.makeText(StylistActivity.this,Common.selectedSlot,Toast.LENGTH_SHORT).show();
-
-        }
+        });
     }
 
 
@@ -139,8 +148,6 @@ RecyclerView slotsRecyclerView;
         hairColorLyt = findViewById(R.id.hairPriceLyt);
         manicureLyt = findViewById(R.id.manicurePriceLyt);
         waxingLyt = findViewById(R.id.waxingPriceLyt);
-        serviceLyt = findViewById(R.id.serviceChargeLyt);
-
         hairColorLyt.setVisibility(View.GONE);
         manicureLyt.setVisibility(View.GONE);
         waxingLyt.setVisibility(View.GONE);
@@ -163,8 +170,30 @@ RecyclerView slotsRecyclerView;
         fiveLt = findViewById(R.id.five);
         sevenLt = findViewById(R.id.seven);
 
-        slotsRecyclerView = findViewById(R.id.slots_recyler_view);
+        slotsRecyclerView = findViewById(R.id.slots_recycler_view);
         slotsProgressbar = findViewById(R.id.slotsProgressBar);
+
+        availableTxtView = findViewById(R.id.availableTxtView);
+
+        belowIcon =findViewById(R.id.below_slots_icon);
+
+
+    }
+
+    private void getSelectedSlot() {
+
+
+        if (Common.currentUser.getSlotTime() == null) {
+            timeTxt.setText(R.string.select_time_slot);
+
+
+        } else {
+
+            timeTxt.setText(Common.currentUser.getSlotTime());
+            timeTxt.setTextColor(Color.RED);
+
+
+        }
 
 
     }
@@ -172,6 +201,7 @@ RecyclerView slotsRecyclerView;
 
     private void pricing() {
         String priceSh = "₹" + price;
+
         priceTxt.setText(priceSh);
         finalPriceTxt.setText(priceSh);
     }
@@ -182,8 +212,7 @@ RecyclerView slotsRecyclerView;
             if (addHairColorBtn.getText().toString().equals("Add")) {
                 addHairColorBtn.setText(R.string.added);
                 price = price + 100;
-                // itemList = itemList + "Hair colour            100\n";
-
+                itemList = itemList + "Hair colour            100\n";
                 hairColorLyt.setVisibility(View.VISIBLE);
             } else {
                 addHairColorBtn.setText(R.string.add);
@@ -195,7 +224,7 @@ RecyclerView slotsRecyclerView;
         addWaxingBtn.setOnClickListener(v -> {
             if (addWaxingBtn.getText().toString().equals("Add")) {
                 price = price + 500;
-                //itemList = itemList + "Waxing                  500\n";
+                itemList = itemList + "Waxing                  500\n";
                 addWaxingBtn.setText(R.string.added);
                 waxingLyt.setVisibility(View.VISIBLE);
 
@@ -212,7 +241,7 @@ RecyclerView slotsRecyclerView;
 
             if (addManicureBtn.getText().toString().equals("Add")) {
                 price = price + 150;
-
+                itemList = itemList + "Manicure               100\n";
                 addManicureBtn.setText(R.string.added);
                 manicureLyt.setVisibility(View.VISIBLE);
 
@@ -266,8 +295,6 @@ RecyclerView slotsRecyclerView;
     }
 
 
-
-
     public void dateSelector() {
 
         Calendar c = Calendar.getInstance();
@@ -292,7 +319,6 @@ RecyclerView slotsRecyclerView;
         });
 
 
-
     }
 
     private void getSlots() {
@@ -310,8 +336,6 @@ RecyclerView slotsRecyclerView;
                     SlotsModel slotsModel = sp.getValue(SlotsModel.class);
 
                     assert slotsModel != null;
-
-
 
 
                     if (sp.getKey().equals(Common.date)) {
@@ -347,7 +371,7 @@ RecyclerView slotsRecyclerView;
             itemList = itemList + "Hair Colour                    100\n";
         }
         itemList = itemList + "Service Charge               40\n";
-//        Common.currentUser.setPrice(price);
+
 
     }
 
@@ -356,18 +380,52 @@ RecyclerView slotsRecyclerView;
         bookNowBtn.setOnClickListener(v -> {
             itemList = "";
             itemList = makeupString;
-            itemAdd();
 
-            //Common.currentUser.setItemList(itemList);
-            BookingModel bookingModel = new BookingModel();
-            bookingModel.setBookingId(Common.currentStylist.getBycId());
-            bookingModel.setBycPhone(Common.currentStylist.getPhoneNo());
-            bookingModel.setPricePaid(String.valueOf(price));
-            
-            Intent intent = new Intent(StylistActivity.this, BookingActivity.class);
-            startActivity(intent);
+
+            if (timeTxt.getText().equals("Select Time Slot")) {
+                Toast.makeText(StylistActivity.this, "Please Select a time slot for booking.", Toast.LENGTH_SHORT).show();
+            } else {
+                try {
+
+                    itemAdd();
+                    BookingModel bookingModel = new BookingModel();
+                    bookingModel.setBycId(Common.currentStylist.getBycId());
+                    bookingModel.setBycPhone(Common.currentStylist.getPhoneNo());
+                    bookingModel.setItemList(itemList);
+                    bookingModel.setDateSlot(dayTxt.getText().toString());
+                    bookingModel.setBycName(Common.currentStylist.getOwnername());
+                    bookingModel.setTimeSlot(timeTxt.getText().toString());
+                    bookingModel.setPricePaid(String.valueOf(price));
+
+
+                    Common.currentBooking = bookingModel;
+
+
+                    Intent intent = new Intent(StylistActivity.this, BookingActivity.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Toast.makeText(StylistActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
 
         });
+    }
+
+
+    @Override
+    protected void onResume() {
+        handler.postDelayed(runnable = () -> {
+            handler.postDelayed(runnable, delay);
+            getSelectedSlot();
+        }, delay);
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        handler.removeCallbacks(runnable); //stop handler when activity not visible super.onPause();
     }
 
 }

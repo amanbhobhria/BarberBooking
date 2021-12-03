@@ -9,6 +9,10 @@
     <color name="white">#FFFFFF</color>
     <color name="colorOfStatusBar">#111527</color>
     <color name="colorPrimary">#F33430</color>
+    <color name="colorLightPrimary">#EF7E7C</color>
     <color name="colorRed">#CA0905</color>
+    <color name="colorGreen">#75D84C</color>
     <color name="colorAccent">#CAB9B9</color>
+    <color name="colorGrey">#E1B19F9F</color>
+
 </resources>

@@ -8,6 +8,8 @@
     tools:context=".LauncherActivity">
 
 
+
+
     <com.smarteist.autoimageslider.SliderView
         android:id="@+id/slider"
         android:layout_width="match_parent"

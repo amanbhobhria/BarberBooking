@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ import java.util.concurrent.TimeUnit;
 import static android.content.ContentValues.TAG;
 
 public class LauncherActivity extends AppCompatActivity {
+
     CountryCodePicker ccp;
     TextView skip;
     EditText phoneNoEdt, otpEdt;
@@ -103,6 +105,7 @@ public class LauncherActivity extends AppCompatActivity {
         generateOtpBTn = findViewById(R.id.verifyPhoneBtn);
         submitOtpBTn = findViewById(R.id.verifyOtpBtn);
         phoneLyt = findViewById(R.id.phoneLayout);
+
 
 
     }
@@ -374,6 +377,9 @@ public class LauncherActivity extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
     }
+
+
+
 
 
 

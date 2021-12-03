@@ -7,6 +7,16 @@ public class UserModel {
     private String phone;
     private String itemList;
     private float price;
+    private String slotTime;
+    private String slotNo;
+
+    public String getSlotTime() {
+        return slotTime;
+    }
+
+    public void setSlotTime(String slotTime) {
+        this.slotTime = slotTime;
+    }
 
     public float getPrice() {
         return price;
@@ -64,12 +74,22 @@ public class UserModel {
         this.phone = phone;
     }
 
-    public UserModel(String userName, String roadName, String city, String phone,String itemList,float price) {
+    public String getSlotNo() {
+        return slotNo;
+    }
+
+    public void setSlotNo(String slotNo) {
+        this.slotNo = slotNo;
+    }
+
+    public UserModel(String userName, String roadName, String city, String phone, String itemList, float price, String slotTime, String slotNo) {
         this.userName = userName;
         this.roadName = roadName;
         this.city = city;
         this.phone = phone;
         this.itemList = itemList;
         this.price = price;
+        this.slotTime = slotTime;
+        this.slotNo = slotNo;
     }
 }

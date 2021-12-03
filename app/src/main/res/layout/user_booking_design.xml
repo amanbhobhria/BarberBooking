@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/userShowBookingCardView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/demostylistimg"
+            />
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="20dp"
+          android:layout_marginTop="14dp"
+          android:orientation="vertical"
+          android:layout_marginBottom="10dp"
+          >
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Stylist Name"
+              android:layout_marginTop="12dp"
+              android:id="@+id/stylistNameUserBookTxt"
+              android:textColor="@color/black"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Sahla"
+              android:layout_marginTop="6dp"
+              android:id="@+id/dateTimeUserBookTxt"
+              android:textColor="@color/black"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="38092309"
+              android:layout_marginTop="6dp"
+              android:id="@+id/bycIdUserBookTxt"
+              android:textColor="@color/black"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Pending"
+              android:layout_marginTop="6dp"
+              android:id="@+id/statusUserBookTxt"
+              android:textColor="@color/black"
+              />
+
+
+
+      </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

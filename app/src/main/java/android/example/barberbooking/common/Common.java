@@ -6,6 +6,7 @@ import android.example.barberbooking.model.SlotsModel;
 import android.example.barberbooking.model.StylistModel;
 import android.example.barberbooking.model.UserModel;
 import android.example.barberbooking.model.VendorModel;
+import android.widget.LinearLayout;
 
 public class Common
 {
@@ -21,5 +22,5 @@ public class Common
     public static boolean isUploaded =false;
     public static  boolean isEdit= false;
 
-    public static String selectedSlot;
+
 }
