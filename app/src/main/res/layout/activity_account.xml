@@ -11,7 +11,7 @@
         android:id="@+id/backProfileBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/ic_arrow_back_black_24dp" />
 
@@ -20,10 +20,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="Profile"
+        android:text="@string/profile"
 
         android:textColor="@color/black"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
     <TextView
         android:id="@+id/editAccBTn"
         android:layout_width="wrap_content"
@@ -63,6 +63,18 @@
         android:background="@android:color/darker_gray" />
 
 
+    <ProgressBar
+        android:id="@+id/logoutProgressBar"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="420dp"
+        />
+
+
+
+<!--    Guest Login Layout-->
     <RelativeLayout
         android:id="@+id/guestLyt"
         android:layout_width="match_parent"
@@ -78,7 +90,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/signInText"
         android:layout_centerInParent="true"
-        android:src="@drawable/sicon" />
+        android:src="@drawable/sicon"
+        android:contentDescription="@string/book_now" />
 
     <TextView
         android:id="@+id/signInText"
@@ -98,46 +111,96 @@
         android:text="@string/all_your_preference_are_saved_to_your_account"
         android:textSize="12sp" />
 
-    <View
-        android:id="@+id/phline1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@+id/phoneLayout"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="25dp"
-        android:background="@android:color/darker_gray" />
 
-    <View
-        android:id="@+id/phline2"
-        android:layout_width="1dp"
-        android:layout_height="230dp"
-        android:layout_below="@+id/phline1"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="10dp"
-        android:background="@android:color/darker_gray" />
 
-    <View
-        android:id="@+id/phline3"
-        android:layout_width="1dp"
-        android:layout_height="230dp"
-        android:layout_below="@+id/phline1"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="25dp"
-        android:background="@android:color/darker_gray" />
+        <ProgressBar
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/otpVerifyAccProgressBar"
+            />
+
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_40dp"
+            >
+
+            <RelativeLayout
+                android:id="@+id/otpAccLayout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="66dp"
+                android:visibility="gone"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="16dp"
+                android:background="#F4EFEF">
+
+
+
+                <EditText
+                    android:id="@+id/otpAccEdit"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="2dp"
+                    android:background="@null"
+                    android:hint="_ _ _ _ _ _"
+                    android:layout_centerHorizontal="true"
+                    android:textColorHint="#E9000000"
+                    android:inputType="phone"
+                    android:maxLength="6"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/verifyOtpAccBtn"
+                    android:layout_width="58dp"
+                    android:layout_height="47dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/verify_phone_button_design"
+                    android:src="@drawable/ic_baseline_arrow_forward_24"
+
+                    android:contentDescription="@string/verify" />
+
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="14dp"
+    android:layout_marginRight="14dp"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="66dp"
+    >
+
+
 
     <RelativeLayout
-        android:id="@+id/phoneLayout"
+        android:id="@+id/phoneAccLayout"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_above="@+id/orTxt"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginRight="16dp"
-        android:layout_toStartOf="@+id/phline3"
-        android:layout_toEndOf="@+id/phline2"
-        android:background="#F1E8E8">
+        android:background="#F4EFEF">
 
         <TextView
             android:id="@+id/phoneSuffix"
@@ -151,7 +214,7 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/phoneNoEdit"
+            android:id="@+id/phoneNoAccEdit"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -159,9 +222,10 @@
             android:layout_toEndOf="@+id/phoneSuffix"
             android:background="@null"
             android:hint="@string/enter_mobile_number"
+            android:textColorHint="#E9000000"
             android:inputType="phone"
             android:maxLength="10"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/verifyPhoneBtn"
@@ -174,83 +238,18 @@
             android:background="@drawable/verify_phone_button_design"
             android:src="@drawable/ic_baseline_arrow_forward_24"
 
-            />
+            android:contentDescription="@string/verify" />
 
     </RelativeLayout>
 
-    <View
-        android:id="@+id/phline4"
-        android:layout_width="48dp"
-        android:layout_height="1dp"
-        android:layout_above="@+id/truecallerBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="10dp"
-        android:layout_toStartOf="@+id/orTxt"
-        android:background="@android:color/darker_gray" />
+</androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/orTxt"
-        android:textSize="14sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/truecallerBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:text="@string/or"
 
-        />
 
-    <View
-        android:id="@+id/phline5"
-        android:layout_width="48dp"
-        android:layout_height="1dp"
-        android:layout_above="@+id/truecallerBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="10dp"
-        android:layout_toEndOf="@+id/orTxt"
-        android:background="@android:color/darker_gray" />
 
-    <RelativeLayout
-        android:id="@+id/truecallerBtn"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="49dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="49dp"
-        android:layout_marginBottom="45dp"
-        android:background="@drawable/truecallerbuttonshape">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_toStartOf="@+id/tcText"
-            android:background="@drawable/callbtncircledesign"
-            android:src="@drawable/ic_baseline_call_24" />
 
-        <TextView
-            android:id="@+id/tcText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="@string/one_tap_login_with_truecaller"
-            android:textColor="@color/white"
-            android:textSize="12sp"
 
-            />
-
-    </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
@@ -305,12 +304,15 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="10dp"
                 />
-            <TextView
+            <EditText
                 android:id="@+id/nameAccTxt"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/your_full_name"
+
                 android:textSize="18sp"
+                android:inputType="textPersonName"
                 android:layout_marginEnd="16sp"
                 android:background="@null"/>
 
@@ -334,12 +336,14 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="10dp"
                 />
-            <TextView
+            <EditText
                 android:id="@+id/addressAccTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Address or Road name"
+                android:hint="@string/address_or_road_name"
+
                 android:textSize="18sp"
+                android:inputType="textPostalAddress"
                 android:layout_marginEnd="16sp"
                 android:background="@null"/>
 
@@ -352,33 +356,51 @@
             android:layout_below="@+id/addressAccLyt"
             android:orientation="horizontal"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="28dp"
+
             android:layout_marginBottom="10dp"
             >
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
                 android:src="@drawable/ic_baseline_location_city_24"
                 android:layout_marginStart="30dp"
-                android:layout_marginEnd="10dp"
+
                 />
-            <TextView
+            <EditText
+                android:visibility="visible"
                 android:id="@+id/cityAccTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/your_city_of_residence"
+                android:inputType="textPostalAddress"
                 android:textSize="18sp"
+                android:layout_marginTop="28dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginEnd="16sp"
                 android:background="@null"/>
 
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:visibility="gone"
+                android:layout_marginTop="12dp"
+                android:id="@+id/cityListAccountSpin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+               />
+
+
 
         </LinearLayout>
+
+
 
         <RelativeLayout
             android:id="@+id/logoutAccLyt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
+            android:visibility="visible"
             android:layout_marginRight="24dp"
             android:layout_alignParentBottom="true"
             android:background="@drawable/roundrectangle"
@@ -394,6 +416,9 @@
                 android:textColor="@color/black"
                 />
         </RelativeLayout>
+
+
+
 
 
     </RelativeLayout>

@@ -20,9 +20,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class VendorAgreement extends AppCompatActivity {
     FloatingActionButton chatBtn;
-    CheckBox agreeCheck;
-  //  TextView readDetailTxt;
-    Button nextBtn,homeServbtn,statusBtn;
+
+
+    Button nextBtn, homeServbtn, statusBtn;
     ImageView backBtn;
 
     @Override
@@ -31,35 +31,29 @@ public class VendorAgreement extends AppCompatActivity {
         setContentView(R.layout.activity_vendor_agreement);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-            initialize();
-            //addPartner();
-            chat();
-            back();
-            homeServ();
-            viewStatus();
-        }
-
-
-
+        initialize();
+        //addPartner();
+        chat();
+        back();
+        homeServ();
+        viewStatus();
+    }
 
 
     private void viewStatus() {
-        statusBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(VendorAgreement.this, StatusActivity.class);
-                startActivity(intent);
-            }
+        statusBtn.setOnClickListener(v -> {
+
+            Intent intent = new Intent(VendorAgreement.this, StatusActivity.class);
+            startActivity(intent);
+
+
         });
     }
 
     private void homeServ() {
-        homeServbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(VendorAgreement.this, HmVendorDetail.class);
-                startActivity(intent);
-            }
+        homeServbtn.setOnClickListener(v -> {
+            Intent intent = new Intent(VendorAgreement.this, HmVendorDetail.class);
+            startActivity(intent);
         });
     }
 
@@ -77,47 +71,30 @@ public class VendorAgreement extends AppCompatActivity {
 
     private void initialize() {
         chatBtn = findViewById(R.id.chatBtn);
-//        agreeCheck = findViewById(R.id.agreeCheckBox);
-//        readDetailTxt = findViewById(R.id.readTxt);
-       // nextBtn = findViewById(R.id.nextBtn);
+
         homeServbtn = findViewById(R.id.homeServBtn);
         statusBtn = findViewById(R.id.statusbtn);
 
 
     }
 
-//    private void addPartner() {
-//        nextBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (!agreeCheck.isChecked()) {
-//                    agreeCheck.requestFocus();
-//                    Toast.makeText(getApplicationContext(), "Please tick the checkbox first", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Intent intent = new Intent(VendorAgreement.this, VendorDetail.class);
-//                    startActivity(intent);
-//                }
-//            }
-//        });
-//
-//
-//    }
-private  void chat(){
-    //Intent intent = new Intent(VendorAgreement.this, ChatA=.class);
-    //startActivity(intent);
-    chatBtn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            String number="+91  9518156020";
-            String url="https://api.whatsapp.com/send?phone="+number + "&text=" + "Hi Sir I want to join with your app";
-            Intent i=new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(url));
-            startActivity(i);
-        }
-    });
+
+    private void chat() {
+        //Intent intent = new Intent(VendorAgreement.this, ChatA=.class);
+        //startActivity(intent);
+        chatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String number = "+91  9518156020";
+                String url = "https://api.whatsapp.com/send?phone=" + number + "&text=" + "Hi Sir I want to join with your app";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
 
 
-}
+    }
 
 }
 

@@ -1,6 +1,6 @@
 package android.example.barberbooking.stylist;
 
-import androidx.annotation.ColorInt;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,18 +8,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.example.barberbooking.MainActivity;
+
 import android.example.barberbooking.R;
 import android.example.barberbooking.SearchActivity;
 import android.example.barberbooking.adapter.HmServicesAdapter;
 import android.example.barberbooking.model.HomeVendorModel;
-import android.graphics.Color;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+
+
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -35,7 +35,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.sql.Types.NULL;
 
 public class SearchResultStylists extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -46,6 +45,8 @@ public class SearchResultStylists extends AppCompatActivity {
     private String cityName;
     TextView searchedCity;
     ImageView backBtn;
+
+    int vendorInThisCity = 0;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -74,7 +75,7 @@ public class SearchResultStylists extends AppCompatActivity {
         reference = firebaseDatabase.getReference("hmvendor");
 
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
         showStylist();
@@ -85,13 +86,10 @@ public class SearchResultStylists extends AppCompatActivity {
     }
 
     private void searchFun() {
-        goToSearchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SearchResultStylists.this, SearchActivity.class);
-                startActivity(intent);
+        goToSearchBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(SearchResultStylists.this, SearchActivity.class);
+            startActivity(intent);
 
-            }
         });
 
 
@@ -108,13 +106,7 @@ public class SearchResultStylists extends AppCompatActivity {
         recyclerView = findViewById(R.id.stylistonCityRecylerView);
 
 
-
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        backBtn.setOnClickListener(v -> finish());
 
     }
 
@@ -132,37 +124,32 @@ public class SearchResultStylists extends AppCompatActivity {
 
 
                     HomeVendorModel homeVendorModel = sp.getValue(HomeVendorModel.class);
-                    if (homeVendorModel.getStatus().trim().equalsIgnoreCase("Approved".trim())) {
-                        if (homeVendorModel.getCity().trim().equalsIgnoreCase(cityName.trim())) {
-                            homeVendorModel.setRegno(sp.getKey());
+                    assert homeVendorModel != null;
 
-                            Log.i("TAG", "onDataChange: " + sp.getKey());
 
-                            list.add(homeVendorModel);
+                    if (homeVendorModel.getCity().trim().equalsIgnoreCase(cityName.trim()) && homeVendorModel.getStatus().trim().equalsIgnoreCase("Approved".trim())) {
+                        homeVendorModel.setRegno(sp.getKey());
+                        vendorInThisCity = vendorInThisCity+1;
 
-                            noCityLyt.setVisibility(View.GONE);
-                            recyclerView.setVisibility(View.VISIBLE);
 
-                        } else {
+                        Log.i("TAG", "onDataChange: " + sp.getKey());
 
-                            homeVendorModel.setRegno(sp.getKey());
+                        list.add(homeVendorModel);
 
-                            Log.i("TAG", "onDataChange: " + sp.getKey());
 
-                            list.add(homeVendorModel);
+                        noCityLyt.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
 
-                            noCityLyt.setVisibility(View.GONE);
-                            recyclerView.setVisibility(View.VISIBLE);
-
-//                            noCityLyt.setVisibility(View.VISIBLE);
-//                            recyclerView.setVisibility(View.GONE);
-
-                        }
                     }
 
+
                 }
-                //progressBar.setVisibility(View.GONE);
-                //recyclerView.setVisibility(View.VISIBLE);
+
+                if(vendorInThisCity==0)
+                {
+                    noCityLyt.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+                }
 
 
                 HmServicesAdapter vendorHmRequestAdapter = new HmServicesAdapter(list, SearchResultStylists.this);
@@ -179,9 +166,6 @@ public class SearchResultStylists extends AppCompatActivity {
 
 
     }
-
-
-
 
 
 }

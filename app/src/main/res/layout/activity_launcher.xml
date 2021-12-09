@@ -10,6 +10,7 @@
 
 
 
+
     <com.smarteist.autoimageslider.SliderView
         android:id="@+id/slider"
         android:layout_width="match_parent"
@@ -42,6 +43,13 @@
         android:textSize="38sp"
         android:textStyle="bold" />
 
+<ProgressBar
+    android:id="@+id/otpProgressBar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    android:layout_centerInParent="true"
+    />
 
 
 
@@ -60,9 +68,10 @@
         android:textColor="@color/black"
         android:visibility="gone"
 
+
         android:gravity="center"
         android:windowSoftInputMode="stateHidden|adjustResize"
-        android:layout_marginBottom="71dp"
+        android:layout_marginBottom="83dp"
         android:hint="@string/enter_otp"
         android:textSize="22sp"
         android:importantForAutofill="no"
@@ -76,31 +85,38 @@
         android:layout_marginEnd="8dp"
         android:text="@string/verify"
         android:layout_above="@id/signUpLaterTxt"
-        android:layout_marginBottom="65dp"
+        android:layout_marginBottom="78dp"
         />
     <RelativeLayout
         android:id="@+id/phoneLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_above="@+id/signUpLaterTxt"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
         android:visibility="visible"
         android:layout_marginBottom="65dp"
         android:background="@color/white">
 
-        <com.hbb20.CountryCodePicker
-            android:id="@+id/ccp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentStart="true"
+          android:text="@string/_91"
+          android:textSize="18sp"
+          android:layout_marginStart="14dp"
+          android:layout_centerVertical="true"
+          android:textColor="@color/black"
+          android:id="@+id/ccp"
+          />
+
 
         <EditText
             android:id="@+id/phoneNoEdit"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
             android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="2dp"
             android:layout_toEndOf="@+id/ccp"
             android:background="@null"
@@ -118,7 +134,6 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_margin="1dp"
-            android:layout_toEndOf="@+id/phoneNoEdit"
             android:background="@drawable/verify_phone_button_design"
             android:src="@drawable/ic_baseline_arrow_forward_24"
 

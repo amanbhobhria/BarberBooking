@@ -23,37 +23,35 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="33dp"
-                android:text="Submit Form"
+                android:text="@string/submit_form"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/edithmBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="62dp"
-                android:layout_marginRight="28dp"
-                android:text="Edit"
 
-                android:textColor="#127DDC"
-                android:textSize="14dp" />
+
 
         </RelativeLayout>
 
 
         <!-- Personal Details!-->
 
-        <TextView
-            android:layout_width="160dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="22dp"
             android:layout_marginTop="20dp"
-            android:text="Personal Details "
+            >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:text="@string/personal_details"
             android:textColor="@color/black"
             android:textStyle="bold" />
+
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,16 +62,15 @@
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:text="Owner's Name :"
+                android:layout_marginStart="22dp"
+                android:text="@string/owner_s_name"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/oNamehmSbmt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:text=" "
+                android:layout_marginStart="14dp"
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -87,19 +84,48 @@
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:text="Phone Number :"
+                android:layout_marginStart="22dp"
+                android:text="@string/phone_number"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/phonehmSbmt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:text=" "
+                android:layout_marginStart="14dp"
+
                 android:textColor="@color/black" />
 
         </LinearLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+           >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:text="@string/phone_number_additional"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/phoneAddhmSbmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+               android:layout_alignParentEnd="true"
+                android:layout_marginEnd="6dp"
+                android:textColor="@color/black" />
+
+        </RelativeLayout>
+
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -110,16 +136,16 @@
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:text="Email id :"
+                android:layout_marginStart="22dp"
+                android:text="@string/email_id"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/emailhmSbmt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:text=" "
+                android:layout_marginStart="14dp"
+
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -134,16 +160,16 @@
                 android:id="@+id/idTypeSbmt"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:text="Aadhar Number :"
+                android:layout_marginStart="22dp"
+                android:text="@string/aadhar_number"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/idNoSbmt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:text=" "
+                android:layout_marginStart="14dp"
+
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -157,16 +183,15 @@
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:text="Address "
+                android:layout_marginStart="22dp"
+                android:text="@string/address"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/addresshmSbmt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:text=" "
+                android:layout_marginStart="14dp"
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -181,16 +206,15 @@
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:text="City : "
+                android:layout_marginStart="22dp"
+                android:text="@string/city"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/cityhmSbmt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:text=" "
+                android:layout_marginStart="14dp"
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -201,9 +225,9 @@
         <TextView
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="22dp"
+            android:layout_marginStart="22dp"
             android:layout_marginTop="24dp"
-            android:text="Bank Details "
+            android:text="@string/bank_details"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
@@ -211,21 +235,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:layout_marginStart="22dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:text="Bank Name :"
+
+                android:text="@string/bank_name"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/bankNameSbmt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:text=" "
+                android:layout_marginStart="14dp"
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -234,21 +258,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:layout_marginStart="22dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:text="Bank Address :"
+
+                android:text="@string/bank_address"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/bnkAdressSbmt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:text=" "
+                android:layout_marginStart="14dp"
+
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -257,21 +282,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:layout_marginStart="22dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:text="Beneficiary Name:"
+
+                android:text="@string/beneficiary_name"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/benifNameSbmt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:text=" "
+                android:layout_marginStart="14dp"
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -280,21 +305,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:layout_marginStart="22dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:text="AccountNumber "
+
+                android:text="@string/accountnumber"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/accountNumhmSbmt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:text=" "
+                android:layout_marginStart="14dp"
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -303,21 +328,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:layout_marginStart="22dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:text="Account Type "
+
+                android:text="@string/account_type"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/acctypeSbmt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:text=" "
+                android:layout_marginStart="14dp"
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -327,21 +352,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:layout_marginStart="22dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:text="IFSC code: "
+
+                android:text="@string/ifsc_code"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/ifscSbmt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:text=" "
+                android:layout_marginStart="14dp"
+
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -367,10 +393,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="18dp"
-                android:text="Services"
+                android:layout_marginStart="18dp"
+                android:text="@string/base_price_in_rupees"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
@@ -378,52 +404,38 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="18dp"
 
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/servicesHm"
+                android:id="@+id/basePriceHm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
+                android:layout_marginStart="22dp"
                 android:text=""
                 android:textColor="@color/black" />
+
+
 
 
         </LinearLayout>
 
 
-        <CheckBox
-            android:id="@+id/agreeSubmithmCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="22dp"
-            android:text="I have entered all the data carefully and I would be responsible for any false detail issue occured later."
-            android:textSize="10sp" />
 
 
         <TextView
             android:id="@+id/returnhmHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:text="Return to home"
+            android:layout_marginStart="150dp"
+            android:text="@string/return_to_home"
             android:textColor="#1E88E5"
             android:layout_marginBottom="33dp"
             android:textStyle="bold"
             android:visibility="gone" />
 
-        <Button
-            android:id="@+id/submitFormhmBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="22dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="34dp"
-            android:text="Submit" />
+
     </LinearLayout>
 
 </ScrollView>

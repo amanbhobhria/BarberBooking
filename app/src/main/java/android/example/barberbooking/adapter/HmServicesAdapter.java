@@ -69,11 +69,17 @@ public class HmServicesAdapter extends RecyclerView.Adapter<HmServicesAdapter.Hm
             holder.name.setText(list.get(position).getOwnerName());
 
 
-            String bycId = "S.Id "+list.get(position).getBycId();
+            String bycId = "BYC "+list.get(position).getBycId();
 
             holder.id.setText(bycId);
-            holder.address.setText(list.get(position).getAddress());
-
+            holder.city.setText(list.get(position).getCity());
+            if(list.get(position).getBasePrice()==null)
+            {
+                holder.price.setText("₹249");
+            }
+            else {
+                holder.price.setText(list.get(position).getBasePrice());
+            }
 
             Picasso.get()
                     .load(list.get(position).getWorkImg())
@@ -90,6 +96,9 @@ public class HmServicesAdapter extends RecyclerView.Adapter<HmServicesAdapter.Hm
                 stylistModel.setAddress(list.get(position).getAddress());
                 stylistModel.setCity(list.get(position).getCity());
 
+
+
+                stylistModel.setBasePrice(list.get(position).getBasePrice());
 
 
                 Common.currentStylist = stylistModel;
@@ -112,9 +121,9 @@ public class HmServicesAdapter extends RecyclerView.Adapter<HmServicesAdapter.Hm
     public static class HmServicesViewHolder extends RecyclerView.ViewHolder {
         TextView id;
         TextView name;
-        TextView address;
+        TextView city;
         ImageView workImg;
-        //TextView price;
+        TextView price;
         LinearLayout item;
 
 
@@ -122,9 +131,9 @@ public class HmServicesAdapter extends RecyclerView.Adapter<HmServicesAdapter.Hm
             super(itemView);
             id = itemView.findViewById(R.id.idStylist);
             name = itemView.findViewById(R.id.nameStylist);
-            address = itemView.findViewById(R.id.addressStylist);
+            city = itemView.findViewById(R.id.addressStylist);
             workImg = itemView.findViewById(R.id.workimgStylist);
-            //price =itemView.findViewById(R.id.priceStylist);
+            price =itemView.findViewById(R.id.priceStylist);
             item = itemView.findViewById(R.id.stylist_design_layout);
         }
     }

@@ -1,68 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/userShowBookingCardView"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="12dp"
+
+                android:src="@drawable/demostylistimg" />
+
+            <LinearLayout
+                android:id="@+id/book_again_layt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/book_again"
+                    android:src="@drawable/ic_sharp_restore_24" />
 
 
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="12dp"
-            android:src="@drawable/demostylistimg"
-            />
-      <LinearLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="14dp"
-          android:orientation="vertical"
-          android:layout_marginBottom="10dp"
-          >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="12sp"
+                    android:text="@string/book_again"
+                    android:textColor="#FF3C3A" />
+            </LinearLayout>
 
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Stylist Name"
-              android:layout_marginTop="12dp"
-              android:id="@+id/stylistNameUserBookTxt"
-              android:textColor="@color/black"
-              />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Sahla"
-              android:layout_marginTop="6dp"
-              android:id="@+id/dateTimeUserBookTxt"
-              android:textColor="@color/black"
-              />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="38092309"
-              android:layout_marginTop="6dp"
-              android:id="@+id/bycIdUserBookTxt"
-              android:textColor="@color/black"
-              />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Pending"
-              android:layout_marginTop="6dp"
-              android:id="@+id/statusUserBookTxt"
-              android:textColor="@color/black"
-              />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/stylistNameUserBookTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Stylist Name"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dateTimeUserBookTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Sahla"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/bycIdUserBookTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="38092309"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/statusUserBookTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Pending"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/needHelp_layt"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_outline_live_help_24"
+                    android:contentDescription="@string/book_again" />
 
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:text="Need Help?"
+                   android:textSize="12sp"
+                    android:textColor="#FF3C3A" />
+            </LinearLayout>
 
-      </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 

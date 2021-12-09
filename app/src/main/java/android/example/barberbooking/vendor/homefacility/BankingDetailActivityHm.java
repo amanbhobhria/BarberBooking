@@ -40,6 +40,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.ByteArrayOutputStream;
 
 public class BankingDetailActivityHm extends AppCompatActivity {
@@ -57,7 +59,19 @@ public class BankingDetailActivityHm extends AppCompatActivity {
 
     ImageView imageshow;
     Uri image;
+    boolean uploading=false;
 
+
+
+    @Override
+    public void onBackPressed() {
+        if(uploading) {
+            Toast.makeText(BankingDetailActivityHm.this,"Uploading Image",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,16 +111,46 @@ public class BankingDetailActivityHm extends AppCompatActivity {
 
     }
 
+ private void validate()
+ {
+     if(bankName.getText().length()==0)
+     {
+         Toast.makeText(BankingDetailActivityHm.this,"Enter Bnak Name",Toast.LENGTH_SHORT).show();
+     }
+     else if(bankAdress.getText().length()==0)
+     {
+         Toast.makeText(BankingDetailActivityHm.this,"Enter Bank Address",Toast.LENGTH_SHORT).show();
+     }
+     else if(benificiaryName.getText().length()<=2)
+     {
+         Toast.makeText(BankingDetailActivityHm.this,"Enter Beneficiary Name",Toast.LENGTH_SHORT).show();
+     }
+     else if(accNo.getText().length()<=5)
+     {
+         Toast.makeText(BankingDetailActivityHm.this,"Enter Account Number",Toast.LENGTH_SHORT).show();
+     }
+     else if(ifscCode.getText().length()<=5)
+     {
+         Toast.makeText(BankingDetailActivityHm.this,"Enter Bank  IFSC CODE",Toast.LENGTH_SHORT).show();
+     }
+     else
+     {
+         upload();
+     }
+
+ }
 
     private void saveBankDetail() {
-        saveBankBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                upload();
 
+        saveBankBtn.setOnClickListener(v -> {
+            if (uploading) {
+                Toast.makeText(BankingDetailActivityHm.this, "Uploading Image", Toast.LENGTH_SHORT).show();
+            } else {
+
+             validate();
             }
-        });
 
+        });
     }
 
 
@@ -137,7 +181,11 @@ public class BankingDetailActivityHm extends AppCompatActivity {
         homeVendorModel.setAccounttype(accountTypeSpin.getText().toString());
         homeVendorModel.setIfsccode(ifscCode.getText().toString());
 
+
         uploadImage(image);
+
+
+
 
 
     }
@@ -145,19 +193,15 @@ public class BankingDetailActivityHm extends AppCompatActivity {
 
     //ImageUpload
     private void imageUpload() {
-        imageuploadBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkGalleryPermission();
-            }
-        });
 
-        clickphotBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkCameraPermission();
-            }
-        });
+        imageuploadBtn.setOnClickListener(v -> checkGalleryPermission());
+
+        clickphotBtn.setOnClickListener(v -> checkCameraPermission());
+
+        bankphoto.setOnClickListener(v -> checkGalleryPermission());
+
+
+
     }
 
     private void checkCameraPermission() {
@@ -239,6 +283,8 @@ public class BankingDetailActivityHm extends AppCompatActivity {
 
     //Upload Image to Firebase and get Url of Image
     private void uploadImage(Uri filePath) {
+        uploading = true;
+        Toast.makeText(BankingDetailActivityHm.this,"Do not press back button or close the screen while Uploading Data",Toast.LENGTH_SHORT).show();
         if (filePath != null) {
             String id = Common.currentHmVendor.getPhoneNo();
             // Code for showing progressDialog while uploading
@@ -246,8 +292,8 @@ public class BankingDetailActivityHm extends AppCompatActivity {
                     = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+//            getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+//                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
             // Defining the child of storageReference
             StorageReference ref
@@ -278,7 +324,7 @@ public class BankingDetailActivityHm extends AppCompatActivity {
 
                                             String url = task.getResult().toString();
                                             homeVendorModel.setBankPhoto(url);
-
+                                            uploading =false;
                                             Intent intent = new Intent(BankingDetailActivityHm.this, GovtIdActivity.class);
                                             startActivity(intent);
 
@@ -287,6 +333,7 @@ public class BankingDetailActivityHm extends AppCompatActivity {
                                                             "Image Uploaded!!",
                                                             Toast.LENGTH_SHORT)
                                                     .show();
+
 
 
                                             //next work with URL
@@ -315,7 +362,7 @@ public class BankingDetailActivityHm extends AppCompatActivity {
                                 // percentage on the dialog box
                                 @Override
                                 public void onProgress(
-                                        UploadTask.TaskSnapshot taskSnapshot) {
+                                        @NotNull UploadTask.TaskSnapshot taskSnapshot) {
                                     double progress
                                             = (100.0
                                             * taskSnapshot.getBytesTransferred()

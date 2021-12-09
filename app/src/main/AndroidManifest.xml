@@ -5,7 +5,6 @@
 
     <uses-sdk tools:overrideLibrary="com.truecaller.android.sdk" />
 
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
@@ -27,10 +26,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BarberBooking">
-        <activity android:name=".user.HelpAssistantActivity"></activity>
-        <activity android:name=".user.OffersActivity" />
-        <activity android:name=".user.ShowBookingDetialsActivity" />
-        <activity android:name=".user.ShowBookingsActivity" />
+        <activity android:name=".user.NotificationActivity"></activity>
+        <activity android:name=".user.HelpAssistantActivity" />
+        <activity android:name=".user.ShowBookingDetailsActivity" />
         <activity android:name=".stylist.TransactionsDetailsActivity" />
         <activity android:name=".stylist.SearchResultStylists" />
         <activity android:name=".stylist.AddressActivity" />
@@ -50,13 +48,11 @@
         <activity android:name=".vendor.homefacility.HmVendorDetail" />
         <activity android:name=".AccountActivity" />
         <activity android:name=".vendor.SubmitFormActivity" />
-        <activity android:name=".vendor.AddImagesActivity" />
         <activity android:name=".vendor.FacilitiesSelectActivity" />
         <activity android:name=".vendor.VendorDetail" />
         <activity android:name=".vendor.VendorAgreement" />
         <activity android:name=".SaloonActivity" />
         <activity android:name=".CalenderActivity" />
-        <activity android:name=".TestActivity" />
         <activity
             android:name=".SearchActivity"
             android:theme="@style/SearchTheme"
@@ -64,8 +60,7 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".LauncherActivity"
-            android:theme="@style/DemoTheme"
-            >
+            android:theme="@style/DemoTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

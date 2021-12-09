@@ -15,11 +15,11 @@
         android:background="@color/white"
         android:backgroundTint="@color/white"
 
+        android:contentDescription="@string/back_btn_icon"
         android:src="@drawable/ic_arrow_back_black_24dp"
         app:borderWidth="0dp"
-        app:fabCustomSize="30dp"
 
-        android:contentDescription="@string/back_btn_icon" />
+        app:fabCustomSize="30dp" />
 
 
     <ScrollView
@@ -39,11 +39,11 @@
                 android:id="@+id/specialistImg"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
+                android:contentDescription="@string/specialistimage"
                 android:fitsSystemWindows="true"
-                android:scaleType="centerCrop"
 
-                android:src="@drawable/firstbooking"
-                android:contentDescription="@string/specialistimage" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/firstbooking" />
 
 
             <TextView
@@ -113,44 +113,41 @@
                         android:id="@+id/dayLayt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16sp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:src="@drawable/ic_baseline_date_range_24" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16sp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:src="@drawable/ic_baseline_date_range_24" />
 
-                    <TextView
-                        android:id="@+id/dayTxtView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"
-                        android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/dayTxtView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="16dp"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
 
-                    <View
-                        style="@style/Divider.Vertical"
-                        android:layout_width="1dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="18sp"
-                        android:layout_marginEnd="14sp" />
+                        <View
+                            style="@style/Divider.Vertical"
+                            android:layout_width="1dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="18sp"
+                            android:layout_marginEnd="14sp" />
                     </LinearLayout>
-
-
 
 
                     <TextView
                         android:id="@+id/timeTxtView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginStart="14dp"
-                      android:layout_gravity="center"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
@@ -160,26 +157,25 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="12sp"
                     android:layout_marginStart="10dp"
-                    >
+                    android:layout_marginTop="12sp"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/availableTxtView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/available_time_slot"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-                <ImageView
-                    android:id="@+id/below_slots_icon"
-                    android:visibility="gone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:src="@drawable/ic_baseline_keyboard_double_arrow_down_24"
-                    />
+                    <TextView
+                        android:id="@+id/availableTxtView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/available_time_slot"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/below_slots_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:src="@drawable/ic_baseline_keyboard_double_arrow_down_24"
+                        android:visibility="gone" />
                 </LinearLayout>
 
 
@@ -189,19 +185,15 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    />
+                    android:layout_marginBottom="10dp" />
+
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="18dp"
+                    android:id="@+id/slots_recycler_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/slots_recycler_view"
-                    android:visibility="gone"
-                    />
-
-
-
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="18dp"
+                    android:visibility="gone" />
 
 
             </LinearLayout>
@@ -235,17 +227,110 @@
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
+
+<!--                    basic service -->
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="20dp"
                         android:orientation="vertical">
 
-                        <ImageView
+
+                        <RelativeLayout
                             android:layout_width="100dp"
-                            android:layout_height="80dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/haircolourimg" />
+                            android:layout_height="80dp">
+
+
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="80dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/basicbeautyparlourimg" />
+
+                            <ImageView
+                                android:id="@+id/basicServiceTick"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:visibility="visible"
+                                android:src="@drawable/ic_round_beenhere_24" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="@string/basic_service"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/read_description"
+                            android:textSize="10sp" />
+
+                        <TextView
+                           android:id="@+id/basicPriceTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/_249_price"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <Button
+                            android:id="@+id/addbasicServiceBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/added" />
+
+
+                    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:orientation="vertical">
+
+
+                        <RelativeLayout
+                            android:layout_width="100dp"
+                            android:layout_height="80dp">
+
+
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="80dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/haircolourimg" />
+
+                            <ImageView
+                                android:id="@+id/hairColorTick"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:visibility="gone"
+                                android:src="@drawable/ic_round_beenhere_24" />
+
+                        </RelativeLayout>
 
                         <TextView
                             android:layout_width="match_parent"
@@ -291,12 +376,28 @@
                         android:layout_marginEnd="20dp"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <RelativeLayout
                             android:layout_width="100dp"
-                            android:layout_height="80dp"
-                            android:scaleType="centerCrop"
+                            android:layout_height="80dp">
 
-                            android:src="@drawable/manicureimg" />
+
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="80dp"
+                                android:scaleType="centerCrop"
+
+                                android:src="@drawable/manicureimg" />
+
+
+                            <ImageView
+                                android:id="@+id/manicureTick"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:src="@drawable/ic_round_beenhere_24" />
+
+                        </RelativeLayout>
 
                         <TextView
                             android:layout_width="match_parent"
@@ -343,11 +444,27 @@
                         android:layout_marginEnd="20dp"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <RelativeLayout
                             android:layout_width="100dp"
-                            android:layout_height="80dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/bodywaxing" />
+                            android:layout_height="80dp">
+
+
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="80dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/bodywaxing" />
+
+
+                            <ImageView
+                                android:id="@+id/waxingTick"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:src="@drawable/ic_round_beenhere_24" />
+
+                        </RelativeLayout>
 
                         <TextView
                             android:layout_width="match_parent"
@@ -454,7 +571,7 @@
 
                 <!--                Makeup Price Layout -->
                 <RelativeLayout
-                    android:id="@+id/basePriceLyt"
+                    android:id="@+id/basicPriceLyt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"

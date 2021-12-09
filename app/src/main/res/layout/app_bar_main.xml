@@ -7,9 +7,11 @@
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/home_appBarLayout"
         android:layout_width="match_parent"
+        android:visibility="visible"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -18,6 +20,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="110dp"
+            android:visibility="visible"
             android:animateLayoutChanges="true"
             android:background="@color/colorPrimary"
             android:fitsSystemWindows="true"
@@ -98,6 +101,9 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested_scroll"
         android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_above="@+id/bottom_nav"
+        android:layout_marginBottom="45dp"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -180,13 +186,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
 
+
                         />
 
                 </LinearLayout>
-
-                <HorizontalScrollView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
 
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -196,25 +199,34 @@
                         android:layout_marginStart="2dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="2dp"
+
                         android:divider="@null"
                         android:orientation="horizontal" />
 
-                </HorizontalScrollView>
             </LinearLayout>
 
             <include
                 android:id="@+id/bestOfferLyt"
-                layout="@layout/best_offer_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/recommendedLyt"
-                android:layout_marginBottom="22dp"
+                layout="@layout/best_offer_main"
+
+                android:layout_marginBottom="30dp"
                 android:layout_marginTop="12dp" />
 
 
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
@@ -226,4 +238,7 @@
         android:backgroundTintMode="screen"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
+
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

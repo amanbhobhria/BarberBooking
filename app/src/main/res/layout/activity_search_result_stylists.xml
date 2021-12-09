@@ -15,8 +15,8 @@
                 android:id="@+id/backResultStylist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="6dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_baseline_arrow_back_24"
                 />
@@ -96,10 +96,10 @@
         android:id="@+id/noCityText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No Stylist found in this city"
+        android:text="@string/no_stylist_found_in_this_city"
         android:layout_centerInParent="true"
         android:textColor="@color/black"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
     </RelativeLayout>
 
 

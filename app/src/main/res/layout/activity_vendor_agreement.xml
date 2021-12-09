@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,12 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:src="@drawable/ic_arrow_back_black_24dp"
-        />
+        android:contentDescription="@string/back_btn_icon" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home Service"
+        android:text="@string/home_service_saloon"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp"
         android:id="@+id/homeServBtn"
@@ -44,16 +43,6 @@
 
 
 
-<!--<Button-->
-<!--    android:id="@+id/nextBtn"-->
-<!--    android:layout_width="wrap_content"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:text="Become a member in 15 minutes"-->
-<!--    android:layout_centerHorizontal="true"-->
-<!--    android:layout_alignParentBottom="true"-->
-<!--    android:textSize="8sp"-->
-
-<!--    android:layout_marginBottom="39dp"/>-->
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
       android:layout_width="wrap_content"
@@ -65,6 +54,6 @@
 
       android:layout_marginEnd="14dp"
       android:src="@drawable/ic_baseline_chat_bubble_24"
-      />
+      android:contentDescription="@string/chatonwhatsapp" />
 
 </RelativeLayout>

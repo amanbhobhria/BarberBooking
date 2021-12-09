@@ -47,28 +47,33 @@ import java.util.Locale;
 public class StylistActivity extends AppCompatActivity {
     ProgressBar slotsProgressbar;
     FloatingActionButton backBtn;
-    ImageView stylistImage,belowIcon;
+    ImageView stylistImage, belowIcon, basicServiceTick, hairColorTick, manicureTick, waxingTick;
     TextView bycIdTxt, nameTxt, addressTxt, descriptionTxt, finalPriceTxt, stylistPolicy,
-            dayTxt, timeTxt, makeupPrice, serviceCharge, priceTxt, availableTxtView;
-    Button addHairColorBtn, addManicureBtn, addWaxingBtn;
+            dayTxt, timeTxt, makeupPrice, serviceCharge, priceTxt, availableTxtView, basicPriceAddTxt;
+    Button addHairColorBtn, addManicureBtn, addWaxingBtn, addBasicPriceBtn;
     LinearLayout bookNowBtn, dayLyt, nineLt, elevenLt, oneLt, threeLt, fiveLt, sevenLt;
-    RelativeLayout makeupLyt, manicureLyt, hairColorLyt, waxingLyt;
+    RelativeLayout makeupLyt, manicureLyt, hairColorLyt, waxingLyt, basicPriceLyt;
 
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
     RecyclerView slotsRecyclerView;
 
-    private final String makeupString = "Makeup                          249\n";
 
     private String itemList;
-    private int price = 249;
+    private int price, basicPrice, bridalPrice;
 
 
     Handler handler = new Handler();
     Runnable runnable;
     int delay = 0;
 
+    @Override
+    public void onBackPressed() {
+
+        super.onBackPressed();
+        Common.currentUser.setSlotTime(null);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +81,9 @@ public class StylistActivity extends AppCompatActivity {
         setContentView(R.layout.activity_stylist);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setStatusBarTransparent();
+
+       //For previous demo vendors only
+        setBase();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -101,6 +109,20 @@ public class StylistActivity extends AppCompatActivity {
         book();
         pricing();
 
+
+    }
+
+    private void setBase() {
+        try {
+            if (Common.currentStylist.getBasePrice() == null) {
+                basicPrice = 249;
+            } else {
+                basicPrice = Integer.parseInt(Common.currentStylist.getBasePrice());
+            }
+            price = basicPrice;
+        } catch (Exception e) {
+            Toast.makeText(StylistActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+        }
 
 
 
@@ -139,6 +161,7 @@ public class StylistActivity extends AppCompatActivity {
         addHairColorBtn = findViewById(R.id.addhaircolour);
         addManicureBtn = findViewById(R.id.addmanicureBtn);
         addWaxingBtn = findViewById(R.id.addbodywaxingBtn);
+        addBasicPriceBtn = findViewById(R.id.addbasicServiceBtn);
 
         bookNowBtn = findViewById(R.id.bookNowBtn);
 
@@ -175,7 +198,19 @@ public class StylistActivity extends AppCompatActivity {
 
         availableTxtView = findViewById(R.id.availableTxtView);
 
-        belowIcon =findViewById(R.id.below_slots_icon);
+        belowIcon = findViewById(R.id.below_slots_icon);
+
+
+        hairColorTick = findViewById(R.id.hairColorTick);
+        manicureTick = findViewById(R.id.manicureTick);
+        waxingTick = findViewById(R.id.waxingTick);
+        basicServiceTick = findViewById(R.id.basicServiceTick);
+        basicPriceLyt = findViewById(R.id.basicPriceLyt);
+        basicPriceAddTxt = findViewById(R.id.basicPriceTxt);
+
+        String myBaseP = "₹" + basicPrice;
+        basicPriceAddTxt.setText(myBaseP);
+        makeupPrice.setText(myBaseP);
 
 
     }
@@ -200,6 +235,8 @@ public class StylistActivity extends AppCompatActivity {
 
 
     private void pricing() {
+
+
         String priceSh = "₹" + price;
 
         priceTxt.setText(priceSh);
@@ -208,9 +245,31 @@ public class StylistActivity extends AppCompatActivity {
 
 
     private void additional() {
+        addBasicPriceBtn.setOnClickListener(v -> {
+
+            if (addBasicPriceBtn.getText().toString().equals("Add")) {
+                addBasicPriceBtn.setText(R.string.added);
+                basicServiceTick.setVisibility(View.VISIBLE);
+                price = price + basicPrice;
+                itemList = itemList + "Basic Price                    " + basicPrice + "\n";
+                basicPriceLyt.setVisibility(View.VISIBLE);
+            } else {
+                addBasicPriceBtn.setText(R.string.add);
+                price = price - basicPrice;
+                hairColorLyt.setVisibility(View.GONE);
+                basicServiceTick.setVisibility(View.GONE);
+                basicPriceLyt.setVisibility(View.GONE);
+            }
+            pricing();
+
+
+        });
+
+
         addHairColorBtn.setOnClickListener(v -> {
             if (addHairColorBtn.getText().toString().equals("Add")) {
                 addHairColorBtn.setText(R.string.added);
+                hairColorTick.setVisibility(View.VISIBLE);
                 price = price + 100;
                 itemList = itemList + "Hair colour            100\n";
                 hairColorLyt.setVisibility(View.VISIBLE);
@@ -218,17 +277,20 @@ public class StylistActivity extends AppCompatActivity {
                 addHairColorBtn.setText(R.string.add);
                 price = price - 100;
                 hairColorLyt.setVisibility(View.GONE);
+                hairColorTick.setVisibility(View.GONE);
             }
             pricing();
         });
         addWaxingBtn.setOnClickListener(v -> {
             if (addWaxingBtn.getText().toString().equals("Add")) {
+                waxingTick.setVisibility(View.VISIBLE);
                 price = price + 500;
                 itemList = itemList + "Waxing                  500\n";
                 addWaxingBtn.setText(R.string.added);
                 waxingLyt.setVisibility(View.VISIBLE);
 
             } else {
+                waxingTick.setVisibility(View.GONE);
                 addWaxingBtn.setText(R.string.add);
                 price = price - 500;
                 waxingLyt.setVisibility(View.GONE);
@@ -240,12 +302,14 @@ public class StylistActivity extends AppCompatActivity {
         addManicureBtn.setOnClickListener(v -> {
 
             if (addManicureBtn.getText().toString().equals("Add")) {
+                manicureTick.setVisibility(View.VISIBLE);
                 price = price + 150;
                 itemList = itemList + "Manicure               100\n";
                 addManicureBtn.setText(R.string.added);
                 manicureLyt.setVisibility(View.VISIBLE);
 
             } else {
+                manicureTick.setVisibility(View.GONE);
                 addManicureBtn.setText(R.string.add);
                 price = price - 150;
                 manicureLyt.setVisibility(View.GONE);
@@ -257,7 +321,8 @@ public class StylistActivity extends AppCompatActivity {
 
 
     private void back() {
-        backBtn.setOnClickListener(v -> finish());
+        backBtn.setOnClickListener(v -> StylistActivity.super.onBackPressed());
+        Common.currentUser.setSlotTime(null);
     }
 
 
@@ -360,6 +425,10 @@ public class StylistActivity extends AppCompatActivity {
     }
 
     private void itemAdd() {
+        if (addBasicPriceBtn.getText().toString().equalsIgnoreCase("Added")) {
+            itemList = itemList + "Basic Service                " + basicPrice + "\n";
+        }
+
 
         if (addManicureBtn.getText().toString().equalsIgnoreCase("Added")) {
             itemList = itemList + "Manicure                       150\n";
@@ -370,7 +439,7 @@ public class StylistActivity extends AppCompatActivity {
         if (addHairColorBtn.getText().toString().equalsIgnoreCase("Added")) {
             itemList = itemList + "Hair Colour                    100\n";
         }
-        itemList = itemList + "Service Charge               40\n";
+        itemList = itemList + "Service Charge             40\n";
 
 
     }
@@ -379,11 +448,12 @@ public class StylistActivity extends AppCompatActivity {
     private void book() {
         bookNowBtn.setOnClickListener(v -> {
             itemList = "";
-            itemList = makeupString;
 
 
             if (timeTxt.getText().equals("Select Time Slot")) {
                 Toast.makeText(StylistActivity.this, "Please Select a time slot for booking.", Toast.LENGTH_SHORT).show();
+            } else if (price < 200) {
+                Toast.makeText(StylistActivity.this, "Minimum Booking amount is ₹200", Toast.LENGTH_SHORT).show();
             } else {
                 try {
 

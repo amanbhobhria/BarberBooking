@@ -79,12 +79,12 @@ public class ImageHmActivity extends AppCompatActivity {
 
 
     private void submit() {
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadImage(image);
-            }
+        next.setOnClickListener(v -> {
+              uploadImage(image);
+
+
         });
+
 
 
     }
@@ -94,23 +94,11 @@ public class ImageHmActivity extends AppCompatActivity {
 
     private void imageUpload() {
         //FrontImage
-        gallery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        gallery.setOnClickListener(v -> checkGalleryPermission());
 
-                checkGalleryPermission();
+        addImageLyt.setOnClickListener(v -> checkGalleryPermission());
 
-            }
-        });
-
-        camera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                checkCameraPermission();
-
-            }
-        });
+        camera.setOnClickListener(v -> checkCameraPermission());
 
 
     }

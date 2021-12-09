@@ -39,7 +39,7 @@ public class SearchActivity extends AppCompatActivity {
         initialize();
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
 
-        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, city_name_list);
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, city_name_list);
 
         listView.setAdapter(arrayAdapter);
 
@@ -56,19 +56,16 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void searchItem() {
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String text = city_name_list[position];
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            String text = city_name_list[position];
 
-                Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
 
 
-                Intent intent = new Intent(SearchActivity.this, SearchResultStylists.class);
-                intent.putExtra("cityname", text);
-                startActivity(intent);
+            Intent intent = new Intent(SearchActivity.this, SearchResultStylists.class);
+            intent.putExtra("cityname", text);
+            startActivity(intent);
 
-            }
         });
     }
 

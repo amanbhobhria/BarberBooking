@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.firebase.database.DataSnapshot;
@@ -39,26 +40,32 @@ public class StatusActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         reference = firebaseDatabase.getReference("hmvendor");
 
-        intialize();
-        setStatus();
 
+        try {
+            initialize();
+            setStatus();
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(StatusActivity.this,e.toString(),Toast.LENGTH_SHORT).show();
+        }
 
     }
 
     private void setMessage(String n1, String n2, String name) {
-//        System.out.println(n1 + "N1");
-//        System.out.println(n2 + "N2");
+
 
         if (n1.trim().toLowerCase().equals(n2.trim().toLowerCase())) {
 
-            waitingTxt.setText("Congratulations! " + name + getString(R.string.approve_txt));
+            String approvedMessage = "Congratulations! " + name + getString(R.string.approve_txt);
+            waitingTxt.setText(approvedMessage);
 
 
         }
     }
 
 
-    private void intialize() {
+    private void initialize() {
         reqIdTxt = findViewById(R.id.reqstid);
         statusTxt = findViewById(R.id.reqstStatus);
 
@@ -79,26 +86,30 @@ public class StatusActivity extends AppCompatActivity {
 
                 for (DataSnapshot sp : snapshot.getChildren()) {
 
-                    Log.i("TAG", "onDataChange: " + sp.getKey());
-                    String id = sp.getKey();
-
-                    if (id.equals(Common.currentHmVendor.getPhoneNo())) {
-
-                        reqIdTxt.setText(id);    //
-                        statusTxt.setText(sp.child("status").getValue().toString());
-
-                        stsLyt.setVisibility(View.VISIBLE);
-                        noreqLyt.setVisibility(View.GONE);
-
-                        String Approve = "Approved";
-                        String name = (sp.child("ownerName").getValue().toString());
 
 
+                    try {
 
-                        setMessage(statusTxt.getText().toString(), Approve, name);
+                        if (sp.getKey().equals(Common.currentUser.getPhone())) {
 
+                            reqIdTxt.setText(sp.getKey());    //
+                            statusTxt.setText(sp.child("status").getValue().toString());
+
+                            stsLyt.setVisibility(View.VISIBLE);
+                            noreqLyt.setVisibility(View.GONE);
+
+                            String Approve = "Approved";
+                            String name = (sp.child("ownerName").getValue().toString());
+
+
+                            setMessage(statusTxt.getText().toString(), Approve, name);
+
+                        }
                     }
-
+                    catch (Exception e)
+                    {
+                        Toast.makeText(StatusActivity.this,"Error"+e.toString(),Toast.LENGTH_SHORT).show();
+                    }
 
                 }
 
@@ -110,6 +121,7 @@ public class StatusActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+                Toast.makeText(StatusActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
             }
         });
 

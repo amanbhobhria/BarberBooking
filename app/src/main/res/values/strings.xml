@@ -92,6 +92,61 @@
     <string name="call_us_on_9518156020">Call us on 9518156020</string>
     <string name="type_your_query_here">Type your query here</string>
     <string name="mail_your_queries">Mail your queries</string>
+    <string name="profile">Profile</string>
+    <string name="address_or_road_name">Address or Road name</string>
+    <string name="book_again">Book Again</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="basic_service">Basic Service</string>
+    <string name="read_description">Read Description</string>
+    <string name="_249_price">₹249</string>
+
+    <string name="price_paid">Price Paid</string>
+    <string name="track_stylist">Track Stylist</string>
+    <string name="title">Title</string>
+    <string name="message">Message</string>
+    <string name="add_services">Add Services</string>
+    <string name="hair_care_treatment">Hair Care Treatment</string>
+    <string name="base_price_in_rupees">Base Price in Rupees</string>
+    <string name="amount_in_rupees">Amount in rupees</string>
+    <string name="submit_data">Submit Data</string>
+    <string name="submit_form">Submit Form</string>
+    <string name="bank_name">Bank Name :</string>
+    <string name="beneficiary_name">Beneficiary Name:</string>
+    <string name="accountnumber">AccountNumber</string>
+    <string name="account_type">Account Type</string>
+    <string name="ifsc_code">IFSC code:</string>
+    <string name="services">Services</string>
+    <string name="i_have_entered_all_the_data_carefully_and_i_would_be_responsible_for_any_false_detail_issue_occured_later">I have entered all the data carefully and I would be responsible for any false detail issue occured later.</string>
+    <string name="return_to_home">Return to home</string>
+    <string name="submit">Submit</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="owner_s_name">Owner\'s Name :</string>
+    <string name="phone_number">Phone Number :</string>
+    <string name="email_id">Email id :</string>
+    <string name="aadhar_number">Aadhar Number :</string>
+    <string name="address">Address</string>
+    <string name="city">City :</string>
+    <string name="bank_details">Bank Details</string>
+    <string name="bank_address">Bank Address :</string>
+    <string name="phone_number_additional">Phone Number(Additional)</string>
+    <string name="phone_number_optional">Phone Number (\'Optional\')</string>
+    <string name="owner_name_required">Owner Name (\'Required\')</string>
+
+    <string name="enter_details">Enter Details</string>
+    <string name="save_and_next">Save and Next</string>
+    <string name="road_name_area_colony_required">Road name area colony (\'Required\')</string>
+    <string name="email_address">Email Address</string>
+    <string name="chatonwhatsapp">chatOnWhatsapp</string>
+    <string name="home_service_saloon">Home Service Saloon</string>
+    <string name="invite_and_earn">Invite and Earn</string>
+    <string name="need_help">Need Help</string>
+    <string name="bookings">Bookings</string>
+    <string name="become_a_partner">Become a Partner</string>
+    <string name="my_account">My Account</string>
+    <string name="no_stylist_found_in_this_city">No Stylist found in this city</string>
+    <string name="notifications">Notifications</string>
+    <string name="no_new_notifications">No new Notifications</string>
 
 
 </resources>

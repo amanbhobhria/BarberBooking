@@ -2,13 +2,15 @@ package android.example.barberbooking.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.example.barberbooking.MainActivity;
 import android.example.barberbooking.R;
 import android.example.barberbooking.model.BookingModel;
 
-import android.example.barberbooking.user.ShowBookingDetialsActivity;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,9 +49,19 @@ public class ShowBookingsAdapter extends RecyclerView.Adapter<ShowBookingsAdapte
 
         holder.bycName.setText(list.get(position).getBycName());
         holder.bycId.setText(list.get(position).getBycId());
-        String timeSlot = list.get(position).getTimeSlot()+" "+list.get(position).getDateSlot();
+        String timeSlot = list.get(position).getTimeSlot() + " " + list.get(position).getDateSlot();
         holder.time.setText(timeSlot);
         holder.status.setText(list.get(position).getStatus());
+
+
+//        holder.helpBtn.setOnClickListener(v -> {
+//       Intent intent = new Intent(context, HelpAssistantActivity.class);
+//       context.startActivity(intent);
+//        });
+        holder.bookAgainBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(context, MainActivity.class);
+            context.startActivity(intent);
+        });
 
 
 //        holder.item.setOnClickListener(v -> {
@@ -57,7 +69,7 @@ public class ShowBookingsAdapter extends RecyclerView.Adapter<ShowBookingsAdapte
 //
 //
 //
-//            Intent intent = new Intent(context, ShowBookingDetialsActivity.class);
+//            Intent intent = new Intent(context, ShowBookingDetailsActivity.class);
 //            context.startActivity(intent);
 //        });
 
@@ -69,8 +81,9 @@ public class ShowBookingsAdapter extends RecyclerView.Adapter<ShowBookingsAdapte
     }
 
     public static class BookingsViewHolder extends RecyclerView.ViewHolder {
-CardView item;
-TextView bycName,bycId,time,status;
+        CardView item;
+        TextView bycName, bycId, time, status;
+        LinearLayout helpBtn, bookAgainBtn;
 
         public BookingsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -78,8 +91,9 @@ TextView bycName,bycId,time,status;
             bycName = itemView.findViewById(R.id.stylistNameUserBookTxt);
             bycId = itemView.findViewById(R.id.bycIdUserBookTxt);
             time = itemView.findViewById(R.id.dateTimeUserBookTxt);
-            status =itemView.findViewById(R.id.statusUserBookTxt);
-
+            status = itemView.findViewById(R.id.statusUserBookTxt);
+            helpBtn = itemView.findViewById(R.id.needHelp_layt);
+            bookAgainBtn = itemView.findViewById(R.id.book_again_layt);
 
 
         }

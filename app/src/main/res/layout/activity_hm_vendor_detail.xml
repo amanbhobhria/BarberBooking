@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +13,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:src="@drawable/ic_arrow_back_black_24dp" />
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:contentDescription="@string/back_btn_icon" />
 
         <TextView
             android:id="@+id/detailTxt"
@@ -22,8 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"
-            android:text="Enter Details"
-            android:textSize="26dp" />
+            android:text="@string/enter_details"
+            android:textSize="26sp" />
 
 
         <TextView
@@ -31,21 +31,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="Personal Details"
+            android:text="@string/personal_details"
             android:layout_below="@+id/detailTxt"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
         <TextView
             android:id="@+id/phoneHmTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:textStyle="bold"
-            android:layout_marginLeft="8sp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:text="987897098"
+            android:layout_marginStart="8sp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
             android:layout_below="@+id/detailTxt"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -63,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:capitalize="sentences"
-                android:hint="Owner Name ('Required')"
+                android:hint="@string/owner_name_required"
                 android:textAllCaps="true"
                 android:inputType="textPersonName" />
 
@@ -81,12 +80,11 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/hmphoneNoTxt"
+                android:id="@+id/hmphoneNoOptTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:capitalize="sentences"
-                android:hint="Phone Number ('Optional')"
+                android:hint="@string/phone_number_optional"
                 android:nextFocusDown="@id/cityListSpin"
                 android:inputType="phone"
                 android:maxLength="10" />
@@ -110,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:capitalize="sentences"
-                android:hint="Email Address"
+                android:hint="@string/email_address"
                 android:inputType="textEmailAddress"
                 android:maxLength="30" />
 
@@ -141,7 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Road name area colony ('Required')"
+                android:hint="@string/road_name_area_colony_required"
                 android:inputType="text"
                 />
 
@@ -161,12 +159,12 @@
             android:id="@+id/savePersonalDetailBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/hmcityListSpin"
-            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
             android:layout_marginTop="35dp"
-            android:text="Save and Next"
-            android:textSize="13dp"
+            android:text="@string/save_and_next"
+            android:textSize="13sp"
             android:textColor="#A3EA59" />
     </RelativeLayout>
 </ScrollView>

@@ -12,15 +12,20 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
 public class HmVendorDetail extends AppCompatActivity {
-    EditText name, phoneAdd, email, address;
+    EditText name, phoneNoOpt, email, address;
     TextView phoneTxt;
     Button nextBtn;
     MaterialSpinner citySpin;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +41,32 @@ public class HmVendorDetail extends AppCompatActivity {
 
     }
 
+
+    private void validation() {
+        if (name.getText().length() < 3) {
+            Toast.makeText(HmVendorDetail.this, "Enter a valid Name", Toast.LENGTH_SHORT).show();
+            name.requestFocus();
+        } else if (phoneNoOpt.length() < 10) {
+            Toast.makeText(HmVendorDetail.this, "Enter a valid 10 digit phone number", Toast.LENGTH_SHORT).show();
+            phoneNoOpt.requestFocus();
+        } else if (!email.getText().toString().contains("@")) {
+            Toast.makeText(HmVendorDetail.this, "Enter a valid email id", Toast.LENGTH_SHORT).show();
+            email.requestFocus();
+        } else if (address.getText().length() < 3) {
+            Toast.makeText(HmVendorDetail.this, "Enter a valid Address", Toast.LENGTH_SHORT).show();
+            address.requestFocus();
+        } else {
+            upload();
+            Intent intent = new Intent(HmVendorDetail.this, BankingDetailActivityHm.class);
+            startActivity(intent);
+
+        }
+
+    }
+
     private void initialize() {
         name = findViewById(R.id.hmownerNameTxt);
-        phoneAdd = findViewById(R.id.hmphoneNoTxt);
+        phoneNoOpt = findViewById(R.id.hmphoneNoOptTxt);
         phoneTxt = findViewById(R.id.phoneHmTxt);
         email = findViewById(R.id.hmemailIdTxt);
         address = findViewById(R.id.hmroad);
@@ -51,7 +79,7 @@ public class HmVendorDetail extends AppCompatActivity {
 
     private void cityList() {
 
-        citySpin.setItems("Sirsa City ", "Rania", "Ellenabad", "Baragudha", "Dabwali", "Nathusary Chopta", "Odhan", "Chakan", "Keharwala", "Bhoona", "Mamber Khera");
+        citySpin.setItems("Sirsa City ", "Rania", "Ellenabad","Kharian", "Dabwali", "Chakkan", "Keharwala", "Bhoona", "Mamber Khera");
         citySpin.setOnItemSelectedListener((MaterialSpinner.OnItemSelectedListener<String>) (view, position, id, item) -> Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show());
 
 
@@ -66,9 +94,8 @@ public class HmVendorDetail extends AppCompatActivity {
 
     private void next() {
         nextBtn.setOnClickListener(v -> {
-            upload();
-            Intent intent = new Intent(HmVendorDetail.this, BankingDetailActivityHm.class);
-            startActivity(intent);
+            validation();
+
         });
     }
 
@@ -80,7 +107,7 @@ public class HmVendorDetail extends AppCompatActivity {
         homeVendorModel.setPhoneNo(Common.currentUser.getPhone());
 
         homeVendorModel.setOwnerName(name.getText().toString());
-        homeVendorModel.setPhoneNoAdd(phoneAdd.getText().toString());
+        homeVendorModel.setPhoneNoOpt(phoneNoOpt.getText().toString());
         homeVendorModel.setEmail(email.getText().toString());
         homeVendorModel.setCity(citySpin.getText().toString());
         homeVendorModel.setAddress(address.getText().toString());

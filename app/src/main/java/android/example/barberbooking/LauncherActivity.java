@@ -22,22 +22,22 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.AuthResult;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.hbb20.CountryCodePicker;
+
 import com.smarteist.autoimageslider.SliderView;
 
 import org.jetbrains.annotations.NotNull;
@@ -48,8 +48,7 @@ import java.util.concurrent.TimeUnit;
 import static android.content.ContentValues.TAG;
 
 public class LauncherActivity extends AppCompatActivity {
-
-    CountryCodePicker ccp;
+    ProgressBar progressBar;
     TextView skip;
     EditText phoneNoEdt, otpEdt;
     Button submitOtpBTn;
@@ -60,7 +59,6 @@ public class LauncherActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
-   // private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,9 +75,9 @@ public class LauncherActivity extends AppCompatActivity {
         login();
 
 
-
         sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
         editor = sharedPreferences.edit();
+
         editor.apply();
 
         if (sharedPreferences.getBoolean("isLogin", false)) {
@@ -90,22 +88,20 @@ public class LauncherActivity extends AppCompatActivity {
         }
 
 
-       setStatusBarTransparent();
-
-
+        setStatusBarTransparent();
 
 
     }
 
     private void initialize() {
-        ccp = findViewById(R.id.ccp);
+
         skip = findViewById(R.id.signUpLaterTxt);
         phoneNoEdt = findViewById(R.id.phoneNoEdit);
         otpEdt = findViewById(R.id.idEdtOtp);
         generateOtpBTn = findViewById(R.id.verifyPhoneBtn);
         submitOtpBTn = findViewById(R.id.verifyOtpBtn);
         phoneLyt = findViewById(R.id.phoneLayout);
-
+        progressBar = findViewById(R.id.otpProgressBar);
 
 
     }
@@ -160,16 +156,6 @@ public class LauncherActivity extends AppCompatActivity {
     }
 
 
-//    public void onCountryPickerClick(View view) {
-//        ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
-//            @Override
-//            public void onCountrySelected() {
-//                String selected_country_code = ccp.getSelectedCountryCodeWithPlus();
-//                Toast.makeText(LauncherActivity.this, selected_country_code, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-
     private void skip() {
         skip.setOnClickListener(v -> {
             editor.putBoolean("isLogin", true);
@@ -214,6 +200,7 @@ public class LauncherActivity extends AppCompatActivity {
         // for verify otp button
         submitOtpBTn.setOnClickListener(v -> {
             otp = otpEdt.getText().toString();
+            hideKeyboard(submitOtpBTn);
 
             // validating if the OTP text field is empty or not.
             if (TextUtils.isEmpty(otp)) {
@@ -221,15 +208,21 @@ public class LauncherActivity extends AppCompatActivity {
                 // a message to user to enter OTP
                 Toast.makeText(LauncherActivity.this, "Please enter OTP", Toast.LENGTH_SHORT).show();
             } else {
+                progressBar.setVisibility(View.VISIBLE);
+                otpEdt.setEnabled(false);
+
                 // if OTP field is not empty calling
                 // method to verify the OTP.
                 try {
                     verifyCode(otp);
                 } catch (Exception e) {
+                    otpEdt.setEnabled(true);
+                    progressBar.setVisibility(View.GONE);
                     Toast toast = Toast.makeText(LauncherActivity.this, "Verification Code is wrong" + e.toString(), Toast.LENGTH_SHORT);
-                    System.out.println("Wrong_Verif :"+e.toString());
+                    System.out.println("Wrong_Verif :" + e.toString());
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
+
                 }
             }
         });
@@ -254,22 +247,23 @@ public class LauncherActivity extends AppCompatActivity {
                         startActivity(intent);
 
 
-                         FirebaseUser user = task.getResult().getUser();
+                        FirebaseUser user = task.getResult().getUser();
                         finish();
                         // Update UI
                     } else {
+                        otpEdt.setEnabled(true);
+                        progressBar.setVisibility(View.GONE);
                         // Sign in failed, display a message and update the UI
                         // Toast.makeText(LauncherActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         Toast.makeText(LauncherActivity.this, "Invalid OTP", Toast.LENGTH_LONG).show();
                         // Log.w(TAG, "signInWithCredential:failure", task.getException());
                         if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                            Toast.makeText(LauncherActivity.this,"Invalid Verification Code",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LauncherActivity.this, "Invalid Verification Code", Toast.LENGTH_SHORT).show();
                             // The verification code entered was invalid
                         }
                     }
                 });
     }
-
 
 
     //1
@@ -286,57 +280,54 @@ public class LauncherActivity extends AppCompatActivity {
         PhoneAuthProvider.verifyPhoneNumber(options);
     }
 
-        // callback method is called on Phone auth provider.
+    // callback method is called on Phone auth provider.
 
 
     //2
-        private PhoneAuthProvider.OnVerificationStateChangedCallbacks
+    private final PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
-                // initializing our callbacks for on
-                // verification callback method.
-                mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+            // initializing our callbacks for on
+            // verification callback method.
+            mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
-            // below method is used when
-            // OTP is sent from Firebase
-            @Override
-            public void onCodeSent(String s, @NotNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                super.onCodeSent(s, forceResendingToken);
-                // when we receive the OTP it
-                // contains a unique id which
-                // we are storing in our string
-                // which we have already created.
-                verificationId = s;
+        // below method is used when
+        // OTP is sent from Firebase
+        @Override
+        public void onCodeSent(String s, @NotNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+            super.onCodeSent(s, forceResendingToken);
+            // when we receive the OTP it
+            // contains a unique id which
+            // we are storing in our string
+            // which we have already created.
+            verificationId = s;
+        }
+
+        @Override
+        public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+            // below line is used for getting OTP code
+            // which is sent in phone auth credentials.
+            final String code = phoneAuthCredential.getSmsCode();
+
+            // checking if the code
+            // is null or not.
+            if (code != null) {
+                // if the code is not null then
+                // we are setting that code to
+                // our OTP edittext field.
+                otpEdt.setText(code);
+
+                // after setting this code
+                // to OTP edittext field we
+                // are calling our verifycode method.
+                verifyCode(code);
             }
+        }
 
-            @Override
-            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-                // below line is used for getting OTP code
-                // which is sent in phone auth credentials.
-                final String code = phoneAuthCredential.getSmsCode();
-
-                // checking if the code
-                // is null or not.
-                if (code != null) {
-                    // if the code is not null then
-                    // we are setting that code to
-                    // our OTP edittext field.
-                    otpEdt.setText(code);
-
-                    // after setting this code
-                    // to OTP edittext field we
-                    // are calling our verifycode method.
-                    verifyCode(code);
-                }
-            }
-
-            @Override
-            public void onVerificationFailed(@NonNull FirebaseException e) {
-                Toast.makeText(LauncherActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        };
-
-
-
+        @Override
+        public void onVerificationFailed(@NonNull FirebaseException e) {
+            Toast.makeText(LauncherActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    };
 
 
     // below method is use to verify code from Firebase.
@@ -360,8 +351,6 @@ public class LauncherActivity extends AppCompatActivity {
     }
 
 
-
-
     private void setStatusBarTransparent() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -377,11 +366,6 @@ public class LauncherActivity extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
     }
-
-
-
-
-
 
 
 }

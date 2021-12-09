@@ -144,18 +144,10 @@ public class VendorDetail extends AppCompatActivity {
 
     private void cityList() {
 
-        citySpin.setItems("Sirsa City ", "Rania", "Ellenabad","Baragudha","Dabwali","Nathusary Chopta","Odhan","Chakan","Keharwala","Bhoona","Mamber Khera");
-        citySpin.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+        citySpin.setItems("Sirsa City" ,"Kehrwala", "Chakkan","Bhunna", "Ellenabad","Kharian","Rasalia","Mammad");
+      //  String extraCities = "\"Rania\",\"Nathusary Chopta\"\"Baragudha\","
 
-
-            @Override
-            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-
-                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
-
-
-            }
-        });
+        //citySpin.setOnItemSelectedListener((MaterialSpinner.OnItemSelectedListener<String>) (view, position, id, item) -> Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show());
 
 
     }

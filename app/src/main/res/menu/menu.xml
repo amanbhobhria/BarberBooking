@@ -2,16 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_account"
-        android:title="My Account" />
+        android:title="@string/my_account" />
 
     <item
         android:id="@+id/nav_partner"
-        android:title="Become a Partner" />
+        android:title="@string/become_a_partner" />
 
 
     <item
-        android:id="@+id/nav_settings"
-        android:title="Settings" />
+        android:id="@+id/nav_bookings"
+        android:title="@string/bookings" />
+
+    <item
+        android:id="@+id/nav_help"
+        android:title="@string/need_help" />
+
+    <item
+        android:id="@+id/nav_invite_earn"
+        android:title="@string/invite_and_earn" />
 
     <item
         android:id="@+id/nav_logout"

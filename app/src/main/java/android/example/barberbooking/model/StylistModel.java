@@ -4,6 +4,16 @@ public class StylistModel {
     public StylistModel() {
     }
 
+    private String bycId,ownername,phoneNo,city,address,serviceList,workImg,basePrice;
+
+    public String getBasePrice() {
+        return basePrice;
+    }
+
+    public void setBasePrice(String basePrice) {
+        this.basePrice = basePrice;
+    }
+
     public String getOwnername() {
         return ownername;
     }
@@ -52,7 +62,7 @@ public class StylistModel {
         this.workImg = workImg;
     }
 
-    private String bycId,ownername,phoneNo,city,address,serviceList,workImg;
+
 
     public String getBycId() {
         return bycId;
@@ -62,7 +72,9 @@ public class StylistModel {
         this.bycId = bycId;
     }
 
-    public StylistModel(String bycId, String ownername, String phoneNo, String city, String address, String serviceList, String workImg,String dateS,String slot1,String slot2,String slot3, String slot4,String slot5){
+
+
+    public StylistModel(String bycId, String ownername, String phoneNo, String city, String address, String serviceList, String workImg,String basePrice){
         this.bycId =bycId;
         this.ownername = ownername;
         this.phoneNo = phoneNo;
@@ -70,5 +82,6 @@ public class StylistModel {
         this.address = address;
         this.serviceList = serviceList;
         this.workImg = workImg;
+        this.basePrice = basePrice;
     }
 }

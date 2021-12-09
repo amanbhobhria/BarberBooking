@@ -51,9 +51,23 @@ public class GovtIdActivity extends AppCompatActivity {
 
     FirebaseStorage storage;
     StorageReference storageReference;
-    Boolean imageUploaded = true;
+
+    int countUploaded = 0;
+    Boolean uploading = false;
 
     private int id;   //1 for front Image,2 for Backside
+
+
+    @Override
+    public void onBackPressed() {
+        if(uploading)
+        {
+           Toast.makeText(GovtIdActivity.this,"Uploading Data",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,15 +87,13 @@ public class GovtIdActivity extends AppCompatActivity {
     }
 
     private void submit() {
-        submitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                upload();
+        submitBtn.setOnClickListener(v -> {
+           upload();
 
-                Intent intent = new Intent(GovtIdActivity.this, ImageHmActivity.class);
-                startActivity(intent);
 
-            }
+
+
+
         });
 
     }
@@ -127,30 +139,33 @@ public class GovtIdActivity extends AppCompatActivity {
             }
         });
 
-        camera1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                id = 1;
-                checkCameraPermission();
+        camera1.setOnClickListener(v -> {
+            id = 1;
+            checkCameraPermission();
 
-            }
         });
+        addFrontImgLyt.setOnClickListener(v -> {
+            id = 1;
+            checkGalleryPermission();
+        });
+
+
 
         //BackSide
-        selectImg2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                id = 2;
-                checkGalleryPermission();
-            }
+        selectImg2.setOnClickListener(v -> {
+            id = 2;
+            checkGalleryPermission();
         });
 
-        camera2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                id = 2;
-                checkCameraPermission();
-            }
+        camera2.setOnClickListener(v -> {
+            id = 2;
+            checkCameraPermission();
+        });
+
+        addBackImgLyt.setOnClickListener(v -> {
+            id = 2;
+            checkGalleryPermission();
+
         });
 
     }
@@ -255,10 +270,11 @@ public class GovtIdActivity extends AppCompatActivity {
         return Uri.parse(path);
     }
 
-    int count = 0;
+
 
     //Upload Image to Firebase and get Url of Image
     private void uploadImage(Uri filePath, String imgid) {
+        uploading = true;
         if (filePath != null) {
             String id = Common.currentHmVendor.getPhoneNo();
             // Code for showing progressDialog while uploading
@@ -302,18 +318,23 @@ public class GovtIdActivity extends AppCompatActivity {
                                             } else if (imgid.equals("gidback")) {
                                                 homeVendorModel.setGidBackPhoto(url);
                                             }
+                                            countUploaded = countUploaded+1;
 
-                                            count = count + 1;
-                                            if (count >= 2) {
-                                                imageUploaded = true;
+
+
+
+
+                                            if(countUploaded>=2) {
+                                                Toast
+                                                        .makeText(getApplicationContext(),
+                                                                "Image Uploaded!!",
+                                                                Toast.LENGTH_SHORT)
+                                                        .show();
+                                                uploading =false;
+                                                Intent intent = new Intent(GovtIdActivity.this, ImageHmActivity.class);
+                                                startActivity(intent);
+
                                             }
-                                            Toast
-                                                    .makeText(getApplicationContext(),
-                                                            "Image Uploaded!!",
-                                                            Toast.LENGTH_SHORT)
-                                                    .show();
-
-
                                             //next work with URL
                                         }
                                     });

@@ -2,12 +2,18 @@ package android.example.barberbooking.stylist;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.example.barberbooking.MainActivity;
 import android.example.barberbooking.R;
 import android.example.barberbooking.common.Common;
 
+import android.example.barberbooking.fragments.HelpAssistantFragment;
+import android.example.barberbooking.fragments.OffersFragment;
 import android.example.barberbooking.model.BookingModel;
 import android.example.barberbooking.model.UserModel;
 import android.os.Bundle;
@@ -25,6 +31,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +45,7 @@ import org.json.JSONObject;
 
 
 public class BookingActivity extends AppCompatActivity implements PaymentResultWithDataListener {
+
     LinearLayout changeAddressBtn;
     TextView name, phone, address, city, changeBtnTxt, nameOnImg, itemListTxt, priceTxt;
     UserModel userModel = Common.currentUser;
@@ -72,6 +80,8 @@ public class BookingActivity extends AppCompatActivity implements PaymentResultW
 
         makePaymentListener();
 
+      //  setBottomNavigation();
+
 
     }
 
@@ -105,11 +115,23 @@ public class BookingActivity extends AppCompatActivity implements PaymentResultW
         referencePayment.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
                 if (snapshot.child("balance").exists()) {
-                    balanceAmount = snapshot.child("balance").getValue(int.class);
+                    try {
+
+
+                        balanceAmount = snapshot.child("balance").getValue(int.class);
+
+
+                    } catch (NullPointerException e) {
+                        Toast.makeText(BookingActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+
                 } else {
                     balanceAmount = 0;
                 }
+
 
                 if (snapshot.child("credit").exists()) {
                     creditList = snapshot.child("credit").getValue(String.class);
@@ -130,6 +152,7 @@ public class BookingActivity extends AppCompatActivity implements PaymentResultW
 
 
     private void initialize() {
+
         changeAddressBtn = findViewById(R.id.changeAddressBTn);
         name = findViewById(R.id.uName);
         city = findViewById(R.id.uCity);
@@ -147,12 +170,11 @@ public class BookingActivity extends AppCompatActivity implements PaymentResultW
 
     private void setAddress() {
         String phoneS, addressS, cityS;
-
-        String nameS = bookingModel.getUserName();
-        addressS = bookingModel.getUserAddress();
+        String nameS = userModel.getUserName();
+        addressS = userModel.getRoadName();
+        cityS = userModel.getCity();
         phoneS = userModel.getPhone();
-        cityS = bookingModel.getUserCity();
-        Common.currentBooking.setUserPhone(phoneS);
+
 
         if (addressS == (null)) {
             name.setVisibility(View.GONE);
@@ -163,6 +185,12 @@ public class BookingActivity extends AppCompatActivity implements PaymentResultW
 
 
         } else {
+            bookingModel.setUserName(nameS);
+            bookingModel.setUserAddress(addressS);
+            bookingModel.setUserCity(cityS);
+            bookingModel.setUserPhone(phoneS);
+
+
             name.setText(nameS);
             String hiName = "Hi " + nameS;
             nameOnImg.setText(hiName);
@@ -270,7 +298,7 @@ public class BookingActivity extends AppCompatActivity implements PaymentResultW
 
 
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss a", Locale.getDefault());
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm a", Locale.getDefault());
         String formattedDate = df.format(c.getTime());
 
 
@@ -331,4 +359,7 @@ public class BookingActivity extends AppCompatActivity implements PaymentResultW
     public void onPaymentError(int i, String s, PaymentData paymentData) {
         Toast.makeText(BookingActivity.this, "Payment Error due to : " + s, Toast.LENGTH_SHORT).show();
     }
+
+
+
 }
