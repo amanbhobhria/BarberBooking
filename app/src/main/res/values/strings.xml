@@ -7,7 +7,7 @@
     <string name="partnerKey">appKey</string>
     <string name="wait_txt">Please Wait for Some time the BYC Service to acceppt your Request . Contact you soon</string>
     <string name="approve_txt">\n Your Request to join BYC as partenr is approved \nDownload Our BYC Partner App and manage your Account \nFor any Query Contact 95181 56020</string>
-    <string name="description_stylist">The Stylist would visit your destination and payment mode would be online only.\nThe item selected here would be done only.\nFor more details contact BYC helpine number</string>
+    <string name="description_stylist">The Stylist would visit your destination and provide the beauty service.\nFollow covid safety measures. \nThe item selected here would be done only.\nThe service is for female users only.\nThe user have to show her original govt Id (Aadhar Card or Voter id)to the Stylist.\nIf any misbehave reported or false information found , Strict action can be taken against user.\nFor more details contact BYC helpline number +91 9518156020</string>
     <string name="slot2">11:00AM - 12:00 AM</string>
     <string name="slot1">09:00 AM - 11:00AM</string>
     <string name="slot3">01:00 PM - 03:00 PM</string>
@@ -110,7 +110,7 @@
     <string name="base_price_in_rupees">Base Price in Rupees</string>
     <string name="amount_in_rupees">Amount in rupees</string>
     <string name="submit_data">Submit Data</string>
-    <string name="submit_form">Submit Form</string>
+
     <string name="bank_name">Bank Name :</string>
     <string name="beneficiary_name">Beneficiary Name:</string>
     <string name="accountnumber">AccountNumber</string>
@@ -147,6 +147,11 @@
     <string name="no_stylist_found_in_this_city">No Stylist found in this city</string>
     <string name="notifications">Notifications</string>
     <string name="no_new_notifications">No new Notifications</string>
+    <string name="beauty_training">Beauty Training</string>
+    <string name="name">Name</string>
+    <string name="beauty_training_desc">Full This course will help students understand the technicalities of being a professional make-up artist, and will prepare them to work in any aspect of this industry. Being a make-up artist can be a rewarding, fulfilling profession with truly endless possibilities. Make-up artists work in film, television, print, retail, salons.</string>
+    <string name="submit_form">Submit Form</string>
+    <string name="no_bookings_yet">No Bookings Yet</string>
 
 
 </resources>

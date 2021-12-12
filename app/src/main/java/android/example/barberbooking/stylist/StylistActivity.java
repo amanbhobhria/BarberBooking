@@ -14,6 +14,7 @@ import android.example.barberbooking.common.Common;
 import android.example.barberbooking.model.BookingModel;
 import android.example.barberbooking.model.SlotsModel;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -82,7 +83,7 @@ public class StylistActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setStatusBarTransparent();
 
-       //For previous demo vendors only
+        //For previous demo vendors only
         setBase();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -109,6 +110,17 @@ public class StylistActivity extends AppCompatActivity {
         book();
         pricing();
 
+        stylistPolicy();
+
+
+    }
+
+    private void stylistPolicy() {
+        stylistPolicy.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://pages.flycricket.io/byc/terms.html"));
+            startActivity(intent);
+        }
+        );
 
     }
 
@@ -123,7 +135,6 @@ public class StylistActivity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(StylistActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
         }
-
 
 
     }
@@ -337,7 +348,7 @@ public class StylistActivity extends AppCompatActivity {
         nameTxt.setText(Common.currentStylist.getOwnername());
         addressTxt.setText(address);
 
-        descriptionTxt.setText(Common.currentStylist.getServiceList());
+        descriptionTxt.setText(R.string.description_stylist);
 
 
     }
@@ -452,7 +463,7 @@ public class StylistActivity extends AppCompatActivity {
 
             if (timeTxt.getText().equals("Select Time Slot")) {
                 Toast.makeText(StylistActivity.this, "Please Select a time slot for booking.", Toast.LENGTH_SHORT).show();
-            } else if (price < 200) {
+            } else if (price < 160) {
                 Toast.makeText(StylistActivity.this, "Minimum Booking amount is ₹200", Toast.LENGTH_SHORT).show();
             } else {
                 try {

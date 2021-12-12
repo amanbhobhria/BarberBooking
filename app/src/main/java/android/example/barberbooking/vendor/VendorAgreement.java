@@ -9,6 +9,7 @@ import android.example.barberbooking.common.Common;
 import android.example.barberbooking.vendor.homefacility.HmVendorDetail;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,6 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class VendorAgreement extends AppCompatActivity {
     FloatingActionButton chatBtn;
@@ -35,7 +41,8 @@ public class VendorAgreement extends AppCompatActivity {
         //addPartner();
         chat();
         back();
-        homeServ();
+homeServ();
+
         viewStatus();
     }
 
@@ -52,8 +59,9 @@ public class VendorAgreement extends AppCompatActivity {
 
     private void homeServ() {
         homeServbtn.setOnClickListener(v -> {
-            Intent intent = new Intent(VendorAgreement.this, HmVendorDetail.class);
-            startActivity(intent);
+
+            checkExistence(Common.currentUser.getPhone());
+
         });
     }
 
@@ -95,6 +103,36 @@ public class VendorAgreement extends AppCompatActivity {
 
 
     }
+
+    private void checkExistence(String phoneNo) {
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference userNameRef = rootRef.child("hmvendor").child(phoneNo);
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    //Send Otp
+                    Toast.makeText(VendorAgreement.this, "Vendor Account already exist on this number", Toast.LENGTH_SHORT).show();
+
+
+
+                } else {
+                    Intent intent = new Intent(VendorAgreement.this, HmVendorDetail.class);
+                    startActivity(intent);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(VendorAgreement.this, "Cancelled " + databaseError.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("dbaerror", databaseError.getMessage()); //Don't ignore errors!
+            }
+        };
+        userNameRef.addListenerForSingleValueEvent(eventListener);
+    }
+
+
 
 }
 

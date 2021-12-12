@@ -2,18 +2,15 @@ package android.example.barberbooking.stylist;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+
 
 import android.app.Activity;
 import android.content.Intent;
-import android.example.barberbooking.MainActivity;
+
 import android.example.barberbooking.R;
 import android.example.barberbooking.common.Common;
 
-import android.example.barberbooking.fragments.HelpAssistantFragment;
-import android.example.barberbooking.fragments.OffersFragment;
+
 import android.example.barberbooking.model.BookingModel;
 import android.example.barberbooking.model.UserModel;
 import android.os.Bundle;
@@ -31,7 +28,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -80,7 +77,7 @@ public class BookingActivity extends AppCompatActivity implements PaymentResultW
 
         makePaymentListener();
 
-      //  setBottomNavigation();
+
 
 
     }
@@ -224,16 +221,25 @@ public class BookingActivity extends AppCompatActivity implements PaymentResultW
         makePaymentBtn.setOnClickListener(v -> {
 
 
-            if (bookingModel.getUserPhone().equalsIgnoreCase("Guest")) {
+
+            if (userModel.getPhone().equalsIgnoreCase("Guest")) {
 
                 Toast.makeText(getApplicationContext(), "Login with your phone Number to Make a Booking", Toast.LENGTH_SHORT).show();
-            } else if (bookingModel.getUserAddress() == (null)) {
-                Toast.makeText(getApplicationContext(), "Add address to make payment", Toast.LENGTH_SHORT).show();
+
+            } else if (bookingModel.getUserAddress() == (null) || (bookingModel.getUserName()==null))
+            {
+                Toast.makeText(getApplicationContext(), "Add name or address to make payment", Toast.LENGTH_SHORT).show();
             } else {
 
                 startPayment();
 
             }
+
+
+
+
+
+
         });
 
     }

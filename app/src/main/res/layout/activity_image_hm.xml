@@ -61,7 +61,7 @@
 
 
                 android:layout_marginTop="12dp"
-                android:text="Upload Government ID Image"
+                android:text="Upload Work  Image"
                 android:textColor="#448AFF" />
         </LinearLayout>
     </RelativeLayout>

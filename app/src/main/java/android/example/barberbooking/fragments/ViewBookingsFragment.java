@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.example.barberbooking.R;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -31,6 +32,7 @@ public class ViewBookingsFragment extends Fragment {
 
     RecyclerView recyclerView;
     ViewBookingAdapter adapter;
+    RelativeLayout noBookLyt;
 
     public ViewBookingsFragment() {
         // Required empty public constructor
@@ -64,6 +66,10 @@ public class ViewBookingsFragment extends Fragment {
         try {
             recyclerView = (RecyclerView) view.findViewById(R.id.userBookingRecyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            noBookLyt = (RelativeLayout) getActivity().findViewById(R.id.noBookLyt);
+
+
+
 
 
             FirebaseRecyclerOptions<BookingModel> options =
@@ -77,6 +83,8 @@ public class ViewBookingsFragment extends Fragment {
 
 
             recyclerView.setAdapter(adapter);
+
+
             return view;
         } catch (Exception e) {
             Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();

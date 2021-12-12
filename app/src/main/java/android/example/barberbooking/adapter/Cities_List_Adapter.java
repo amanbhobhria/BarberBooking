@@ -34,13 +34,10 @@ public class Cities_List_Adapter extends ArrayAdapter<String> {
 
         cityName.setText(cityname[position]);
         imageView.setImageResource(imgid[position]);
-        rowView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, StylistActivity.class);
-                context.startActivity(intent);
+        rowView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, StylistActivity.class);
+            context.startActivity(intent);
 
-            }
         });
         return rowView;
 

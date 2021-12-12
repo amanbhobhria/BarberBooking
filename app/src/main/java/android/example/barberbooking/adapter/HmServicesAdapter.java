@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -69,17 +70,12 @@ public class HmServicesAdapter extends RecyclerView.Adapter<HmServicesAdapter.Hm
             holder.name.setText(list.get(position).getOwnerName());
 
 
-            String bycId = "BYC "+list.get(position).getBycId();
+            String bycId = "BYC " + list.get(position).getBycId();
 
             holder.id.setText(bycId);
-            holder.city.setText(list.get(position).getCity());
-            if(list.get(position).getBasePrice()==null)
-            {
-                holder.price.setText("₹249");
-            }
-            else {
-                holder.price.setText(list.get(position).getBasePrice());
-            }
+
+            String myBaseP = "₹" + list.get(position).getBasePrice();
+            holder.price.setText(myBaseP);
 
             Picasso.get()
                     .load(list.get(position).getWorkImg())
@@ -95,7 +91,6 @@ public class HmServicesAdapter extends RecyclerView.Adapter<HmServicesAdapter.Hm
                 stylistModel.setOwnername(list.get(position).getOwnerName());
                 stylistModel.setAddress(list.get(position).getAddress());
                 stylistModel.setCity(list.get(position).getCity());
-
 
 
                 stylistModel.setBasePrice(list.get(position).getBasePrice());
@@ -133,7 +128,7 @@ public class HmServicesAdapter extends RecyclerView.Adapter<HmServicesAdapter.Hm
             name = itemView.findViewById(R.id.nameStylist);
             city = itemView.findViewById(R.id.addressStylist);
             workImg = itemView.findViewById(R.id.workimgStylist);
-            price =itemView.findViewById(R.id.priceStylist);
+            price = itemView.findViewById(R.id.priceStylist);
             item = itemView.findViewById(R.id.stylist_design_layout);
         }
     }

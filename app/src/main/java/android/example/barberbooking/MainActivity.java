@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     BottomNavigationView bottomNavigationView;
     LinearLayout searchBar, progressBar,bestOfferLyt;
-    LinearLayout sirsa, kehrwala, chakkan, bhunna, ellenabad, kharia, rasalia, mammad;
+    LinearLayout nearby,sirsa, kehrwala, chakkan, bhunna, ellenabad, kharia, rasalia, mammad;
 
 
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -202,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void cityListener() {
+        callCitySearch(nearby, "Nearby");
         callCitySearch(sirsa, "Sirsa City");
         callCitySearch(kehrwala, "Kehrwala");
         callCitySearch(chakkan, "Chakkan");
@@ -221,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.stylistRecyclerView);
         progressBar = findViewById(R.id.progressRecommended);
 
+        nearby = findViewById(R.id.nearbyBtn);
         sirsa = findViewById(R.id.sirsaBtn);
         kehrwala = findViewById(R.id.kehrwalaBtn);
         chakkan = findViewById(R.id.chakkanBtn);
@@ -346,6 +348,15 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
 
             }
+
+            else if (item.getItemId() == R.id.nav_training) {
+
+               Intent intent = new Intent(MainActivity.this,BeautyTrainingActivity.class);
+               startActivity(intent);
+
+            }
+
+
             else if (item.getItemId() == R.id.nav_help) {
 
                 collapsingToolbarLayout.setVisibility(View.GONE);
@@ -393,11 +404,19 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
 
+
+
+
+
+                int count = 0;
+
                 for (DataSnapshot sp : snapshot.getChildren()) {
 
 
                     HomeVendorModel homeVendorModel = sp.getValue(HomeVendorModel.class);
                     assert homeVendorModel != null;
+
+
                     if (homeVendorModel.getStatus().trim().equalsIgnoreCase("Approved".trim())) {
 
                         homeVendorModel.setRegno(sp.getKey());
@@ -405,7 +424,15 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("TAG", "onDataChange: " + sp.getKey());
 
                         list.add(homeVendorModel);
+                        count++;
                     }
+                    if(count>=6)
+                    {
+                        break;
+                    }
+
+
+
 
                 }
                 progressBar.setVisibility(View.GONE);

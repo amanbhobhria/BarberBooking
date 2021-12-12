@@ -47,7 +47,18 @@ public class ImageHmActivity extends AppCompatActivity {
     FirebaseStorage storage;
     StorageReference storageReference;
 
+    Boolean uploading = false;
 
+    @Override
+    public void onBackPressed() {
+        if(uploading)
+        {
+         Toast.makeText(ImageHmActivity.this,"Don't go Back",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +91,14 @@ public class ImageHmActivity extends AppCompatActivity {
 
     private void submit() {
         next.setOnClickListener(v -> {
-              uploadImage(image);
 
+            try {
+                uploadImage(image);
+            }
+            catch (Exception e)
+            {
+                Toast.makeText(ImageHmActivity.this,e.toString(),Toast.LENGTH_SHORT).show();
+            }
 
         });
 
@@ -196,8 +213,8 @@ public class ImageHmActivity extends AppCompatActivity {
                     = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+            uploading = true;
 
 
 
@@ -240,6 +257,7 @@ public class ImageHmActivity extends AppCompatActivity {
                                                     .show();
                                             Intent intent = new Intent(ImageHmActivity.this, AddServicesActivity.class);
                                             startActivity(intent);
+
 
 
 

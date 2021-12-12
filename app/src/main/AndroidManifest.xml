@@ -26,7 +26,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BarberBooking">
-        <activity android:name=".user.NotificationActivity"></activity>
+        <activity android:name=".BeautyTrainingActivity"></activity>
+        <activity android:name=".user.NotificationActivity" />
         <activity android:name=".user.HelpAssistantActivity" />
         <activity android:name=".user.ShowBookingDetailsActivity" />
         <activity android:name=".stylist.TransactionsDetailsActivity" />

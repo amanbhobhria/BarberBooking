@@ -8,9 +8,11 @@ import android.example.barberbooking.R;
 import android.example.barberbooking.common.Common;
 import android.example.barberbooking.model.HomeVendorModel;
 import android.os.Bundle;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ public class HmVendorDetail extends AppCompatActivity {
     TextView phoneTxt;
     Button nextBtn;
     MaterialSpinner citySpin;
+    ImageView backBtn;
 
 
 
@@ -37,8 +40,14 @@ public class HmVendorDetail extends AppCompatActivity {
         cityList();
         phoneTxt.setText(Common.currentUser.getPhone());
         next();
+        back();
 
 
+    }
+
+    private void back() {
+        backBtn = findViewById(R.id.backBtnHmVendorDetail);
+        backBtn.setOnClickListener(v -> HmVendorDetail.super.onBackPressed());
     }
 
 

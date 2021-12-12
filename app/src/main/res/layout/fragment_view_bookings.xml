@@ -38,5 +38,32 @@
             android:layout_marginBottom="28dp"
             />
 
+        <RelativeLayout
+            android:id="@+id/noBookLyt"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center">
+
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:layout_above="@+id/noCityText"
+                    android:src="@drawable/ic_baseline_error_outline_24"
+                    android:contentDescription="@string/no_new_notifications" />
+
+                <TextView
+                    android:id="@+id/noCityText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_bookings_yet"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+        </RelativeLayout>
+
 
 </RelativeLayout>

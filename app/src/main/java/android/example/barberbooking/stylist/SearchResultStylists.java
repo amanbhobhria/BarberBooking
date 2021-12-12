@@ -127,7 +127,23 @@ public class SearchResultStylists extends AppCompatActivity {
                     assert homeVendorModel != null;
 
 
-                    if (homeVendorModel.getCity().trim().equalsIgnoreCase(cityName.trim()) && homeVendorModel.getStatus().trim().equalsIgnoreCase("Approved".trim())) {
+                    if ((cityName.trim().equals("Nearby")) && homeVendorModel.getStatus().trim().equalsIgnoreCase("Approved".trim())) {
+                        homeVendorModel.setRegno(sp.getKey());
+                        vendorInThisCity = vendorInThisCity+1;
+
+
+                        Log.i("TAG", "onDataChange: " + sp.getKey());
+
+                        list.add(homeVendorModel);
+
+
+                        noCityLyt.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
+
+                    }
+
+
+                    else if (homeVendorModel.getCity().trim().equalsIgnoreCase(cityName.trim()) && homeVendorModel.getStatus().trim().equalsIgnoreCase("Approved".trim())) {
                         homeVendorModel.setRegno(sp.getKey());
                         vendorInThisCity = vendorInThisCity+1;
 
